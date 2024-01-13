@@ -32,20 +32,24 @@
                 
             
                 <ul id="sidemenu">
+                    <li><a href="#contact" onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
+                    <hr>
                     <li><a href="/">Home</a></li>
+                    <hr>
+                        <li><a href="#about">Product</a></li>
+                    <hr>
                         <li><a href="#about">About</a></li>
+                        <hr>
                         <li><a href="#contact">Contact</a></li>
-                        <form action="/login" method="POST">
-                            
-                            <input type="text" name="username" placeholder="Your Name" >
-                            <input type="email" name="password" placeholder="Your Email">
-                            
-                            <button type="submit" class="btn btn1">Login now</a></button>
-                            
-                            
-                        </form> 
-                        <li><a href="#contact" onclick="closemenu()" style="font-size: 13px;">Close Window</a></li>
-                           
+                        <hr>
+                        <p>
+                            Thank you for visiting Telinso. We appreciate your interest and feedback. Contact us anytime
+                        </p>
+                       
+                        <li><a href="login" class="login">Log in</a></li>
+                        <li><a href="/" class="login join">Join us</a></li>
+                   
+                        
                 </ul>
                 
                 <i class="fa-solid fa-user fas" onclick="openmenu()"></i>
@@ -72,7 +76,7 @@
 
                  
                 </div>
-                <div class="contact-col">
+                <div class="contact-col   newlogin">
                   
                     <p>We are a team of electronics and communication engineering students who are
                      passionate about internet of things and agriculture. Our project, Telinso, 

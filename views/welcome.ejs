@@ -27,17 +27,29 @@
                 <a class="hero-btn2 heronew"> Product </a>
                 <a class="hero-btn2 heronew"> About </a>
                 <a class="hero-btn2 heronew"> Contact </a>
-                <a href="/index" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Log out</a>
+                <a href="login" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Log out</a>
                 </div>
                 
             
                 <ul id="sidemenu">
-                    <li><a href="">Home</a></li>
+                    <li><a href="#contact" onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
+                    <hr>
+                    <li><a href="/">Home</a></li>
+                    <hr>
+                        <li><a href="#about">Product</a></li>
+                    <hr>
                         <li><a href="#about">About</a></li>
+                        <hr>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="/">Log Out</a></li>
-                        <li><a href="#contact" onclick="closemenu()" style="font-size: 10px;">Close Window</a></li>
-                           
+                        <hr>
+                        <p>
+                            Thank you for choosing Telinso. We value your trust and support. Please free to Contact us anytime
+                        </p>
+                       
+                        <li><a href="login" class="login">Log out</a></li>
+                        <li><a href="/" class="login join">Join us</a></li>
+                   
+                               
                 </ul>
                 
                 <i class="fa-solid fa-user fas" onclick="openmenu()"><a href="/index"></a></i>
@@ -83,7 +95,7 @@
                       
                        <h3>Soil Analysis</h3>
                        
-                     <p>Our website offers a comprehensive soil sample analysis service. Discover the health of your soil, nutrient levels, and recommendations to optimize plant growth. Unlock the potential of your land with data-driven insights for thriving gardens and bountiful harvests</p>
+                     <p>a comprehensive soil sample analysis service.</p>
                                
                    
                                
@@ -94,7 +106,7 @@
                    <div class="product-col"  >
                        <i class="fa-solid fa-chart-line"></i>
                                    <h3>Visualization</h3>
-                                   <p>Explore your soil sample analysis results with our interactive data visualization feature. Gain insights through informative charts, graphs, and maps that make it easy to understand and harness the full potential of your land for gardening or farming.</p>
+                                   <p>Gain insights with our interactive data visualization feature.</p>
                                            
                    
                                       
@@ -105,9 +117,7 @@
                        <i class="fa-solid fa-handshake-angle"></i>
                        <h3>Farmer Assist</h3>
                        
-                        <p>Go-to resource for everything related to soil.We understand that healthy soil is the bedrock of 
-                         successful farming, and our mission is to equip farmers 
-                         with the knowledge they need to nurture their land and grow bountiful crops.</p>
+                        <p>Go-to resource for everything related to soil.</p>
                                
                                
                    </div>
@@ -120,11 +130,20 @@
                    <i class="fa-solid fa-cloud-bolt"></i>
                    <h3>Weather Forecast</h3>
                    
-                 <p>Stay Informed with Accurate Weather Forecasts: Our website provides real-time weather updates, forecasts, and conditions for your location and beyond. Plan your day with confidence, whether it's checking for sunshine,
-                      rain, or any other weather conditions, all at your fingertips</p>
+                 <p>Stay Informed with Accurate Weather Forecasts.</p>
                            
                 </div>
             </a>
+            <a href="">    
+                <div class="product-col"  >
+                    <i class="fa-solid fa-file-waveform"></i>
+                    <h3>Soil Health History</h3>
+                    
+                     <p>Review your past data and improve your future outcomes.</p>
+                            
+                            
+                </div>
+             </a>   
                 
                 
             
@@ -175,8 +194,10 @@
                     <p>Visualization</p>
                     <p>Farmer Assist</p>
                     <p>Weather Forecast</p>
+                   
                   
                         </div>
+                        <hr>
                 <div class="footer-col"  >
                       <p>Data Analytics</p>
                       <p>Cloud computing</p>
@@ -184,6 +205,7 @@
                       <p>Artificial intelligence</p>
                            
                                     </div>
+                                    <hr>
                 <div class="footer-col"  >
                    <p>Empowernment</p>
                    <p>Innovation</p>
@@ -191,6 +213,7 @@
                    <p>Collaboration</p>
                     
                 </div>
+                <hr>
             
             
            
@@ -202,6 +225,7 @@
                 <p>About</p>
                 <p>Contact</p>
             </div>
+            <hr>
     </div>
             <div class="footer-col" style="text-align: center;" >     
                    <p>
