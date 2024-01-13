@@ -1,0 +1,221 @@
+<html>
+     <head>
+         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+         <title>TELINSO</title>
+         
+         <link rel="stylesheet" href="/welcome.css">
+         <script src="/navbar.js" defer></script>
+         <link rel="stylesheet" href="/footer.css">
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
+         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"> 
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        </head>
+     <body>
+       
+        
+         <section class="header" >
+            
+            <div class="container">
+
+            <nav >
+               <div class="navbtn">
+                <a href="/" class="hero-btn2 heronew"> Home </a>
+                <a class="hero-btn2 heronew"> Product </a>
+                <a class="hero-btn2 heronew"> About </a>
+                <a class="hero-btn2 heronew"> Contact </a>
+                <a href="/index" class="hero-btn2"  ><i class="fa-solid fa-user"></i>Log out</a>
+                </div>
+                
+            
+                <ul id="sidemenu">
+                    <li><a href="">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="/">Log Out</a></li>
+                        <li><a href="#contact" onclick="closemenu()" style="font-size: 10px;">Close Window</a></li>
+                           
+                </ul>
+                
+                <i class="fa-solid fa-user fas" onclick="openmenu()"><a href="/index"></a></i>
+            </nav>
+            
+             
+         </section>
+         
+            <section class="overview" >
+             
+                <div class="row">
+                   <div class="overview-col">
+                       <h1>WELCOME TO TELINSO</h1>
+                       
+                      
+                       
+                       <P>
+   
+                           Soil health and crop productivity are one of the main issues in agriculture as they may lead 
+                           to an unhealthy environment. The main cause of this is the use of excessive fertilizers in 
+                           the soil. Therefore, it is necessary to conduct soil testing before starting agriculture.
+                            A soil test is important for several reasons: to optimize crop production, to improve the
+                             nutritional balance of the growing media and to save money and conserve energy by applying 
+                             only the amount of fertilizer needed. Our solution is designed to aid a farmer in all aspects,
+                              including monitoring soil conditions and nutrients. The data collected from the monitoring system will be stored on a cloud server for analysis. The main objective is to keep track of the level of nutrients in the soil. Knowing their soil 
+                           before starting farming will assist farmers in planning cultivation with precision.</P>
+                       
+                           
+                        
+                   </div>
+                      
+               </div>
+              
+           </section>
+           
+              
+              <section class="product">
+               <div class="row1">
+                   <a href="/analysis">
+                   <div class="product-col" >
+                       
+                       <i class="fa-solid fa-magnifying-glass-chart"></i>
+                      
+                       <h3>Soil Analysis</h3>
+                       
+                     <p>Our website offers a comprehensive soil sample analysis service. Discover the health of your soil, nutrient levels, and recommendations to optimize plant growth. Unlock the potential of your land with data-driven insights for thriving gardens and bountiful harvests</p>
+                               
+                   
+                               
+                           </div>
+                        </a>
+                       
+                        <a href="/visualisation">  
+                   <div class="product-col"  >
+                       <i class="fa-solid fa-chart-line"></i>
+                                   <h3>Visualization</h3>
+                                   <p>Explore your soil sample analysis results with our interactive data visualization feature. Gain insights through informative charts, graphs, and maps that make it easy to understand and harness the full potential of your land for gardening or farming.</p>
+                                           
+                   
+                                      
+                   </div>
+                </a> 
+                <a href="">    
+                   <div class="product-col"  >
+                       <i class="fa-solid fa-handshake-angle"></i>
+                       <h3>Farmer Assist</h3>
+                       
+                        <p>Go-to resource for everything related to soil.We understand that healthy soil is the bedrock of 
+                         successful farming, and our mission is to equip farmers 
+                         with the knowledge they need to nurture their land and grow bountiful crops.</p>
+                               
+                               
+                   </div>
+                </a>   
+                  
+               </div>
+              <div class="row2">
+              <a href="">
+               <div class="product-col"  >
+                   <i class="fa-solid fa-cloud-bolt"></i>
+                   <h3>Weather Forecast</h3>
+                   
+                 <p>Stay Informed with Accurate Weather Forecasts: Our website provides real-time weather updates, forecasts, and conditions for your location and beyond. Plan your day with confidence, whether it's checking for sunshine,
+                      rain, or any other weather conditions, all at your fingertips</p>
+                           
+                </div>
+            </a>
+                
+                
+            
+              
+              </div>
+               </section>
+              
+         
+           <section class="contact">
+            <div class="row">
+               <div class="contact-col">
+                  
+                   
+                  
+                   <h1>Contact us</h1>
+                
+                    <form action="/login" method="POST">
+                        
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="password" name="email" placeholder="Your email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Send</a></button>
+                    </form> 
+
+                 
+                </div>
+                <div class="contact-col">
+                  
+                    <p>We are a team of electronics and communication engineering students who are
+                     passionate about internet of things and agriculture. Our project, Telinso, 
+                     is an IoT-based solution that aims to provide soil health data to farmers and agriculture enthusiasts. Telinso consists of a comprehensive suite of software and hardware that can measure and monitor soil conditions and nutrients, such as pH, moisture, temperature, nitrogen, phosphorus, potassium, and more. By using Telinso, farmers can access real-time and accurate information about their soil health, and get customized recommendations on how to improve their crop productivity and soil quality. Telinso is a user-friendly, cost-effective, and scalable system that can help farmers
+                     optimize their farming practices and achieve sustainable agriculture.
+                </p>
+                   
+                     </div>
+                  
+           </div>
+           
+       </section>
+
+       <section class="footer">
+          
+        <div class="row">
+           <div class="footer-col">
+            <div class="row">
+                <div class="footer-col" >
+                    <p>Soil Analysis</p>
+                    <p>Visualization</p>
+                    <p>Farmer Assist</p>
+                    <p>Weather Forecast</p>
+                  
+                        </div>
+                <div class="footer-col"  >
+                      <p>Data Analytics</p>
+                      <p>Cloud computing</p>
+                      <p>Internet of things</p>
+                      <p>Artificial intelligence</p>
+                           
+                                    </div>
+                <div class="footer-col"  >
+                   <p>Empowernment</p>
+                   <p>Innovation</p>
+                   <p>Possibilities</p>
+                   <p>Collaboration</p>
+                    
+                </div>
+            
+            
+           
+            <div class="footer-col"  >
+                
+                
+                <p>Home</p>
+                <p>Product</p>
+                <p>About</p>
+                <p>Contact</p>
+            </div>
+    </div>
+            <div class="footer-col" style="text-align: center;" >     
+                   <p>
+                    Telinso is an IoT-based solution that provides soil health data to farmers and agriculture enthusiasts. It consists of a comprehensive suite of software and hardware that can measure and monitor soil conditions and nutrients, such as pH, moisture, temperature, nitrogen, phosphorus, potassium, and more. By using Telinso, you can access real-time and accurate information about your soil health, and get customized recommendations on how to improve your crop productivity and soil quality. Telinso is a user-friendly, cost-effective, and scalable system that can help you optimize your farming practices and achieve sustainable agriculture. Learn more about Telinso and how it can benefit you. Contact us today
+                </p>
+            </div>
+            <div class="footer-col" style="text-align: center;" >     
+                <p>
+                    <i class="fa-brands fa-instagram"></i><i class="fa-brands fa-linkedin"></i><i class="fa-brands fa-square-facebook"></i><i class="fa-brands fa-square-x-twitter"></i>
+                   <br>
+                   <p > 	&copy; TEAM TELINSO</p>
+                </p>
+         </div>
+   </section>
+              
+         </body>
+</html>
