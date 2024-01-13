@@ -425,6 +425,7 @@
     font-size: 40px;
     text-align: center;
     padding: 18px 0;
+    color: white;
 }
 .conclusion-col p{
     font-size: 18px;
@@ -684,6 +685,9 @@ form .btn2:hover{
         padding: 20px;
         
         
+    }
+    .feature-col{
+        padding: 30px 30px;
     }
     .about{
         width: auto;

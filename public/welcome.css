@@ -678,7 +678,9 @@ form .btn2:hover{
     color: black;
     border: 1px solid black;
 }
-
+.footer hr{
+    display: none;
+}
 #entry{
     justify-content: center;
 }
@@ -960,18 +962,7 @@ form .btn2:hover{
         text-align: center;
         padding: 15px;
     }
-    .contact form input{
-       
-       
-        
-        width: 90%;
-        
-    }
-    .contact form textarea{
-      
-        width: 90%;
-
-    }
+    
     .contact form .btn2{
         padding: 10px ;
         margin: 10px;
@@ -982,11 +973,6 @@ form .btn2:hover{
        
     }
     
-    
-    
-}
-@media only screen and (max-width:800px) {
-   
     nav ul{
       display: block;
     }
@@ -1011,26 +997,68 @@ form .btn2:hover{
   nav .hero-btn2{
     display: none;
   }
-  nav ul{
-      background:linear-gradient(#4c0db1,#482b7c) ;
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 100%;
-      text-align: center;
-      height: 100vh;
-      padding-top: 10px;
-      z-index: 2;
-      transition: right 0.5s;
-      cursor: pointer;
-  
-  }
+ 
   nav ul li{
-      display: block;
-      margin: 20px;
-      padding: 30px;
-      font-size: 10px;
-        
+    display: block;
+    margin: 10px;
+    padding: 5px;
+    font-size: 10px;
+   
+    
+      
+}
+  nav ul{
+    background:linear-gradient(#4c0db1,#482b7c) ;
+    position: fixed;
+    top: 0;
+    right: -80%;
+    width: 80%;
+    text-align: center;
+    height: 100vh;
+    padding-top: 10px;
+    z-index: 2;
+    transition: right 0.5s;
+    cursor: pointer;
+    text-align: left;
+
+}
+nav #sidemenu .fa-solid{
+    margin: 3px;
+}
+#sidemenu li i{
+    color: white;
+  }
+  #sidemenu hr{
+    color: white;
+    height: 1px;
+  }
+  #sidemenu p{
+    margin-top: 20px;
+    padding: 30px;
+    color: white;
+    text-align: left;
+    font-family: system-ui;
+    font-size: 20px;
+  }
+  .loginpage{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: space-evenly;
+  }
+  #sidemenu .login{
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    font-weight: 600;
+  }
+  #sidemenu .join{
+    background:#1d1233;
+    color: white;
   }
   nav ul li a{
        color: white;
@@ -1039,6 +1067,7 @@ form .btn2:hover{
       font-family: system-ui;
       
   }
+ 
   nav ul .fas{
       position: absolute;
       top: 25px;
@@ -1052,7 +1081,8 @@ form .btn2:hover{
     padding-top: 60px;
   }
   
-  nav form input,form textarea{
+  
+  .contact form input,form textarea{
     
     width: 300px;
     border: 0;
