@@ -229,5 +229,15 @@ nav #sidemenu .fa-solid{
     color: white;
     
   }
+  nav ul li a:hover::after{
+    width: 0%;
+  }
+  nav ul li :hover{
+ 
+    color: black;
+  }
+  
+  
+  
     
   }

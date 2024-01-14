@@ -692,66 +692,13 @@ form .btn2:hover{
         height: 80px;
     }
     
-    .text-box{
-        width:100%;
-        color: white;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        text-align: center;
-        padding-left: 0px;
-       
-    
-    }
-    
-    .text-box h1{
-        font-size: 80px;
-        font-family: system-ui;
-    }
-    .text-box h4{
-        font-size: 25px;
-        text-align: center;
-        padding: 15px 35px;
-        font-weight: 100;
-        font-family: system-ui;
-        
-        
-      
-    }
-    
-    .text-box p{
-        color: white;
-        font-size: 16px;
-        padding: 0px 35px;
-        font-weight: 100;
-        font-family: system-ui;
-    }
     
         
     .row{
         
         flex-direction: column;
     }
-    .text-box .hero-btn{
-        
-        padding: 16px 32px 16px 12px;
-        font-size: 14px;
-        margin-left: 5px;
-        font-family: system-ui;
-       
-      }
-      .text-box .hero-btn2{
-        
-        display: none;
-        
-      }
-      
-    .text-box .hero-btn:hover{
-        border-left: 30px solid #482b7c;
-        background: #482b7c;
-       color: white;
-       
-    }
+    
     .overview{
         width: auto;
         padding: 0;
@@ -869,6 +816,14 @@ form .btn2:hover{
         flex-direction: column;
         margin: 10px;
         
+    }
+    .product h3{
+        font-size: 22px;
+        font-family: system-ui;
+    }
+    .product p{
+        font-size: 20px;
+        font-family: system-ui;
     }
     .conclusion{
         width: auto;
@@ -1067,7 +1022,16 @@ nav #sidemenu .fa-solid{
       font-family: system-ui;
       
   }
- 
+  nav ul li a:hover::after{
+
+    width: 0%;
+
+  }
+  nav ul li :hover{
+
+    color: black;
+    
+  }
   nav ul .fas{
       position: absolute;
       top: 25px;

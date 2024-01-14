@@ -38,6 +38,9 @@
     font-size: 25px;
    
   }
+  .footer hr{
+    display: none;
+  }
   @media only screen and (max-width:800px){
   
   
@@ -52,6 +55,14 @@
     
   
     
+  }
+  .footer hr{
+    height: 1px;
+    background:white;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
   
   }
