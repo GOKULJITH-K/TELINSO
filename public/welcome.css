@@ -417,8 +417,8 @@ nav{
 }
 .product{
     width: auto;
-    padding: 120 100;
-    background: linear-gradient(to bottom, white 25%,#4c0db1 75%,#482b7c 75%,white 30%);
+    padding: 130 100;
+    background: linear-gradient(to bottom, white 30%,#4c0db1 70%,#482b7c 75%,white 25%);
     
     
 }
@@ -622,7 +622,7 @@ nav{
     
 }
 .contact-col{
-    margin: 20px 20px;
+    margin: 20px;
     padding: 20px  40px;
     flex-basis: 50%;
     text-align: center;
@@ -794,7 +794,7 @@ form .btn2:hover{
     .product{
         width: auto;
         padding: 10 ;
-        background: linear-gradient(to bottom, white 25%,#4c0db1 85%,#482b7c 75%,white 30%);
+        background: linear-gradient(to bottom, white 15%,#4c0db1 90%,#482b7c 80%,white 20%);
     
  
            
