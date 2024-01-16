@@ -307,6 +307,7 @@ form .btn2:hover{
         margin-top: 0%;
         flex-direction: column;
         margin: 10px ;
+        width: 100%;
         
         
     }
@@ -315,9 +316,7 @@ form .btn2:hover{
         margin: 10px ;
         padding: 10px;
     }
-    .image{
-        padding:10px;
-    }
+    
     .data {
         color: black;
         padding: 30px 50px;
