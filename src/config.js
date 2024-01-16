@@ -10,6 +10,7 @@ connect.then(() =>{
     console.log("failed");
 })
 
+//schema users
 const LoginSchema = new mongoose.Schema({
     name:{
         type: String,
@@ -21,6 +22,41 @@ const LoginSchema = new mongoose.Schema({
     }
 });
 
-const collection = new mongoose.model("users",LoginSchema);
+// model users
+const loginmodel = mongoose.model("users",LoginSchema);
 
-module.exports=collection;
+
+// schema savedata
+const saveSchema = new mongoose.Schema({
+    soilname:{
+        type: String,
+        required: true,
+        
+        
+    },
+    nitrogen:{
+        type: String,
+        required: true
+        
+    },
+    phosphorus:{
+        type: String,
+        required: true
+        
+    },
+    potassium:{
+        type: String,
+        required: true
+        
+    }, 
+     //image:{  type: String,required: true}
+});
+
+// model savedata
+const savemodel = mongoose.model("soildatas",saveSchema);
+
+module.exports ={
+    loginmodel,
+    savemodel
+};
+
