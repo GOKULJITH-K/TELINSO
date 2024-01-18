@@ -55,8 +55,97 @@ const saveSchema = new mongoose.Schema({
 // model savedata
 const savemodel = mongoose.model("soildatas",saveSchema);
 
+//model farmers
+
+const farmerSchema = new mongoose.Schema({
+    title:{
+        type: String,
+        required: true,
+        
+        
+    },
+    message:{
+        type: String,
+        required: true
+        
+    },
+    linkname:{
+        type: String,
+        
+    },
+
+    link:{
+        type: String,
+        
+        
+    }
+   
+    
+});
+
+// model farmerdata
+const farmermodel = mongoose.model("farmers",farmerSchema);
+
+// feedback
+
+const feedbackSchema = new mongoose.Schema({
+    name:{
+        type: String,
+        required: true,
+        
+        
+    },
+    email:{
+        type: String,
+        required: true,
+    },
+    message:{
+        type: String,
+        required: true,
+        
+    }
+   
+     
+});
+
+// model savedata
+const feedbackmodel = mongoose.model("feedbacks",feedbackSchema);
+
+//schema test
+const testSchema = new mongoose.Schema({
+    nitrogen:{
+        type: String,
+        required: true
+    },
+    phosphorus:{
+        type: String,
+        required: true
+    },
+    potassium:{
+        type: String,
+        required: true
+    },
+    pH:{
+        type: String,
+        required: true
+    },
+    temperature:{
+        type: String,
+        required: true
+    },
+   
+});
+
+// model test
+const testmodel = mongoose.model("tests",testSchema);
+
+// exports
+
 module.exports ={
     loginmodel,
-    savemodel
+    savemodel,
+    farmermodel,
+    feedbackmodel,
+    testmodel,
 };
 
