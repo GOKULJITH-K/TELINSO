@@ -417,8 +417,8 @@ nav{
 }
 .product{
     width: auto;
-    padding: 10 100;
-    background: linear-gradient(to bottom, white 30%,#4c0db1 70%,#482b7c 75%,white 25%);
+    padding: 0 100;
+
     
     
 }
@@ -442,7 +442,7 @@ nav{
     font-size: 35px;
 }
 
-.product a{
+.product-col{
     flex-basis: 30%;
     color: black;
     margin-bottom: 5%;
@@ -468,7 +468,7 @@ nav{
 }
 .product-col h3{
     
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
     padding-left: 10px;
 
