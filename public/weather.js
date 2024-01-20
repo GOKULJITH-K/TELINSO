@@ -1,21 +1,3 @@
-function updateSoilData(nitrogen, phosphorus, potassium) {
-    const dataDiv = document.querySelector('.data');
-    
-    // Update the content of the .savedata div
-    dataDiv.innerHTML = `
-        <p>Nitrogen: ${nitrogen}</p>
-        <input type="hidden" name="nitrogen" value="${nitrogen}">
-        <p>Phosphorus: ${phosphorus}</p>
-        <input type="hidden" name="phosphorus" value="${phosphorus}">
-        <p>Potassium: ${potassium}</p>
-        <input type="hidden" name="potassium" value="${potassium}">
-       
-    `;
-}
-
-// Example usage (you should call this function with actual data)
-updateSoilData("20%", "30%", "40%", "25°C");
-
 const cityInput = document.querySelector(".city-input");
 const searchButton = document.querySelector(".search-btn");
 const locationButton = document.querySelector(".location-btn");
