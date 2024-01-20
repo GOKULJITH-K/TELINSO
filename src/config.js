@@ -49,6 +49,16 @@ const saveSchema = new mongoose.Schema({
         required: true
         
     }, 
+    pH:{
+        type: String,
+        required: true
+        
+    }, 
+    temperature:{
+        type: String,
+        required: true
+        
+    }, 
      //image:{  type: String,required: true}
 });
 
