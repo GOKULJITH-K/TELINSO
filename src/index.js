@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bcrypt = require("bcrypt");
 const {loginmodel,savemodel,farmermodel,feedbackmodel,testmodel}=require("./config");
-//const multer =require("multer")
+// const multer =require("multer")
 const port=process.env.PORT || 3000 ;
 
 
@@ -33,8 +33,33 @@ app.get("/welcome",(req,res)=>{
 app.get("/weather",(req,res)=>{
     res.render("weather");
 })
-app.get("/crop",(req,res)=>{
-    res.render("crop");
+app.get("/crop",async(req,res)=>{
+    const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
+
+    const nitrogenval=testdata.map(soil=>soil.nitrogen);
+    const nitrogen=Number(mode(nitrogenval));
+
+    const phosphorusval=testdata.map(soil=>soil.phosphorus);
+    const phosphorus=Number(mode(phosphorusval));
+
+    const potassiumval=testdata.map(soil=>soil.potassium);
+    const potassium=Number(mode(potassiumval));
+
+    const pHval=testdata.map(soil=>soil.pH);
+    const pH=Number(mode(pHval));
+
+    const temperatureval=testdata.map(soil=>soil.temperature);
+    const temperature=Number(mode(temperatureval));
+    
+
+    res.render("crop",
+    {
+        nitrogen:nitrogen,
+        phosphorus:phosphorus,
+        potassium:potassium,
+        pH:pH,
+        temperature:temperature
+    });
 })
 app.get("/savedata",async(req,res)=>{
     const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
@@ -71,8 +96,12 @@ app.get("/test",(req,res)=>{
     res.render("test");
 })
 app.get("/farmerassist",async(req,res)=>{
-    const assistdata = await farmermodel.find().sort({_id:-1}).exec();
+    const assistdata = await farmermodel.find().sort({_id:-1}).limit(3).exec();
     res.render("farmerassist",{assistdata:assistdata});
+})
+app.get("/farmerfeed",async(req,res)=>{
+    const feeddata = await farmermodel.find().sort({_id:-1}).exec();
+    res.render("farmerfeed",{feeddata:feeddata});
 })
 app.get("/feedback",async(req,res)=>{
     const feedbackdata = await feedbackmodel.find().sort({_id:-1}).exec();
@@ -191,20 +220,17 @@ app.get("/analysis",async(req,res)=>{
         temperature:temperature,
        });
       
-
+ 
           
       
                 
         
 });    
 
-  // file upload 
-  
-  // const storage=multer.diskStorage({destination:function(req,file,cb){cb(null, path.join(__dirname, 'public'));},
-    //filename:function(req,file,cb){cb(null,file.filename+"_"+Date.now()+"_"+file.originalname);},})
+  // file upload const storage=multer.diskStorage ({destination:function(req,file,cb){cb(null, './public'); },filename:function(req,file,cb){cb(null,file.fieldname+"_"+Date.now()+"_"+file.originalname);},})
 
-  //const upload = multer({ storage:storage,}).single("image");
-
+  //const upload = multer({ storage:storage,}).single("image"); 
+ 
 function mode(array){
     if (array.length==0)
     return null;
@@ -295,6 +321,8 @@ app.post("/savedata", async(req,res) =>{
         nitrogen:req.body.nitrogen,
         phosphorus:req.body.phosphorus,
         potassium:req.body.potassium,
+        pH:req.body.pH,
+        temperature:req.body.temperature,
         // image:req.file.filename
     }
    
@@ -303,7 +331,7 @@ app.post("/savedata", async(req,res) =>{
         console.log(savedata);
        
         
-        res.render("soilhealth");
+        res.render("welcome");
   
   
     
@@ -314,11 +342,12 @@ app.post("/farmer", async(req,res) =>{
 
         title:req.body.title,
         message:req.body.message,
+        longmessage:req.body.longmessage,
         linkname:req.body.linkname,
         link:req.body.link,
         
     }
-   
+    
        
         const farmersdata=await farmermodel.insertMany(farmerdata);
         console.log(farmersdata);
@@ -374,6 +403,8 @@ app.post("/feedback", async(req,res) =>{
         res.render("test");
   
  }) 
+ 
+ 
   
 
 app.listen(port,() => {

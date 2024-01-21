@@ -59,9 +59,9 @@ const saveSchema = new mongoose.Schema({
         required: true
         
     }, 
-     //image:{  type: String,required: true}
+     // image:{  type: String,required: true}
 });
-
+  
 // model savedata
 const savemodel = mongoose.model("soildatas",saveSchema);
 
@@ -81,6 +81,11 @@ const farmerSchema = new mongoose.Schema({
     },
     linkname:{
         type: String,
+        
+    },
+    longmessage:{
+        type: String,
+        required:true
         
     },
 
