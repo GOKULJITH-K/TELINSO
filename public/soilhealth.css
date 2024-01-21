@@ -109,6 +109,60 @@ nav{
 
 
 
+  .overview{
+    width: auto;
+    padding: 0 20;
+   text-align: center;
+  
+    
+  }
+  .overview .row{
+    margin-top: 0%;
+    display: flex;
+    justify-content: space-around;
+    
+  }
+  .overview-col{
+    padding: 0px 150px 15px 150px;
+    text-align: center;
+    
+   
+  }
+  .overview h1{
+    
+    font-size: 50px;
+    text-align: center;
+    padding: 18px 0;
+  }
+  .overview-col p{
+    font-size: 25px;
+    padding: 25px;
+    font-family:system-ui;
+    color: rgb(31, 30, 30);
+  
+  }
+  .overview-btn{
+    
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgb(4, 54, 74);
+    padding: 14px 34px;
+    font-size: 18px;
+    border-radius: 30px;
+    background: rgb(4, 54, 74);
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    
+    
+   
+  }
+  .overview-btn:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+  
 
 .contact{
     padding: 50;
@@ -436,6 +490,34 @@ form .btn2:hover{
     #sidemenu form{
       padding-top: 60px;
     }
+    .overview{
+      width: auto;
+      padding: 0;
+     text-align: center;
+    
+      
+  }
+  
+  .overview-col{
+      padding: 5px;
+      text-align: center;
+      
+     
+  }
+  .overview h1{
+      
+      font-size: 25px;
+      text-align: center;
+      padding: 18px 0;
+  }
+  .overview-col p{
+      font-size: 16px;
+      padding: 25px;
+      font-family:system-ui;
+      text-align: center;
+      
+    
+  }
     
     
       

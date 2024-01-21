@@ -1,14 +1,14 @@
 const cityInput = document.querySelector(".city-input");
 const searchButton = document.querySelector(".search-btn");
 const locationButton = document.querySelector(".location-btn");
-const currentWeatherDiv = document.querySelector(".current-weather");
-const weatherCardsDiv = document.querySelector(".weather-cards");
+const currentWeatherDiv = document.querySelector(".product-col");
+const weatherCardsDiv = document.querySelector(".data");
 
 const API_KEY = "3196e87ced6493f50ad86fbd81b7ef3e"; // API key for OpenWeatherMap API
 
 const createWeatherCard = (cityName, weatherItem, index) => {
     if(index == 0) { // HTML for the main weather card
-        return `<div class="details">
+        return `<div class="data">
                     <h2>${cityName} (${weatherItem.dt_txt.split(" ")[0]})</h2>
                     <h6>Temperature: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</h6>
                     <h6>Wind: ${weatherItem.wind.speed} M/S</h6>
@@ -19,7 +19,7 @@ const createWeatherCard = (cityName, weatherItem, index) => {
                     <h6>${weatherItem.weather[0].description}</h6>
                 </div>`;
     } else { // HTML for the other five day forecast card
-        return `<li class="card">
+        return `<li class="data">
                     <h3>(${weatherItem.dt_txt.split(" ")[0]})</h3>
                     <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
                     <h6>Temp: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</h6>
