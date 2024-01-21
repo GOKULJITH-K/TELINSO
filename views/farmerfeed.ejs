@@ -3,7 +3,7 @@
          <meta name="viewport" content="width=device-width,initial-scale=1.0">
          <title>TELINSO</title>
          
-         <link rel="stylesheet" href="/soilhealth.css">
+         <link rel="stylesheet" href="/farmerassist.css">
          <script src="/navbar.js" defer></script>
         <link rel="stylesheet" href="/footer.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,47 +58,18 @@
             
              
          </section>
-         <section class="overview" >
-             
-            <div class="row">
-               <div class="overview-col">
-                   <h1>WELCOME TO TELINSO</h1>
-                   
-                  
-                   
-                   <P>
-                    Empower your agricultural planning with Telinso's Weather Forecast feature. Gain a competitive edge by accessing real time weather
-                     predictions along with a comprehensive 5-day forecast. This invaluable tool equips farmers with the foresight needed to make informed 
-                     decisions, optimizing crop management and resource allocation. Stay ahead of weather fluctuations, mitigate risks, and enhance yield potential.
-                      Telinso simplifies the complexities of farming by delivering accurate and timely weather insights, ensuring that your agricultural operations
-                       align seamlessly with the conditions ahead. 
-                    Elevate your farming experience with Telinso's Weather Forecast feature, where precision meets productivity for a thriving harvest.
-                </P>
-                   
-                       
-                    
-               </div>
-                 
-           </div>
-          
-       </section>
          
            <section class="contact">
-            <h1>Soil Health History</h1>
-            <% soildatas.forEach((row,index) => { %>
+            <h1>Farmer Assist </h1>
+            <% feeddata.forEach((row,index) => { %>
             <div class="contact-row">
                
-                        <div class="data">
-                            <div class="image">
-                                <img src="<%= row.image %>">
+                        
+                            <div class="data">
+                            <h3><%= row.title %> </h3>
+                            <p> <%= row.longmessage %> </p>
+                            <a href="<%= row.link%>"> <%= row.linkname%> <i class="fa-solid fa-arrow-right"></i> </a>
                             </div>
-                            
-                            <p>Soil Detail:<%= row.soilname %> </p>
-                            <p>Nitrogen: <%= row.nitrogen %> </p>
-                            <p>Phosphorus:<%= row.phosphorus%> </p>
-                            <p>Potassium: <%= row.potassium %> </p>
-                            <p>pH: <%= row.pHval %></p>
-                            <p>temperature: <%= row.temperature%></p>
                             
         
                         </div>
@@ -107,6 +78,7 @@
               
                    </div>
                    <% })  %>
+                   
            
        </section>
 

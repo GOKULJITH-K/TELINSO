@@ -58,9 +58,31 @@
             
              
          </section>
-         
+         <section class="overview" >
+             
+            <div class="row">
+               <div class="overview-col">
+                   <h1>WELCOME TO TELINSO</h1>
+                   
+                  
+                   
+                   <P>
+                    Experience unparalleled support with Telinso's Farmer Assistance feature.
+                     Stay ahead in the ever evolving world of agriculture by receiving crucial news updates and relevant links 
+                     directly within the platform. Empower your farming journey with a wealth of information, ranging from crop cultivation 
+                     techniques to market trends. Telinso serves as your comprehensive agricultural companion, offering a centralized hub for all
+                      farmer assisting data. Access resources on soil management, crop care, and market insights effortlessly. Elevate your farming 
+                      expertise with Telinso, where essential information is just a click away. Cultivate success with a wealth of knowledge at your fingertips, transforming every decision into a step towards prosperity.</P>
+                   
+                       
+                    
+               </div>
+                 
+           </div>
+          
+       </section>
            <section class="contact">
-            <h1>Farmer Assist</h1>
+            <h1>Farmer Assist Recent</h1>
             <% assistdata.forEach((row,index) => { %>
             <div class="contact-row">
                
@@ -68,7 +90,7 @@
                             <div class="data">
                             <h3><%= row.title %> </h3>
                             <p> <%= row.message %> </p>
-                            <a href="<%= row.link %>"> <%= row.linkname %> </a>
+                            <a href="/farmerfeed"> read more <i class="fa-solid fa-arrow-right"></i> </a>
                             </div>
                             
         
@@ -78,6 +100,7 @@
               
                    </div>
                    <% })  %>
+                   
            
        </section>
 
