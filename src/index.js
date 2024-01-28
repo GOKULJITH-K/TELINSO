@@ -255,13 +255,15 @@ function mode(array){
 
 app.post("/login", async(req,res)=>{
 
+    // cookie adding
+
     try{
         const check=await loginmodel.findOne({name: req.body.username});
         if(!check){
 
             res.send("You have an invalid username");
-            
-        }
+             
+        } 
 
         const isPasswordMatch=await bcrypt.compare(req.body.password, check.password);
         if(req.body.username=="admin" && req.body.password=="admin" ){
@@ -271,7 +273,7 @@ app.post("/login", async(req,res)=>{
         }else if(isPasswordMatch){
 
             res.render("welcome");
-        }
+        } 
         else{ 
 
             res.send("You have an invalid password");
@@ -410,3 +412,4 @@ app.post("/feedback", async(req,res) =>{
 app.listen(port,() => {
     console.log(`server running on port:${port} `);
 })
+ 
