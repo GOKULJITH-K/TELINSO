@@ -426,13 +426,13 @@ nav{
 .product .row1{
     margin-top: 0%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     
 }
 .product .row2{
     margin-top: 0%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     
 }
 

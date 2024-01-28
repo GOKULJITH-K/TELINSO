@@ -263,6 +263,7 @@
     width: auto;
     padding: 30 20;
     margin-bottom: 70;
+    
    
   
     
@@ -270,7 +271,8 @@
 .about .row{
     margin-top: 0%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    
     
 }
 .about h1{
@@ -280,16 +282,26 @@
     padding: 5px 0;
 }
 .about-col1{
-    padding: 10px;
     text-align: center;
+    padding: 0;
+  
+   
+    
+   
+    
     
    
 }
 .about-col1 img{
     width: auto;
-    height: 500px;
-    margin-top: 25px;
-    border-radius:  50px 5px 50px 5px;
+    height: 600px;
+    margin-top: 35;
+   -webkit-mask-image: url(png-image.png);
+    mask-image: url(png-image.png);
+    -webkit-mask-size: 90%;
+    mask-size: 90%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
 }
 .about-col2{
     padding: 5;
@@ -448,43 +460,40 @@
     display: flex;
     justify-content: space-around;
     
+    
 }
 .team-col{
     flex-basis: 23%;
     color: white;
     margin-bottom: 5%;
-    padding: 30px 12px;
-    padding-top: 30px;
     box-sizing: border-box;
-   background:  linear-gradient(30deg,#482b7c,#0db1b1);
+    background:  linear-gradient(30deg,#482b7c,#0db1b1);
     transition: .5s; 
-    border-radius: 10px; 
     box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    text-align: left;
    
     
     
 }
 
 .team-col:hover{
-    background-color: #00518d;
-    color: white;
     border-radius: 10px;
     box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.1);
-    border: none;
+
 }
 .team h1{
     
     font-size: 40px;
     text-align: center;
-    padding: 18px 0;
+    padding: 35px 0;
 }
 .team-col h3{
     
     font-size: 25px;
     font-weight: 600;
     font-family: system-ui;
-    text-align: center;
+    text-align: left;
+    padding: 0 15px;
    
     
 
@@ -494,20 +503,26 @@
     font-size: 20px;
     font-weight: 300;
     line-height: 22px;
-    padding:10px;
+    padding:15px;
     font-family: system-ui;
 
 }
 .team-col img{
     
     width: 100%;
-    height: 300px;
-    padding: 10px;
-    padding-top: 0;
-    border-radius: 10px 10px 150px 150px;
+    height: 350px;
+    padding: 0;
+    padding-bottom: 20px;
+    transition: .5s ease; 
     
     
 }
+.team-col img:hover{
+    border-radius: 10px;
+    box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.1);
+
+}
+
 .contact{
     width: auto;
     padding: 50 100;
@@ -712,14 +727,19 @@ form .btn2:hover{
        
     }
     .about-col1 img{
-        width: auto;
-        height: 300px;
-        border-radius:  5px 50px 50px 5px;
+        
+       height: 350px;
+       width: 100%;
+       margin: 15px;
+       
+           
+      
     }
     .about-col2{
         padding: 5;
         flex-basis: 40%;
         text-align: center;
+        
         
        
     }
@@ -813,14 +833,9 @@ form .btn2:hover{
     }
     .team-col img{
         
-        width: 90%;
-        height: 300px;
-        padding: 10px;
-        margin: 20px;
-        padding-top: 0;
-        border-radius: 10px 10px 150px 150px;
-        
-        
+        width: 100%;
+        height: 350px;
+      
     }
     
     
