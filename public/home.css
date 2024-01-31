@@ -9,7 +9,7 @@
     
 }
 .header{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.522),black),url(uni\(1\).jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.522),black),url(pexels-pixabay-325944.jpg);
     height: 100vh;
     background-size: cover;
     position: relative;
@@ -104,31 +104,28 @@
 
 .vision{
     width: auto;
-    padding: 0px 30px;
+    padding: 0px 50px;
     text-align: center;
+    
 }
 .vision .row{
-    margin-top: 0%;
+    margin-top: -5%;
     display: flex;
-    justify-content: space-around;
+  
     
 }
 .vision-col{
-    flex-basis: 31%;
+    flex-basis: 40%;
     color: black;
-    border-radius: 0px 0px 5px 5px;
     margin-bottom: 5%;
     padding: 20px 18px;
     box-sizing: border-box;
     background-color: rgb(198, 228, 226);
-    transition: transform 0.5s;
     display: flex;
+    z-index: 1;
 }
 
-.vision-col:hover{
 
-    transform: translateY(-20px);
-}
 .vision-col2{
     display: flex;
     flex-direction: row;
@@ -184,6 +181,7 @@
     color: rgb(31, 30, 30);
   
 }
+
 .overview-btn{
     
     text-decoration: none;
@@ -286,15 +284,10 @@
     padding: 0;
   
    
-    
-   
-    
-    
-   
 }
 .about-col1 img{
     width: auto;
-    height: 600px;
+    height: 500px;
     margin-top: 35;
    -webkit-mask-image: url(png-image.png);
     mask-image: url(png-image.png);
@@ -305,16 +298,16 @@
 }
 .about-col2{
     padding: 5;
-    flex-basis: 40%;
+    flex-basis: 50%;
     
    
 }
 
 .about-col2 p{
     font-size: 25px;
-    font-family:system-ui;
     text-align: justify;
     padding-bottom: 35px;
+    font-family: system-ui;
     color: rgb(31, 30, 30);
   
 }
@@ -362,7 +355,7 @@
     flex-basis: 30%;
     color: black;
     margin-bottom: 5%;
-    padding: 20px 12px;
+    padding: 20px;
     box-sizing: border-box;
     text-align: center;
     transition: .5s;  
@@ -405,15 +398,12 @@
     
     
 }
+
 .conclusion{
     width: auto;
-    padding: 20 100;
+    padding: 20 60;
    text-align: center;
-   background: linear-gradient(#4c0db1,#482b7c);
-  
 
-  
-    
 }
 .conclusion .row{
     margin-top: 0%;
@@ -421,36 +411,87 @@
     justify-content: space-around;
     
 }
-.conclusion-col{
-    margin: 40px 10px;
-    padding: 40px  40px;
-    flex-basis: 50%;
-    background: transparent;
-    box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.3);
+.conclusion .row-2{
+    display: flex;
+    justify-content: space-around;
+}
+
+.conclusion-col2{
+    flex-basis: 46%;
+    color: black;
+    margin-bottom: 5%;
+    padding: 25px;
+    width: 400px;
+    box-sizing: border-box;
+    transition: .5s;  
+    box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s;
     
     
+}
+.conclusion-col2:hover{
+    transform: translateY(-15px);
     
+}
+.conclusion-btn{
+    display: inline-block;
+    text-decoration: none;
+    background: black;
+    color: white;
+    padding: 18px 35px;
+    font-size: 18px;
+    margin-left: -70%;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    left: 0;
+}
+
+.conclusion-col2 h3{
+    
+    font-size: 28px;
+    text-align: left;
+    padding-left: 10px;
+
+}
+.row-2 p{
    
+    font-size: 22px;
+    font-weight: 300;
+    padding:10px;
+    color: black;
+    
+
+}
+
+.conclusion-col{
+  
+    padding: 10px;
+    flex-basis: 50%;
+  
 }
 .conclusion h1{
     
     font-size: 40px;
-    text-align: center;
+    text-align: left;
     padding: 18px 0;
-    color: white;
+    color: black;
 }
 .conclusion-col p{
-    font-size: 18px;
-    padding: 15px;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 15px;
     font-family:system-ui;
-    color: white;
+    color: black;
     text-align: justify;
   
 }
 
 .team{
     width: auto;
-    padding: 120 100;
+    padding: 120;
+    overflow: auto;
+    white-space: nowrap;
     
     
     
@@ -463,7 +504,7 @@
     
 }
 .team-col{
-    flex-basis: 23%;
+    flex-basis: 18%;
     color: white;
     margin-bottom: 5%;
     box-sizing: border-box;
@@ -510,7 +551,7 @@
 .team-col img{
     
     width: 100%;
-    height: 350px;
+    height: 250px;
     padding: 0;
     padding-bottom: 20px;
     transition: .5s ease; 
@@ -525,12 +566,10 @@
 
 .contact{
     width: auto;
-    padding: 50 100;
-   text-align: center;
+    padding: 40 100;
+    padding-bottom: 150px;
   
 
-  
-    
 }
 .contact .row{
     margin-top: 0%;
@@ -539,10 +578,9 @@
     
 }
 .contact-col{
-    margin: 20px 20px;
-    padding: 20px  40px;
-    flex-basis: 50%;
-    text-align: center;
+    margin: 0px;
+    padding: 40px;
+    flex-basis: 60%;
     border-radius: 10px;
     
    
@@ -551,7 +589,7 @@
 
     font-size:40px;
     text-align: center;
-    padding: 15px 0;
+    padding: 25px 0;
 
 }
 .contact-col p{
@@ -570,21 +608,22 @@ form input,form textarea{
     width: 100%;
     border: 0;
     outline: none;
-    border-bottom: 1px solid black;
-    padding: 15px;
-    margin: 15px 0;
-    color:black;
-    font-size: 20px;
-    border-radius: 5px;
+    border: 2px solid #482b7c;
+    padding: 10px;
+    margin: 10px 0;
+    color:#4c0db1;
+    font-size: 17px;
+    border-radius: 15px;
     
 }
+
 form .btn2{
     padding: 14px 60px;
     font-size: 20px;
     font-weight: 500;
     margin-top: 20px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 15px;
     cursor: pointer;
     color: white;
     background: linear-gradient(#4c0db1,#482b7c);
@@ -600,10 +639,11 @@ form .btn2:hover{
     justify-content: center;
 }
 
-@media(max-width:800px){
-
+@media (max-width:800px){
+    
+    
     .header{
-        background-color: black;
+        width: 100%;
     }
     
     .text-box{
@@ -666,9 +706,17 @@ form .btn2:hover{
        color: white;
        
     }
-    .overview{
+    .vision{
         width: auto;
-        padding: 0;
+        padding: 0px 20px;
+        text-align: center;
+        
+    }
+    
+    
+    .overview{
+        width: 100%;
+        padding: 0px;
        text-align: center;
       
         
@@ -695,19 +743,20 @@ form .btn2:hover{
       
     }
     .feature{
-        width: auto;
+        width: 100%;
         margin-top: 20px;
         padding: 20px;
         
         
     }
     .feature-col{
-        padding: 30px 30px;
+        padding: 30px ;
     }
+
     .about{
-        width: auto;
-        padding: 10 10;
-        margin-bottom: 10;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
        
       
         
@@ -717,26 +766,28 @@ form .btn2:hover{
         
         font-size: 30px;
         text-align: center;
-        padding: 15px 0;
+        padding: 15px 0px;
     }
     .about-col1{
         padding: 10px;
         text-align: center;
+        padding-bottom: 0;
         
         
        
     }
     .about-col1 img{
         
-       height: 350px;
+       height: 400px;
        width: 100%;
-       margin: 15px;
+       margin-left: 17px;
+   
        
            
       
     }
     .about-col2{
-        padding: 5;
+        padding: 5px;
         flex-basis: 40%;
         text-align: center;
         
@@ -745,6 +796,7 @@ form .btn2:hover{
     }
     
     .about-col2 p{
+        padding-top: 0;
         font-size: 20px;
         font-family:system-ui;
         text-align: justify;
@@ -767,8 +819,8 @@ form .btn2:hover{
        
     }
     .product{
-        width: auto;
-        padding: 10 ;
+        width: 100%;
+        padding: 10px ;
         background: linear-gradient(to bottom, white 25%,#4c0db1 85%,#482b7c 75%,white 30%);
     
  
@@ -792,37 +844,97 @@ form .btn2:hover{
         margin: 10px;
         
     }
+
+
     .conclusion{
-        width: auto;
-        padding: 10;
+        width: 100%;
+        padding: 15px;
        text-align: center;
       
     
       
         
     }
-    .conclusion p{
-        text-align: left;
+        
+    .conclusion .row{
+        margin-top: 0%;
+        flex-direction: column;
         
     }
-    .conclusion h1{
-        font-size: 30px;
-        margin-top: 25px;
-        text-align: center;
+    .conclusion .row-2{
+      
+        flex-direction: column;
     }
     
-    .conclusion-col{
-        
-        padding: 10px;
-        margin-bottom: 10px;
+    .conclusion-col2{
         flex-basis: 50%;
-       
+        color: black;
+        margin-bottom: 5%;
+        padding: 25px;
+        width: 100%;
+        box-sizing: border-box;
         
-       
+        
     }
+    
+    .conclusion-btn{
+        display: inline-block;
+        text-decoration: none;
+        background: black;
+        color: white;
+        padding: 18px 35px;
+        font-size: 18px;
+        margin-left: auto;
+        border-radius: 5px;
+        position: relative;
+        cursor: pointer;
+        left: 0;
+    }
+
+    .conclusion-col2 h3{
+        
+        font-size: 28px;
+        text-align: left;
+        padding-left: 15px;
+        padding-bottom: 10px;
+
+    }
+    .row-2 p{
+    
+        font-size: 22px;
+        font-weight: 300;
+        padding:10px;
+        color: black;
+        
+
+    }
+
+    .conclusion-col{
+    
+        padding: 10px;
+        flex-basis: 50%;
+    
+    }
+    .conclusion h1{
+        
+        font-size: 35px;
+        text-align: left;
+        padding: 18px 10px;
+        color: black;
+    }
+    .conclusion-col p{
+        font-size: 20px;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-family:system-ui;
+        color: black;
+        text-align: justify;
+    
+    }
+
     .team{
         width: 100%;
-        padding: 20;
+        padding: 20px;
        
         
         
@@ -834,14 +946,14 @@ form .btn2:hover{
     .team-col img{
         
         width: 100%;
-        height: 350px;
+        height: 300px;
       
     }
     
     
     .contact{
-        width: auto;
-        padding: 10;
+        width: 100%;
+        padding: 10px;
        text-align: center;
       
     
@@ -884,15 +996,21 @@ form .btn2:hover{
        
         
         width: 90%;
+        border: 2px solid #482b7c;
+        border-radius: 15px;
         
     }
+    
+
     .contact form textarea{
       
         width: 90%;
+        border: 2px solid #482b7c;
+        border-radius: 15px;
 
     }
     .contact form .btn2{
-        padding: 10px ;
+        padding: 10px;
         margin: 10px;
         font-size: 20px;
         font-weight: 300;

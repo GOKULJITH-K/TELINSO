@@ -112,7 +112,7 @@ nav{
 
 .contact{
     width: auto;
-    padding: 50 100;
+    padding: 0 100 80 100;
    text-align: center;
   
 
@@ -126,8 +126,8 @@ nav{
     
 }
 .contact-col{
-    margin: 20px 20px;
-    padding: 20px  40px;
+    margin: 10px;
+    padding: 10px  20px;
     flex-basis: 50%;
     text-align: center;
     border-radius: 10px;
@@ -146,7 +146,7 @@ nav{
 }
 .contact-col p{
     font-size: 20px;
-    padding: 25px 25px;
+    padding: 25px;
     text-align: justify;
     font-family:system-ui;
     color: white;
@@ -157,15 +157,16 @@ nav{
 }
 
 form input,form textarea{
-    width: 100%;
+    width: 80%;
     border: 0;
     outline: none;
-    border-bottom: 1px solid black;
+    border: 1px solid #482b7c;
     padding: 15px;
     margin: 15px 0;
-    color:black;
+    color:#4c0db1;
+    background: none;
     font-size: 20px;
-    border-radius: 5px;
+    border-radius: 15px;
     
 }
 form .btn2{
@@ -173,8 +174,8 @@ form .btn2{
     font-size: 20px;
     font-weight: 500;
     margin-top: 20px;
-    width: 100%;
-    border-radius: 10px;
+    width: 80%;
+    border-radius: 15px;
     cursor: pointer;
     color: white;
     background: linear-gradient(#4c0db1,#482b7c);
@@ -194,6 +195,7 @@ form .btn2:hover{
 
     .header{
         background-color: transparent;
+        height: 100px;
     }
     
     .text-box{
@@ -439,34 +441,29 @@ form .btn2:hover{
       padding-top: 60px;
     }
     
-    .contact form input,form textarea{
-    
-      width: 300px;
-      border: 0;
-      outline: none;
-      border-bottom: 1px solid black;
+    .contact form input{
+       
+       
+        
+      width: 90%;
+      height: 40px;
+      font-size: 15px;
+      border: 2px solid #482b7c;
+      border-radius: 15px;
+      
+  }
+  
+
+  
+  .contact form .btn1{
       padding: 10px;
       margin: 10px;
-      color:black;
-      font-size: 15px;
-      border-radius: 5px;
+      font-size: 20px;
+      font-weight: 300;
       font-family: system-ui;
-    }
-   
-    form .btn1{
-      padding: 10px;
-      font-size: 15px;
-      font-weight: 500;
-      margin-top: 10px;
-      width: 300px;
-      border: none;
-      width: 140;
-      border-radius: 10px;
-      cursor: pointer;
-      color: black;
-      background: white;
-      font-family: system-ui;
-    }
+      width: 90%;
+     
+  }
     form .btn1:hover{
       background: black;
       color: white;
