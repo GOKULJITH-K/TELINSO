@@ -190,44 +190,44 @@
     
     function myFunction(){
     const crop=document.getElementById("crop").value;
-    let nitrogen,phosphorus,potassium,pH,temperature;
+    let nitrogen,phosphorous,potassium,ph,temperature;
     if (crop == "rice") {
         nitrogen = "120";
-        phosphorus = "60";
+        phosphorous = "60";
         potassium = "60";
-        pH = "6.6";
+        ph = "6.6";
         temperature = "27";
     }
     else if( crop == "wheat"){
 
       nitrogen = "120";
-        phosphorus = "60";
+      phosphorous = "60";
         potassium = "40";
-        pH = "6.6";
+        ph = "6.6";
         temperature = "27";
 
     }
     else if( crop == "sugarcane"){
 
       nitrogen = "250";
-      phosphorus = "75";
+      phosphorous = "75";
       potassium = "190";
-      pH = "6.6";
+      ph = "6.6";
       temperature = "27";
 
     }
     else{
       nitrogen = "0";
-      phosphorus = "0";
+      phosphorous = "0";
       potassium = "0";
-      pH = "0";
+      ph = "0";
       temperature = "0";
 
     }
     
    
     var xValues = ["nitrogen", "phosphorus", "potassium", "pH", "temperature"];
-    var yValues = [nitrogen,phosphorus,potassium,pH,temperature];
+    var yValues = [nitrogen,phosphorous,potassium,ph,temperature];
     var barColors = ["red", "green","blue","orange","brown"];
     
     new Chart("barChart", {
@@ -249,25 +249,25 @@
     });
     
         nitrogen = `<%= nitrogen %>`;
-        phosphorus = `<%= phosphorus %>`;
+        phosphorous = `<%= phosphorous %>`;
         potassium = `<%= potassium %>`;
-        pH = `<%= pH %>`;
+        ph = `<%= ph %>`;
         temperature = `<%= temperature %>`;
 
 switch(crop){
 
 case "rice":
-    if (`<%= nitrogen %>` == 120 && `<%= potassium %>` == 60 && `<%= potassium %>` == 60 && `<%= temperature %>` == 27 && pH == `<%= pH %>`)
+    if (`<%= nitrogen %>` == 120 && `<%= phosphorous %>` == 60 && `<%= potassium %>` == 60 && `<%= temperature %>` == 27 && pH == `<%= ph %>`)
     {
         selectioncrop = ` Discover the ideal conditions for rice cultivation with Telinso. Our soil analysis reveals optimum nitrogen, phosphorus, potassium, pH, and temperature levels. Tailored recommendations ensure your rice crops thrive, maximizing yield. Trust Telinso to guide you, 
         making each cultivation decision a step towards a successful and abundant harvest.`;
     }
-    else if (`<%= nitrogen %>` > 120 && `<%= potassium %>` > 60 && `<%= potassium %>` > 60 && `<%= temperature %>` > 27 && pH > `<%= pH %>`)
+    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 60 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
     {
         selectioncrop = `Telinso's thorough soil analysis indicates elevated levels of nitrogen, phosphorus, potassium, pH, and temperature—beyond optimal ranges for rice cultivation. We advise against rice 
         cultivation based on these findings, ensuring informed decisions for sustainable and successful farming practices.`;
     }
-    else if (`<%= nitrogen %>` > 120 && `<%= potassium %>` > 60 && `<%= potassium %>` > 60 && `<%= temperature %>` > 27 && pH > `<%= pH %>`)
+    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 60 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
     {
         selectioncrop = `Telinso's meticulous soil analysis reveals that nitrogen, phosphorus, potassium, pH, and temperature levels are below
          the optimal range for successful rice cultivation. Based on these findings, we recommend against rice cultivation to ensure informed 
@@ -282,17 +282,17 @@ case "rice":
 
 case "wheat" :
 
-   if (`<%= nitrogen %>` == 120 && `<%= potassium %>` == 60 && `<%= potassium %>` == 40 && `<%= temperature %>` == 27 && pH == `<%= pH %>`)
+   if (`<%= nitrogen %>` == 120 && `<%= phosphorous %>` == 60 && `<%= potassium %>` == 40 && `<%= temperature %>` == 27 && pH == `<%= ph %>`)
     {
         selectioncrop = ` Discover the ideal conditions for wheat cultivation with Telinso. Our soil analysis reveals optimum nitrogen, phosphorus, potassium, pH, and temperature levels. Tailored recommendations ensure your wheat crops thrive, maximizing yield. Trust Telinso to guide you, 
         making each cultivation decision a step towards a successful and abundant harvest.`;
     }
-    else if (`<%= nitrogen %>` > 120 && `<%= potassium %>` > 60 && `<%= potassium %>` > 40 && `<%= temperature %>` > 27 && pH > `<%= pH %>`)
+    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 40 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
     {
         selectioncrop = `Telinso's thorough soil analysis indicates elevated levels of nitrogen, phosphorus, potassium, pH, and temperature—beyond optimal ranges for wheat cultivation. We advise against wheat 
         cultivation based on these findings, ensuring informed decisions for sustainable and successful farming practices.`;
     }
-    else if (`<%= nitrogen %>` > 120 && `<%= potassium %>` > 60 && `<%= potassium %>` > 40 && `<%= temperature %>` > 27 && pH > `<%= pH %>`)
+    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 40 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
     {
         selectioncrop = `Telinso's meticulous soil analysis reveals that nitrogen, phosphorus, potassium, pH, and temperature levels are below
          the optimal range for successful wheat cultivation. Based on these findings, we recommend against rice cultivation to ensure informed 
@@ -307,17 +307,17 @@ case "wheat" :
 
   case "sugarcane":
 
-   if (`<%= nitrogen %>` == 250 && `<%= potassium %>` == 75 && `<%= potassium %>` == 190 && `<%= temperature %>` == 27 && pH == `<%= pH %>`)
+   if (`<%= nitrogen %>` == 250 && `<%= phosphorous %>` == 75 && `<%= potassium %>` == 190 && `<%= temperature %>` == 27 && pH == `<%= ph %>`)
     {
         selectioncrop = ` Discover the ideal conditions for sugarcane cultivation with Telinso. Our soil analysis reveals optimum nitrogen, phosphorus, potassium, pH, and temperature levels. Tailored recommendations ensure your sugarcane crops thrive, maximizing yield. Trust Telinso to guide you, 
         making each cultivation decision a step towards a successful and abundant harvest.`;
     }
-    else if (`<%= nitrogen %>` > 250 && `<%= potassium %>` > 75 && `<%= potassium %>` > 190 && `<%= temperature %>` > 27 && pH > `<%= pH %>`)
+    else if (`<%= nitrogen %>` > 250 && `<%= phosphorous %>` > 75 && `<%= potassium %>` > 190 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
     {
         selectioncrop = `Telinso's thorough soil analysis indicates elevated levels of nitrogen, phosphorus, potassium, pH, and temperature—beyond optimal ranges for rice cultivation. We advise against sugarcane 
         cultivation based on these findings, ensuring informed decisions for sustainable and successful farming practices.`;
     }
-    else if (`<%= nitrogen %>` > 250 && `<%= potassium %>` > 75 && `<%= potassium %>` > 190 && `<%= temperature %>` > 27 && pH > `<%= pH %>`)
+    else if (`<%= nitrogen %>` > 250 && `<%= phosphorous %>` > 75 && `<%= potassium %>` > 190 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
     {
         selectioncrop = `Telinso's meticulous soil analysis reveals that nitrogen, phosphorus, potassium, pH, and temperature levels are below
          the optimal range for successful sugarcane cultivation. Based on these findings, we recommend against sugarcane cultivation to ensure informed 
