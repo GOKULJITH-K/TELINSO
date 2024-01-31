@@ -7,10 +7,31 @@ nav{
     
     
   }
+  .logo{
+    margin: 35px 80px;
+    top:10px;
+    left:10px;
+    position: absolute;
+  }
+  .logo span{
+    display: inline;
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+    outline: none;
+    left: 25px;
+   
+    position: absolute;
+  }
+  .logo img{
+   
+    width: 35px;
+    height: 35px;
+  }
   nav .navbtn{
     margin: 20px;
     top:10px;
-    right:10px;
+    right:50px;
     position: absolute;
   }
   nav .hero-btn2{
@@ -92,7 +113,18 @@ nav{
     display: none;
   }
   @media only screen and (max-width:800px) {
-   
+    
+    .logo{
+      margin: 6px 10px;
+      top:10px;
+      left:10px;
+      position: absolute;
+    }
+    .logo img{
+     
+      width: 35px;
+      height: 35px;
+    }
     nav ul{
       display: block;
     }
