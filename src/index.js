@@ -39,14 +39,14 @@ app.get("/crop",async(req,res)=>{
     const nitrogenval=testdata.map(soil=>soil.nitrogen);
     const nitrogen=Number(mode(nitrogenval));
 
-    const phosphorusval=testdata.map(soil=>soil.phosphorus);
-    const phosphorus=Number(mode(phosphorusval));
+    const phosphorusval=testdata.map(soil=>soil.phosphorous);
+    const phosphorous=Number(mode(phosphorusval));
 
     const potassiumval=testdata.map(soil=>soil.potassium);
     const potassium=Number(mode(potassiumval));
 
-    const pHval=testdata.map(soil=>soil.pH);
-    const pH=Number(mode(pHval));
+    const pHval=testdata.map(soil=>soil.ph);
+    const ph=Number(mode(pHval));
 
     const temperatureval=testdata.map(soil=>soil.temperature);
     const temperature=Number(mode(temperatureval));
@@ -55,9 +55,9 @@ app.get("/crop",async(req,res)=>{
     res.render("crop",
     {
         nitrogen:nitrogen,
-        phosphorus:phosphorus,
+        phosphorous:phosphorous,
         potassium:potassium,
-        pH:pH,
+        ph:ph,
         temperature:temperature
     });
 })
@@ -67,22 +67,22 @@ app.get("/savedata",async(req,res)=>{
     const nitrogenval=testdata.map(soil=>soil.nitrogen);
     const nitrogen=Number(mode(nitrogenval));
 
-    const phosphorusval=testdata.map(soil=>soil.phosphorus);
-    const phosphorus=Number(mode(phosphorusval));
+    const phosphorusval=testdata.map(soil=>soil.phosphorous);
+    const phosphorous=Number(mode(phosphorusval));
 
     const potassiumval=testdata.map(soil=>soil.potassium);
     const potassium=Number(mode(potassiumval));
 
-    const pHval=testdata.map(soil=>soil.pH);
-    const pH=Number(mode(pHval));
+    const pHval=testdata.map(soil=>soil.ph);
+    const ph=Number(mode(pHval));
 
     const temperatureval=testdata.map(soil=>soil.temperature);
     const temperature=Number(mode(temperatureval));
     res.render("savedata",{
         nitrogen:nitrogen,
-        phosphorus:phosphorus,
+        phosphorous:phosphorous,
         potassium:potassium,
-        pH:pH,
+        ph:ph,
         temperature:temperature,
     });
 })
@@ -120,14 +120,14 @@ app.get("/analysis",async(req,res)=>{
     const nitrogenval=testdata.map(soil=>soil.nitrogen);
     const nitrogen=Number(mode(nitrogenval));
 
-    const phosphorusval=testdata.map(soil=>soil.phosphorus);
-    const phosphorus=Number(mode(phosphorusval));
+    const phosphorusval=testdata.map(soil=>soil.phosphorous);
+    const phosphorous=Number(mode(phosphorusval));
 
     const potassiumval=testdata.map(soil=>soil.potassium);
     const potassium=Number(mode(potassiumval));
 
-    const pHval=testdata.map(soil=>soil.pH);
-    const pH=Number(mode(pHval));
+    const pHval=testdata.map(soil=>soil.ph);
+    const ph=Number(mode(pHval));
 
     const temperatureval=testdata.map(soil=>soil.temperature);
     const temperature=Number(mode(temperatureval));
@@ -150,20 +150,20 @@ app.get("/analysis",async(req,res)=>{
       nitrogenmsg = `value of nitrogen is lower than optimum value for field crop cultivation and vegetable crop cultivation.value is ${nitrogen}`
     }
 
-    if (phosphorus> 90) {
+    if (phosphorous> 90) {
         phosphorusmsg = `Value of phosphorus is higher than optimum value. We can find
-        that the soil contains an excess quantity of nutrients for vegetable cultivation, we should maintain the ratio of npk.Value is ${phosphorus}`;
-    }else if (phosphorus> 61 && phosphorus< 90 ) {
-        phosphorusmsg = `Value of phosphorus is optimum for vegetable cultivation.Value is ${phosphorus}`;
+        that the soil contains an excess quantity of nutrients for vegetable cultivation, we should maintain the ratio of npk.Value is ${phosphorous}`;
+    }else if (phosphorous> 61 && phosphorous< 90 ) {
+        phosphorusmsg = `Value of phosphorus is optimum for vegetable cultivation.Value is ${phosphorous}`;
 
-    }else if (phosphorus> 11 && phosphorus< 20){
-        phosphorusmsg = `Value of phosphorus is optimum for Field crop cultivation.Value is ${phosphorus}`;
+    }else if (phosphorous> 11 && phosphorous< 20){
+        phosphorusmsg = `Value of phosphorus is optimum for Field crop cultivation.Value is ${phosphorous}`;
     } 
-      else if(phosphorus> 20 && phosphorus< 61){
+      else if(phosphorous> 20 && phosphorous< 61){
         phosphorusmsg = `We can find that the soil does not have an adequate quantity of nutrients for vegetable cultivation. 
-        We can find that the soil contains an excess quantity of nutrients for field crop cultivation, we should maintain the ratio of npk.Value is ${phosphorus}` ;
+        We can find that the soil contains an excess quantity of nutrients for field crop cultivation, we should maintain the ratio of npk.Value is ${phosphorous}` ;
     } else{
-        phosphorusmsg = `value of phosphorus is lower than optimum value for field crop cultivation and vegetable crop cultivation.Value is ${phosphorus}`
+        phosphorusmsg = `value of phosphorus is lower than optimum value for field crop cultivation and vegetable crop cultivation.Value is ${phosphorous}`
     }
 
     if (potassium> 240) {
@@ -182,13 +182,13 @@ app.get("/analysis",async(req,res)=>{
         potassiummsg = `value of potassium is lower than optimum value for field crop cultivation and vegetable crop cultivation.Value is ${potassium}`
     }
 
-    if (pH> 7.5) {
-        pHmsg = `Should decrease the amount of pH.Value is ${pH}`;
-    }else if (pH> 6.6 && pH< 7.5 ) {
-        pHmsg = `Perfect range for plant growth and planting'.Value is ${pH}`;
+    if (ph> 7.5) {
+        pHmsg = `Should decrease the amount of pH.Value is ${ph}`;
+    }else if (ph> 6.6 && ph< 7.5 ) {
+        pHmsg = `Perfect range for plant growth and planting'.Value is ${ph}`;
 
     }else {
-        pHmsg = `Should increase the amount of pH.Value is ${pH}`
+        pHmsg = `Should increase the amount of pH.Value is ${ph}`
     }
 
     if (temperature> 30) {
@@ -214,9 +214,9 @@ app.get("/analysis",async(req,res)=>{
         pHmsg:pHmsg,
         temperaturemsg:temperaturemsg,
         nitrogen:nitrogen,
-        phosphorus:phosphorus,
+        phosphorous:phosphorous,
         potassium:potassium,
-        pH:pH,
+        ph:ph,
         temperature:temperature,
        });
       
@@ -264,7 +264,7 @@ app.post("/login", async(req,res)=>{
             res.send("You have an invalid username");
              
         } 
-
+ 
         const isPasswordMatch=await bcrypt.compare(req.body.password, check.password);
         if(req.body.username=="admin" && req.body.password=="admin" ){
 
@@ -321,9 +321,9 @@ app.post("/savedata", async(req,res) =>{
 
         soilname:req.body.name,
         nitrogen:req.body.nitrogen,
-        phosphorus:req.body.phosphorus,
+        phosphorous:req.body.phosphorous,
         potassium:req.body.potassium,
-        pH:req.body.pH,
+        ph:req.body.ph,
         temperature:req.body.temperature,
         // image:req.file.filename
     }
@@ -390,9 +390,9 @@ app.post("/feedback", async(req,res) =>{
 
       
         nitrogen:req.body.nitrogen,
-        phosphorus:req.body.phosphorus,
+        phosphorous:req.body.phosphorous,
         potassium:req.body.potassium,
-        pH:req.body.pH,
+        ph:req.body.ph,
         temperature:req.body.temperature,
         
     }
@@ -406,10 +406,10 @@ app.post("/feedback", async(req,res) =>{
   
  }) 
  
- 
+  
   
 
 app.listen(port,() => {
     console.log(`server running on port:${port} `);
 })
- 
+   

@@ -39,7 +39,7 @@ const saveSchema = new mongoose.Schema({
         required: true
         
     },
-    phosphorus:{
+    phosphorous:{
         type: String,
         required: true
         
@@ -49,7 +49,7 @@ const saveSchema = new mongoose.Schema({
         required: true
         
     }, 
-    pH:{
+    ph:{
         type: String,
         required: true
         
@@ -132,7 +132,7 @@ const testSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    phosphorus:{
+    phosphorous:{
         type: String,
         required: true
     },
@@ -140,7 +140,7 @@ const testSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    pH:{
+    ph:{
         type: String,
         required: true
     },
