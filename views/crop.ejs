@@ -4,7 +4,9 @@
          <meta name="viewport" content="width=device-width,initial-scale=1.0">
          <title>TELINSO</title>
         
-         <link rel="stylesheet" href="/weather.css">
+         <link rel="stylesheet" href="/crop.css">
+         <link rel="stylesheet" href="/nav.css">
+         <link rel="stylesheet" href="/overview.css">
          <script src="/navbar.js" defer></script>
          <link rel="stylesheet" href="/footer.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,6 +72,11 @@
       <div class="row">
          <div class="overview-col">
              <h1>CROP SELECTION</h1>
+             <span class="description"> Description </span>
+                   <span class="overview-description">
+                    Empower your farming strategy with Telinso's Soil Health Archive. Access extensive soil data to optimize crop management and sustainability practices. Stay ahead with accurate insights for informed decisions and thriving harvests.
+                     Telinso ensures your farming operations align seamlessly with evolving soil conditions for enhanced productivity and long-term success.
+                   </span>
              
             
              
@@ -95,15 +102,16 @@
         <div class="product-col inputfield" >
           <h3>Enter a crop Name</h3>
           <form id="Form">
-              <input class="crop-input" id="crop"  placeholder="E.g., rice, wheat, sugarcane">
-              <button class="search-btn" onclick="myFunction(); return false" >Find out</button>
-              <div class="separator"></div>
+              <input class="crop-input" id="crop"  placeholder="E.g., rice, wheat, sugarcane" >
               <select class="selection-btn">
                 <option> Choose a Crop</option>
                 <option>rice</option>
                 <option>wheat</option>
                 <option>sugarcane</option>
               </select>
+              <div class="separator"></div>
+              <button class="search-btn" onclick="myFunction(); return false" >Find out</button>
+              
           </form>
         </div>
         

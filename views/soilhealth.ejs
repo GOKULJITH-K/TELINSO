@@ -6,6 +6,7 @@
          <link rel="stylesheet" href="/soilhealth.css">
          <script src="/navbar.js" defer></script>
         <link rel="stylesheet" href="/footer.css">
+        <link rel="stylesheet" href="/nav.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
@@ -68,7 +69,11 @@
             <div class="row">
                <div class="overview-col">
                    <h1>SOIL HEALTH ARCHIVE</h1>
-                   
+                   <span class="description"> Description </span>
+                   <span class="overview-description">
+                    Empower your farming strategy with Telinso's Soil Health Archive. Access extensive soil data to optimize crop management and sustainability practices. Stay ahead with accurate insights for informed decisions and thriving harvests.
+                     Telinso ensures your farming operations align seamlessly with evolving soil conditions for enhanced productivity and long-term success.
+                   </span>
                   
                    
                    <P>
@@ -94,18 +99,22 @@
             <div class="contact-row">
                
                         <div class="data">
-                            <div class="image">
-                                <img src="<%= row.image %>">
-                            </div>
                             
-                            <p>Soil Detail:<%= row.soilname %> </p>
+                            <div class="image">
+                                <img src="/<%= row.image %>">
+                                <p > <%= row.date %></p>
+                            </div>
+                           
+                            <div>
+                            <p>Soil Detail:<br><%= row.soilname %> </p>
                             <p>Nitrogen: <%= row.nitrogen %> </p>
                             <p>Phosphorus:<%= row.phosphorous%> </p>
                             <p>Potassium: <%= row.potassium %> </p>
                             <p>pH: <%= row.ph %></p>
                             <p>temperature: <%= row.temperature%></p>
+                            </div>
                             
-        
+             
                         </div>
                         
                         
@@ -168,6 +177,6 @@
                 </p>
             </div>
    </section>
-              
+  
          </body>
 </html>

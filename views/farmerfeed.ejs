@@ -6,6 +6,8 @@
          <link rel="stylesheet" href="/farmerassist.css">
          <script src="/navbar.js" defer></script>
         <link rel="stylesheet" href="/footer.css">
+        <link rel="stylesheet" href="/nav.css">
+        <link rel="stylesheet" href="/overview.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
@@ -63,18 +65,38 @@
             
              
          </section>
+         <section class="overview" >
+             
+            <div class="row">
+               <div class="overview-col">
+                   <h1>FARMER ASSIST</h1>
+                   
+                   
+                  
+                   
+                  
+                       
+                    
+               </div>
+                 
+           </div>
+          
+       </section>
          
            <section class="contact">
-            <h1>Farmer Assist </h1>
             <% feeddata.forEach((row,index) => { %>
             <div class="contact-row">
                
                         
-                            <div class="data">
-                            <h3><%= row.title %> </h3>
-                            <p> <%= row.longmessage %> </p>
-                            <a href="<%= row.link%>"> <%= row.linkname%> <i class="fa-solid fa-arrow-right"></i> </a>
-                            </div>
+                <div class="data">
+                    <img src="/<%= row.image %>">
+                        <div class="data-text">
+                        <h3><%= row.title %> </h3>
+                        <p> <%= row.message %> </p>
+                        <a href="/farmerfeed"> read more <i class="fa-solid fa-arrow-right"></i> </a>
+                        </div>
+                   
+                    </div>
                             
         
                         </div>

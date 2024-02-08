@@ -5,6 +5,8 @@
          
          <link rel="stylesheet" href="/farmerassist.css">
          <script src="/navbar.js" defer></script>
+         <link rel="stylesheet" href="/overview.css">
+         <link rel="stylesheet" href="/nav.css">
         <link rel="stylesheet" href="/footer.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,6 +70,11 @@
             <div class="row">
                <div class="overview-col">
                    <h1>FARMER ASSIST</h1>
+                   <span class="description"> Description </span>
+                   <span class="overview-description">
+                    Empower your farming strategy with Telinso's Soil Health Archive. Access extensive soil data to optimize crop management and sustainability practices. Stay ahead with accurate insights for informed decisions and thriving harvests.
+                     Telinso ensures your farming operations align seamlessly with evolving soil conditions for enhanced productivity and long-term success.
+                   </span>
                    
                   
                    
@@ -93,17 +100,18 @@
                
                         
                             <div class="data">
-                            <h3><%= row.title %> </h3>
-                            <p> <%= row.message %> </p>
-                            <a href="/farmerfeed"> read more <i class="fa-solid fa-arrow-right"></i> </a>
+                            <img src="/<%= row.image %>">
+                                <div class="data-text">
+                                <h3><%= row.title %> </h3>
+                                <p> <%= row.message %> </p>
+                                <a href="/farmerfeed"> read more <i class="fa-solid fa-arrow-right"></i> </a>
+                                </div>
+                           
                             </div>
-                            
-        
-                        </div>
                         
                         
               
-                   </div>
+            </div>
                    <% })  %>
                    
            

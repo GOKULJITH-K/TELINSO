@@ -6,6 +6,8 @@
          <link rel="stylesheet" href="/savedata.css">
          <script src="/navbar.js" defer></script>
          <link rel="stylesheet" href="/footer.css">
+         <link rel="stylesheet" href="/nav.css">
+         <link rel="stylesheet" href="/overview.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
@@ -68,8 +70,13 @@
             <div class="row">
                <div class="overview-col">
                    <h1>STORE DATA</h1>
+                   <span class="description"> Description </span>
+                   <span class="overview-description">
+                    Capture your soil health journey with Telinso's innovative data storage. Seamlessly record soil details with accompanying pictures. Track changes, monitor trends, and make informed decisions for optimal health. This tool ensures a comprehensive archive, 
+                    empowering users with a visual timeline. Simplify soil health monitoring and enhance farming experiences for a thriving future. 
+                </span>
                    
-                  
+                    
                    
                    <P>
                     Capture the essence of your soil's health journey with Telinso's innovative feature 
@@ -97,7 +104,7 @@
                 </div>
                <div class="contact-col savedata">
                   
-                    <form action="/savedata" method="POST">
+                    <form action="/savedata" method="POST" enctype="multipart/form-data">
                         
                         <input type="text" name="name" placeholder="Soil Detail" required>
                         
@@ -112,6 +119,8 @@
                             <input type="hidden" name="ph" value="<%= ph %>">
                             <p>temperature: <%= temperature %> </p>
                             <input type="hidden" name="temperature" value="<%= temperature %>">
+                            <p id="dateNumber"></p>
+                            <input type="hidden" name="date" value="${dateNumber}">
                             <!--<label for="image-upload" class="file-upload">
                                 Upload image
                             </label> -->
@@ -184,6 +193,23 @@
                 </p>
             </div>
    </section>
+   <script>
+    // Get current date and time
+    var now = new Date();
+  
+    // Extract date, time, and day
+    var months = now.toLocaleDateString(undefined, { month: 'long', });
+    var dateNumber = now.getDate();
+    
+    
+  
+   
+  
+    document.getElementById("dateNumber").innerHTML = dateNumber +" "+ months;
+    var date = dateNumber + " " + months;
+   document.querySelector("input[name='date']").value = date;
+    
+  </script>
               
          </body>
 </html>
