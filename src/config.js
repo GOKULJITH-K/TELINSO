@@ -12,7 +12,15 @@ connect.then(() =>{
 
 //schema users
 const LoginSchema = new mongoose.Schema({
-    name:{
+    firstname:{
+        type: String,
+        required: true
+    },
+    lastname:{
+        type: String,
+        required: true
+    },
+    username:{
         type: String,
         required: true
     },
@@ -59,7 +67,15 @@ const saveSchema = new mongoose.Schema({
         required: true
         
     }, 
-     // image:{  type: String,required: true}
+    date:{
+        type: String,
+        required: true
+        
+    }, 
+     image:{  
+        type: String,
+        required:true
+    }
 });
   
 // model savedata
@@ -83,16 +99,15 @@ const farmerSchema = new mongoose.Schema({
         type: String,
         
     },
-    longmessage:{
-        type: String,
-        required:true
-        
-    },
-
+    
     link:{
         type: String,
         
         
+    },
+    image:{  
+        type: String,
+        required:true
     }
    
     

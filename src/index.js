@@ -2,21 +2,33 @@ const express = require('express');
 const path = require('path');
 const bcrypt = require("bcrypt");
 const {loginmodel,savemodel,farmermodel,feedbackmodel,testmodel}=require("./config");
-// const multer =require("multer")
+const multer =require("multer")
 const port=process.env.PORT || 3000 ;
 
 
 const app = express();
 app.use(express.json());
 
+
+
 app.use(express.urlencoded({extended:false}));
 
 app.set('view engine','ejs');
 
 app.use(express.static("public"));
+app.use(express.static("uploads"));
 
+const storage=multer.diskStorage ({
+        destination:function(req,file,cb)
+        {cb(null, './uploads'); 
+    },
+    filename:function(req,file,cb){
+        cb(null,`${file.originalname}`);
+    },
+    });
 
- 
+const upload = multer({ storage:storage });
+   
 
 app.get("/",(req,res)=>{
     res.render("index");
@@ -27,8 +39,11 @@ app.get("/login",(req,res)=>{
 app.get("/signup",(req,res)=>{
     res.render("signup"); 
 })
-app.get("/welcome",(req,res)=>{
-    res.render("welcome");
+app.get("/welcome",async(req,res)=>{
+
+    const farmerdata = await farmermodel.find().sort({_id:-1}).limit().exec();
+    res.render("welcome",{farmerdata:farmerdata});
+
 })
 app.get("/weather",(req,res)=>{
     res.render("weather");
@@ -110,8 +125,8 @@ app.get("/feedback",async(req,res)=>{
 app.get("/soilhealth",async(req,res)=>{
     const soildatas = await savemodel.find().sort({_id:-1}).exec();
         res.render("soilhealth",{soildatas:soildatas});
-})
-
+})  
+  
 //
 app.get("/analysis",async(req,res)=>{
     
@@ -227,9 +242,6 @@ app.get("/analysis",async(req,res)=>{
         
 });    
 
-  // file upload const storage=multer.diskStorage ({destination:function(req,file,cb){cb(null, './public'); },filename:function(req,file,cb){cb(null,file.fieldname+"_"+Date.now()+"_"+file.originalname);},})
-
-  //const upload = multer({ storage:storage,}).single("image"); 
  
 function mode(array){
     if (array.length==0)
@@ -255,10 +267,10 @@ function mode(array){
 
 app.post("/login", async(req,res)=>{
 
-    // cookie adding
+    // cookie adding 
 
     try{
-        const check=await loginmodel.findOne({name: req.body.username});
+        const check=await loginmodel.findOne({username: req.body.username});
         if(!check){
 
             res.send("You have an invalid username");
@@ -281,7 +293,7 @@ app.post("/login", async(req,res)=>{
     }catch{
         res.send("You have an invalid credential");
     }
-    const check=await loginmodel.findOne({name: req.body.username});
+    const check=await loginmodel.findOne({username: req.body.username});
 
 })
 
@@ -290,17 +302,19 @@ app.post("/login", async(req,res)=>{
 app.post("/signup", async(req,res) =>{
 
     const data={
-        name:req.body.username,
+        firstname:req.body.firstname,
+        lastname:req.body.lastname,
+        username:req.body.username,
         password:req.body.password
     }
 
-    const existingUser = await loginmodel.findOne({name:data.name});
+    const existingUser = await loginmodel.findOne({name:data.username});
 
     if(existingUser){
         
         res.send("User exist");
     }
-    else{
+    else{ 
         const saltRounds=10;
         const hashedPassword = await bcrypt.hash(data.password, saltRounds);
 
@@ -309,13 +323,13 @@ app.post("/signup", async(req,res) =>{
         console.log(logindata);
  
     }
-
+     res.render("signup");
     
 })
-
+ 
 // save data router
 
-app.post("/savedata", async(req,res) =>{
+app.post("/savedata", upload.single("image"), async(req,res) =>{
 
     const userdata={
 
@@ -325,7 +339,8 @@ app.post("/savedata", async(req,res) =>{
         potassium:req.body.potassium,
         ph:req.body.ph,
         temperature:req.body.temperature,
-        // image:req.file.filename
+        date:req.body.date,
+        image:req.file.filename 
     }
    
        
@@ -338,15 +353,15 @@ app.post("/savedata", async(req,res) =>{
   
     
 })
-app.post("/farmer", async(req,res) =>{
+app.post("/farmer", upload.single("image"), async(req,res) =>{
 
     const farmerdata={
 
         title:req.body.title,
         message:req.body.message,
-        longmessage:req.body.longmessage,
         linkname:req.body.linkname,
         link:req.body.link,
+        image:req.file.filename 
         
     }
     
