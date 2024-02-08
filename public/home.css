@@ -339,19 +339,19 @@
 .product .row1{
     margin-top: 0%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     
 }
 .product .row2{
     margin-top: 0%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     
 }
 
 
 .product-col{
-    flex-basis: 30%;
+    flex-basis: 44%;
     color: black;
     margin-bottom: 5%;
     padding: 20px;
@@ -871,6 +871,7 @@ form .btn2:hover{
         margin-bottom: 5%;
         padding: 25px;
         width: 100%;
+        border-radius: 20px;
         box-sizing: border-box;
         
         
@@ -892,15 +893,14 @@ form .btn2:hover{
 
     .conclusion-col2 h3{
         
-        font-size: 28px;
+        font-size: 25px;
         text-align: left;
-        padding-left: 15px;
-        padding-bottom: 10px;
+        padding: 10px;
 
     }
     .row-2 p{
     
-        font-size: 22px;
+        font-size: 15px;
         font-weight: 300;
         padding:10px;
         color: black;
@@ -930,6 +930,7 @@ form .btn2:hover{
         text-align: justify;
     
     }
+    
 
     .team{
         width: 100%;
@@ -952,7 +953,7 @@ form .btn2:hover{
     
     .contact{
         width: 100%;
-        padding: 10px;
+        padding: 5px;
        text-align: center;
       
     
@@ -966,8 +967,8 @@ form .btn2:hover{
         
     }
     .contact-col{
-        margin: 10px;
-        padding: 10px;
+        margin: 5px;
+        padding: 5px;
 
        
        

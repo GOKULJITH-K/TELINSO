@@ -312,11 +312,12 @@ form .btn2:hover{
 @media(max-width:800px){
 
   .header{
-      background-color: transparent;
-      height: 80px;
-  }
+    background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(store.jpg);
+    height: 350px;
+    
+}
   .logo{
-    margin: 6px 10px;
+    margin: 15px;
     top:10px;
     left:10px;
     position: absolute;
@@ -451,6 +452,15 @@ form .btn2:hover{
     margin: 10px ;
     padding: 10px;
 }
+.contact-col{
+  margin: 0px;
+  padding: 20px ;
+  flex-basis: 50%;
+  text-align: center;
+  border-radius: 10px;
+  
+ 
+}
 
 .data {
   color: black;
@@ -465,9 +475,9 @@ form .btn2:hover{
     nav .fa-solid{
       display: block;
       font-size: 25px;
-      margin: 20px;  
+      margin: 30px;  
       padding-left: 80%; 
-      color: black;
+      color: white;
       z-index: 1;
       cursor: pointer;
   }
@@ -574,6 +584,7 @@ form .btn2:hover{
   
   form input,form textarea{
     width: 100%;
+    border: 1px solid #4c0db1;
   
   }
   

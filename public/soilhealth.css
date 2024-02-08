@@ -149,6 +149,13 @@ nav{
     
    
   }
+  .description{
+    display: none;
+  }
+  .overview-description{
+
+    display: none;
+  }
   .overview h1{
     
     font-size: 50px;
@@ -209,19 +216,20 @@ nav{
     padding: 10px;
 }
 .image{
-    padding:20px;
+    padding:10px;
 }
 .data {
     color: black;
-    padding: 30px 60px;
+    padding: 20px 30px;
     border-radius: 10px;
     margin: 10px;
+    display: flex;
     box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.1);
    
    }
    .data img{
-    height: 230px;
-    width: 230px;
+    height: 250px;
+    width: 250px;
     border-radius: 10px;
    }
 .data p{
@@ -298,8 +306,9 @@ form .btn2:hover{
 @media(max-width:800px){
 
     .header{
-        background-color: transparent;
-        height: 80px;
+        background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(archive.jpg);
+        height: 350px;
+        
     }
     .logo{
       margin: 6px 10px;
@@ -311,6 +320,16 @@ form .btn2:hover{
      
       width: 35px;
       height: 35px;
+    }
+    .logo span{
+      display: inline;
+      font-size: 30px;
+      text-decoration: none;
+      color: white;
+      outline: none;
+      left: 25px;
+     
+      position: absolute;
     }
     .text-box{
         width:100%;
@@ -373,18 +392,37 @@ form .btn2:hover{
        
     }
     .overview{
-        width: auto;
         padding: 0;
-       text-align: center;
-      
+        text-align: left ;
+        
+        
         
     }
-   
+    .overview-col{
+      margin-top: -20px;
+      border-radius: 30px 30px 0 0;
+      background: white;
+        z-index: 1;
+        text-align: left ;
+        
+    }
+    
+    .description{
+      display: block;
+      text-align: left ;
+      font-size: 17px;
+      padding: 0px 25px;
+      font-weight: 600;
+      font-family:system-ui;
+      
+      
+    }
     
     .contact{
       
       padding: 10;
      text-align: center;
+     
     
   
     
@@ -392,24 +430,46 @@ form .btn2:hover{
   }
   .contact .contact-row{
       
-      margin: 10px ;
-      width: 90%;
+      margin: 0px;
+      width: 100%;
+      padding: 10px;
+      
+      
       
       
   }
+  
+    
   .contact h1{
       font-size: 30px;
       margin: 10px ;
       padding: 10px;
   }
-  
-.data {
+  .data {
     color: black;
-    padding: 30px;
-    
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.1);
    
    }
-  
+   .image{
+    padding: 5px;
+   }
+   .data img{
+    height: 190px;
+    width: 180px;
+    border-radius: 10px;
+   }
+   .data p{
+    font-size: 16px;
+    padding: 6px;
+   }
+    nav{
+      background: transparent;
+    }
+    
     nav ul{
         display: block;
       }
@@ -543,13 +603,23 @@ form .btn2:hover{
       padding: 18px 0;
   }
   .overview-col p{
-      font-size: 16px;
-      padding: 25px;
-      font-family:system-ui;
-      text-align: center;
       
+      display: none;
     
   }
+  .overview-description{
+    display: block;
+    font-size: 16px;
+      padding: 25px;
+      padding-top: 5px;
+      font-family:system-ui;
+      text-align: left;
+
+  }
+  .contact h1{
+    font-size: 25px;
+    
+}
     
     
       

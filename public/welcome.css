@@ -289,6 +289,9 @@ nav{
     text-align: center;
     padding: 18px 0;
 }
+.overview h2{
+    display: none;
+}
 .overview-col p{
     font-size: 25px;
     padding: 25px;
@@ -719,7 +722,7 @@ form .btn2:hover{
     }
     
     .logo{
-        margin: 6px 10px;
+        margin: 15px;
         top:10px;
         left:10px;
         position: absolute;
@@ -751,15 +754,61 @@ form .btn2:hover{
     }
     .overview h1{
         
+       display: none;
+    }
+    .overview h2{
+        
         font-size: 25px;
-        text-align: center;
-        padding: 18px 0;
+        text-align: left;
+        padding: 25px;
+        margin: 15px;
+        color: black;
+        display: block;
+
+        
+    }
+    .welcome-text{
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+
+    }
+    .welcome-text h2{
+        font-size: 20px;
+        padding: 0px 15px;
+        
+        
+    }
+    .overview-col h2{
+        font-size: 20px;
+        padding: 0px 15px;
+        text-align: justify;
+        font-family: system-ui;
+        
+    }
+    
+    .Date-time{
+        background: linear-gradient(to bottom,#4c0db1,#482b7c);
+        color: white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-around;
+        margin: 20px;
+        padding: 10px;
+    }
+    .Date-time h2{
+        color: white;
+        padding: 5px;
+        display: flex;
+        font-size: 20px;
+        text-align: left;
+    }
+    .overview span{
+        font-size: 22px;
+        color: #482b7c;
     }
     .overview-col p{
-        font-size: 16px;
-        padding: 25px;
-        font-family:system-ui;
-        text-align: center;
+        display: none;
         
       
     }
@@ -838,24 +887,37 @@ form .btn2:hover{
     }
     .product a{
     
-        margin: 15px;
+        margin: 10px;
         box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.3);
     }
     .product .row1{
         
         flex-direction: column;
-        margin: 10px;
+        margin: 5px;
         
         
     }
     .product .row2{
         flex-direction: column;
-        margin: 10px;
+        margin: 5px;
         
     }
     .product h3{
         font-size: 22px;
         font-family: system-ui;
+        text-align: left;
+    }
+    .product-col{
+        display: flex;
+        text-align: left;
+      
+    }
+    .product-col i{
+        position: relative;
+        padding: 10px;
+        align-self: center;
+        margin: 10px;
+        font-size: 35px;
     }
     .product p{
         font-size: 20px;
@@ -936,8 +998,7 @@ form .btn2:hover{
        
     }
     .contact-col p{
-        padding: 20px;
-        text-align: left;
+        display: none;
     }
     .contact-col h1{
         font-size:20px;
@@ -971,7 +1032,7 @@ form .btn2:hover{
     nav .fa-solid{
       display: block;
       font-size: 25px;
-      margin: 20px;  
+      margin: 30px;  
       padding-left: 80%; 
       color: black;
       z-index: 1;
@@ -1082,34 +1143,40 @@ nav #sidemenu .fa-solid{
   }
   
   
-  .contact form input,form textarea{
-    
-    width: 300px;
-    border: 0;
-    outline: none;
-    border-bottom: 1px solid black;
-    padding: 10px;
-    margin: 10px;
-    color:black;
+  .contact form input{
+       
+       
+    height: 40px;
+    width: 100%;
+    border: 2px solid #482b7c;
     font-size: 15px;
-    border-radius: 5px;
-    font-family: system-ui;
-    
-  }
-  form .btn1{
     padding: 10px;
-    font-size: 15px;
-    font-weight: 500;
-    margin-top: 10px;
-    width: 300px;
-    border: none;
-    width: 140;
+    margin: 10px 0;
     border-radius: 10px;
-    cursor: pointer;
-    color: black;
-    background: white;
+    
+}
+
+
+.contact form textarea{
+  
+    width: 100%;
+    border: 2px solid #482b7c;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px 0;
+
+}
+.contact form .btn2{
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: 300;
     font-family: system-ui;
-  }
+    width: 100%;
+   
+}
+
   form .btn1:hover{
     background: black;
     color: white;

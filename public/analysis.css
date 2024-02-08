@@ -714,8 +714,9 @@ form .btn2:hover{
 @media(max-width:800px){
 
     .header{
-        background-color: transparent;
-        height: 80px;
+        background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(analysis.jpg);
+        height: 350px;
+        
     }
     .logo{
         margin: 6px 10px;
@@ -857,6 +858,9 @@ form .btn2:hover{
         font-size: 22px;
         font-family: system-ui;
     }
+    .product h1{
+        font-size: 25px;
+    }
     .product p{
         font-size: 20px;
         font-family: system-ui;
@@ -949,7 +953,7 @@ form .btn2:hover{
    
     .contact h1{
         
-        font-size: 30px;
+        font-size: 25px;
         text-align: center;
         padding: 15px;
     }

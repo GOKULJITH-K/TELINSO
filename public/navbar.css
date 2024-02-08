@@ -115,7 +115,7 @@ nav{
   @media only screen and (max-width:800px) {
     
     .logo{
-      margin: 6px 10px;
+      margin: 15px;
       top:10px;
       left:10px;
       position: absolute;
@@ -131,7 +131,7 @@ nav{
     nav .fa-solid{
       display: block;
       font-size: 25px;
-      margin: 20px;  
+      margin: 30px;  
       padding-left: 80%; 
       color: white;
       z-index: 1;

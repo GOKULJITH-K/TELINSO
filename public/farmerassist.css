@@ -193,9 +193,9 @@ nav{
 }
 .contact .contact-row{
     margin-top: 0%;
-    display: inline-flex;
+    display: inline-block;
+    flex-direction: row;
     margin: 10px ;
-    width: 30%;
     justify-content: space-around;
     
     
@@ -210,31 +210,50 @@ nav{
 }
 .data {
     color: black;
-    padding: 30px 40px;
     border-radius: 10px;
-    margin: 10px;
-    height: 300px;
+    height: 350px;
     text-align: left;
-    overflow: scroll;
+    overflow: hidden;
+    position: relative;
     box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.1);
+    
    
    }
    .data img{
-    height: 230px;
-    width: 230px;
+    height: 100%;
+    width: 100%;
+    display: block;
     border-radius: 10px;
+    
    }
-.data p{
+   .data-text{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 20px;
+    left: 0;
+    bottom: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.532);
+   }
+   .data-text h3{
+    padding-top: 40px;
+   }
+.data-text p{
     font-size: 16px;
      padding: 10px 0;
     text-align: left;
        
 }
-.data a{
-    padding: 10px 0;
+.data-text a{
+    padding: 10px;
     text-decoration: none;
     font-size: 16px;
     text-align: left;
+    color: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
   
 }
 .data i{
@@ -311,10 +330,11 @@ form .btn2:hover{
 
 @media(max-width:800px){
 
-    .header{
-        background-color: transparent;
-        height: 80px;
-    }
+  .header{
+    background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(assist.jpg);
+    height: 350px;
+    
+}
     .logo{
       margin: 6px 10px;
       top:10px;
@@ -438,16 +458,62 @@ form .btn2:hover{
       padding: 10px;
   }
   
-.data {
+
+  .data {
     color: black;
-    padding: 30px;
+    border-radius: 10px;
+    height: 350px;
+    text-align: left;
+    overflow: hidden;
+    position: relative;
+    box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.1);
     
    
    }
-   .data p{
-    font-size: 15px;
+   .data img{
+    height: 100%;
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    
+   }
+   .data-text{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 20px;
+    left: 0;
+    bottom: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.625);
+   }
+   .data-text h3{
+    padding-top: 40px;
+   }
+.data-text p{
+    font-size: 16px;
+     padding: 10px 0;
+    text-align: left;
     
        
+}
+.data-text a{
+    padding: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: left;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  
+}
+.data i{
+  padding: 10px 5px;
+  text-decoration: none;
+  font-size: 15px;
+  text-align: left;
+
 }
   
     nav ul{
