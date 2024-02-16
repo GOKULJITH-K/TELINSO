@@ -201,7 +201,7 @@
     
     
     function myFunction(){
-    const crop=document.getElementById("crop").value;
+    const crop=document.getElementById("crop").value.toLowerCase();
     let nitrogen,phosphorous,potassium,ph,temperature;
     if (crop == "rice") {
         nitrogen = "120";
