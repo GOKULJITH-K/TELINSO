@@ -226,6 +226,9 @@
     margin: 10px;
   
   }
+  .inputfield .crop-input{
+    text-transform: lowercase;
+  }
   .inputfield h3{
     margin-bottom: 20px;
   }
