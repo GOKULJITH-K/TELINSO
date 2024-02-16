@@ -300,8 +300,49 @@ svg{
  
 
 }
+.current-data-flex{
+  display: flex;
+  padding-top: 20px;
+  
+}
+.current-data{
+  flex-basis: 60%;
+  
+}
+.current-data img{
+  width: 50%;
+}
+
+.forecast-data-flex{
+  display: flex;
+  
+  
+}
+.forecast-data{
+  flex-basis: 60%;
+
+}
+
+.forecast-data p{
+   margin: 10px 15px;
+}
+.current-data p{
+  margin: 15px;
+}
+.forecast-data img{
+  width: 120px;
+  width: 120px;
+  
+}
 .data{
   padding: 10px;
+}
+
+.fiveday-forecast{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap:40px;
+  padding: 0px 100px;
 }
 
 @media(max-width:800px){
@@ -527,6 +568,9 @@ color: white;
 
   
 }
+.current-data h4{
+  text-align: left;
+}
 
 .product-col{
   margin: 20px;
@@ -542,6 +586,13 @@ svg{
 .row{
   flex-direction: column;
 }
+.fiveday-forecast{
+  display: grid;
+  grid-template-columns: auto;
+  gap:0px;
+  padding: 0px;
+}
+
 
 
 

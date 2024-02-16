@@ -1,33 +1,68 @@
 const cityInput = document.querySelector(".city-input");
 const searchButton = document.querySelector(".search-btn");
 const locationButton = document.querySelector(".location-btn");
-const currentWeatherDiv = document.querySelector(".product-col");
-const weatherCardsDiv = document.querySelector(".data");
+const currentWeatherDiv = document.querySelector(".current-data-flex");
+const weatherCardsDiv = document.querySelector(".fiveday-forecast");
 
 const API_KEY = "3196e87ced6493f50ad86fbd81b7ef3e"; // API key for OpenWeatherMap API
 
+
 const createWeatherCard = (cityName, weatherItem, index) => {
-    if(index == 0) { // HTML for the main weather card
-        return `<div class="data">
-                    <h2>${cityName} (${weatherItem.dt_txt.split(" ")[0]})</h2>
-                    <h6>Temperature: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</h6>
-                    <h6>Wind: ${weatherItem.wind.speed} M/S</h6>
-                    <h6>Humidity: ${weatherItem.main.humidity}%</h6>
-                </div>
-                <div class="icon">
-                    <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
-                    <h6>${weatherItem.weather[0].description}</h6>
-                </div>`;
+
+    
+    if(index === 0) { // HTML for the main weather card
+        const now = new Date();
+  
+        // Extract date, time, and day
+        const months = now.toLocaleDateString(undefined, { month: 'long', });
+        const time = now.toLocaleTimeString();
+        const dateNumber = now.getDate();
+        const day = now.toLocaleDateString(undefined, { weekday: 'long' });
+      
+
+
+        return `<div class="current-data">
+        <p>${cityName} </p>
+        <p>${dateNumber} ${months}</p>
+        <p>Temperature: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</p>
+        <p>Wind: ${weatherItem.wind.speed} M/S</p>
+        <p>Humidity: ${weatherItem.main.humidity}%</p>
+        </div> 
+        <div class="current-data">
+          <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
+          <p style="text-align:center;" >${weatherItem.weather[0].description}</p>
+        </div>
+    
+          `
     } else { // HTML for the other five day forecast card
-        return `<li class="data">
-                    <h3>(${weatherItem.dt_txt.split(" ")[0]})</h3>
-                    <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
-                    <h6>Temp: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</h6>
-                    <h6>Wind: ${weatherItem.wind.speed} M/S</h6>
-                    <h6>Humidity: ${weatherItem.main.humidity}%</h6>
-                </li>`;
+       
+        const now = new Date();
+        now.setDate(now.getDate() + index);
+        const months = now.toLocaleDateString(undefined, { month: 'long', });
+        const time = now.toLocaleTimeString();
+        const dateNumber = now.getDate();
+        const day = now.toLocaleDateString(undefined, { weekday: 'long' });
+    
+        return `
+        
+        <div class="product-col" >
+            <div class="forecast-data-flex">
+                <div class="forecast-data">
+                        
+                <p>${dateNumber} ${months}</p>
+                <p>Temp: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</p>
+                <p>Wind: ${weatherItem.wind.speed} M/S</p>
+                <p>Humidity: ${weatherItem.main.humidity}%</p>
+                </div> 
+                <div class="forecast-data">
+                <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
+                <p style="text-align:center;">${weatherItem.weather[0].description}</p>
+                </div>
+            </div>
+        </div>`;
     }
 }
+
 
 const getWeatherDetails = (cityName, latitude, longitude) => {
     const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`;
@@ -48,6 +83,8 @@ const getWeatherDetails = (cityName, latitude, longitude) => {
         weatherCardsDiv.innerHTML = "";
 
         // Creating weather cards and adding them to the DOM
+
+        // for( i=0; i<fiveDaysForecast.length;i++){}
         fiveDaysForecast.forEach((weatherItem, index) => {
             const html = createWeatherCard(cityName, weatherItem, index);
             if (index === 0) {
@@ -55,7 +92,8 @@ const getWeatherDetails = (cityName, latitude, longitude) => {
             } else {
                 weatherCardsDiv.insertAdjacentHTML("beforeend", html);
             }
-        });        
+        });       
+               
     }).catch(() => {
         alert("An error occurred while fetching the weather forecast!");
     });
