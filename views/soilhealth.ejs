@@ -7,6 +7,8 @@
          <script src="/navbar.js" defer></script>
         <link rel="stylesheet" href="/footer.css">
         <link rel="stylesheet" href="/nav.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script src="/soilhealth.js" defer></script>
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
@@ -90,8 +92,23 @@
                </div>
                  
            </div>
-          
+           <gmp-map
+           id="marker-click-event-example"
+           center="11.9858056 , 75.3811667 "
+           zoom="17"
+           map-id="TELINSO_MAP_ID"
+         >
+         <% soildatas.forEach((row,index) => { %>
+           <gmp-advanced-marker
+             position="<%= row.coordinates %>"
+             title="<%= row.soilname %> "
+             
+             gmp-clickable
+           ></gmp-advanced-marker>
+           <% })  %>
+         </gmp-map>
        </section>
+       
          
            <section class="contact">
             <h1>Soil Health Data</h1>
@@ -101,7 +118,7 @@
                         <div class="data">
                             
                             <div class="image">
-                                <img src="/<%= row.image %>">
+                                <img src="<%= dataUrl %>">
                                 <p > <%= row.date %></p>
                             </div>
                            
@@ -177,6 +194,9 @@
                 </p>
             </div>
    </section>
-  
+   <script
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
+   defer
+ ></script>
          </body>
 </html>

@@ -5,10 +5,12 @@
          
          <link rel="stylesheet" href="/savedata.css">
          <script src="/navbar.js" defer></script>
+         <script src="/savedata.js" defer></script>
          <link rel="stylesheet" href="/footer.css">
          <link rel="stylesheet" href="/nav.css">
          <link rel="stylesheet" href="/overview.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
+         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
          <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"> 
@@ -95,6 +97,7 @@
            </div>
           
        </section>
+       
            <section class="contact">
             <h1>Soil Data</h1>
             <div class="row">
@@ -109,6 +112,8 @@
                         <input type="text" name="name" placeholder="Soil Detail" required>
                         
                         <div class="data">
+                            <p id="coordinates">coordinates :</p>
+                            <input type="hidden" id="coordinateValue" name="coordinates" value="">
                             <p>Nitrogen: <%= nitrogen %> </p>
                             <input type="hidden" name="nitrogen" value="<%= nitrogen %>">
                             <p>Phosphorus: <%= phosphorous %></p>
@@ -123,8 +128,10 @@
                             <input type="hidden" name="date" value="${dateNumber}">
                             <!--<label for="image-upload" class="file-upload">
                                 Upload image
-                            </label> -->
+                            </label>
+                            -->
                             <input type="file" name="image" style="border: none;" required>
+                        
                         </div>
                         
                         
@@ -137,7 +144,7 @@
                 
                   
            </div>
-           
+           <div id="map" style="height: 400px;"></div>
        </section>
 
        <section class="footer">
@@ -210,6 +217,10 @@
    document.querySelector("input[name='date']").value = date;
     
   </script>
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&v=weekly"
+  defer
+></script>
               
          </body>
 </html>
