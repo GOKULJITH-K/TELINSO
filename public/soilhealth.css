@@ -13,6 +13,12 @@
     width: 100%;
     
 }
+#map {
+  height: 100%;
+}
+gmp-map {
+  height: 400px;
+}
 .logo{
   margin: 35px 80px;
   top:10px;
