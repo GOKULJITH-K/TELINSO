@@ -15,9 +15,12 @@
 }
 #map {
   height: 100%;
+  
 }
 gmp-map {
   height: 400px;
+  width: 90%;
+  margin: 0 auto;
 }
 .logo{
   margin: 35px 80px;
