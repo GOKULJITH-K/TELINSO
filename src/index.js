@@ -113,13 +113,10 @@ app.get("/test",(req,res)=>{
     res.render("test");
 })
 app.get("/farmerassist",async(req,res)=>{
-    const assistdata = await farmermodel.find().sort({_id:-1}).limit(3).exec();
+    const assistdata = await farmermodel.find().sort({_id:-1}).exec();
     res.render("farmerassist",{assistdata:assistdata});
 })
-app.get("/farmerfeed",async(req,res)=>{
-    const feeddata = await farmermodel.find().sort({_id:-1}).exec();
-    res.render("farmerfeed",{feeddata:feeddata});
-})
+
 app.get("/feedback",async(req,res)=>{
     const feedbackdata = await feedbackmodel.find().sort({_id:-1}).exec();
     res.render("feedback",{feedbackdata:feedbackdata});
@@ -128,14 +125,14 @@ app.get("/soilhealth",async(req,res)=>{
     
     const soildatas = await savemodel.find().sort({_id:-1}).exec();
    
-    const soilDataWithImages = soildatas.map(soil => {
+    /* const soilDataWithImages = soildatas.map(soil => {
         const imageData = soil.image.toString('base64');
         const dataUrl = `data:image/jpeg;base64,${imageData}`;
         return {...soil.toObject(), dataUrl: dataUrl};
-    });
+    });*/
 
 
-     res.render("soilhealth", {soildatas: soilDataWithImages});
+     res.render("soilhealth", {soildatas: soildatas});
 })  
   
 //
@@ -342,7 +339,7 @@ app.post("/signup", async(req,res) =>{
 
 app.post("/savedata", upload.single("image"), async(req,res) =>{
 
-    const imageBuffer = fs.readFileSync(req.file.path);
+   // const imageBuffer = fs.readFileSync(req.file.path);
     const userdata={
 
         soilname:req.body.name,
@@ -353,7 +350,7 @@ app.post("/savedata", upload.single("image"), async(req,res) =>{
         temperature:req.body.temperature,
         date:req.body.date,
         coordinates:req.body.coordinates,
-        image: imageBuffer 
+        //image: imageBuffer 
            
     }
    

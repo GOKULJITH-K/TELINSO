@@ -78,7 +78,7 @@ const saveSchema = new mongoose.Schema({
     },
     image:{  
         type: Buffer,
-        required:true,
+        
 
     }
    
