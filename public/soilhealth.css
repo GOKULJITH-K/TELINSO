@@ -209,11 +209,25 @@ nav{
 
 .contact .contact-row{
   margin-top: 0%;
-  display: inline-block;
-  flex-direction: row;
-  margin: 10px ;
-  justify-content: space-around;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap:25px;
 }
+.contact input{
+  width: 50%;
+  border: 0;
+  outline: none;
+  border: 1px solid #482b7c;
+  padding: 15px;
+  margin: 15px 0;
+  color:#4c0db1;
+  background: none;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 10px;
+  
+}
+
 .contact h1{
     font-size: 30px;
     margin: 10px ;
@@ -222,16 +236,23 @@ nav{
 .image{
     padding:10px;
 }
+.data span{
+  font-size: 20px ;
+  color: #21064e;
+  font-weight: 600;
+}
 .data {
-    color: black;
-    padding: 20px 60px;
-    border-radius: 10px;
-    margin: 10px;
-    display: flex;
-    flex-basis: 23%;
-    width: 100%;
-    gap: 10px;
-    box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.1);
+  
+  color: black;
+  margin: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: .5s;  
+  background-color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.3); 
    
    }
    .data img{
@@ -437,11 +458,14 @@ form .btn2:hover{
   }
   .contact .contact-row{
       
-    margin: 10px ;
-    width: 95%;
+   
+      margin-top: 0%;
+      grid-template-columns: 100%;
+      gap:10px;
+    }
     
     
-}
+
   
     
   .contact h1{
@@ -620,17 +644,32 @@ form .btn2:hover{
       text-align: left;
 
   }
+  .contact input{
+       
+       
+        
+    width: 90%;
+    height: 40px;
+    font-size: 15px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    border: 2px solid #482b7c;
+    border-radius: 10px;
+    
+}
+
   .contact h1{
     font-size: 25px;
     
 }
-    
+}   
     
       
     
     
     
-}
+
 
 
 
