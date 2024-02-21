@@ -1,15 +1,16 @@
 const express = require('express');
 const path = require('path');
 const bcrypt = require("bcrypt");
-const {loginmodel,savemodel,farmermodel,feedbackmodel,testmodel}=require("./config");
-const multer =require("multer")
+const {loginmodel,savemodel,farmermodel,feedbackmodel,testmodel} = require("./config");
+const multer =require("multer");
+const fs = require('fs');
 const port=process.env.PORT || 3000 ;
 
 
 const app = express();
 app.use(express.json());
 
-
+      
 
 app.use(express.urlencoded({extended:false}));
 
@@ -28,6 +29,7 @@ const storage=multer.diskStorage ({
     });
 
 const upload = multer({ storage:storage });
+
    
 
 app.get("/",(req,res)=>{
@@ -123,8 +125,17 @@ app.get("/feedback",async(req,res)=>{
     res.render("feedback",{feedbackdata:feedbackdata});
 })
 app.get("/soilhealth",async(req,res)=>{
+    
     const soildatas = await savemodel.find().sort({_id:-1}).exec();
-        res.render("soilhealth",{soildatas:soildatas});
+   
+    const soilDataWithImages = soildatas.map(soil => {
+        const imageData = soil.image.toString('base64');
+        const dataUrl = `data:image/jpeg;base64,${imageData}`;
+        return {...soil.toObject(), dataUrl: dataUrl};
+    });
+
+
+     res.render("soilhealth", {soildatas: soilDataWithImages});
 })  
   
 //
@@ -331,6 +342,7 @@ app.post("/signup", async(req,res) =>{
 
 app.post("/savedata", upload.single("image"), async(req,res) =>{
 
+    const imageBuffer = fs.readFileSync(req.file.path);
     const userdata={
 
         soilname:req.body.name,
@@ -340,7 +352,9 @@ app.post("/savedata", upload.single("image"), async(req,res) =>{
         ph:req.body.ph,
         temperature:req.body.temperature,
         date:req.body.date,
-        image:req.file.filename 
+        coordinates:req.body.coordinates,
+        image: imageBuffer 
+           
     }
    
        

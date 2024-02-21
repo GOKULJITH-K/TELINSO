@@ -72,10 +72,16 @@ const saveSchema = new mongoose.Schema({
         required: true
         
     }, 
-     image:{  
+    coordinates:{  
         type: String,
-        required:true
+        
+    },
+    image:{  
+        type: Buffer,
+        required:true,
+
     }
+   
 });
   
 // model savedata
