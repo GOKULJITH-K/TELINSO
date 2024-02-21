@@ -112,17 +112,17 @@
          
            <section class="contact">
             <h1>Soil Health Data</h1>
-            <% soildatas.forEach((row,index) => { %>
+            <div>
+                <input type="text" id="myInput" onkeyup="searchData()" placeholder="Search for Soil Data" title="Type in a name">
+            </div>
+           
                
-            <div class="contact-row">
+            <div class="contact-row" >
+                <% soildatas.forEach((row,index) => { %>
                
-                        <div class="data">
-                            
-                            
-                           
+                        <div class="data" id="myUL">
                             <div>
-                            
-                            <p>Soil Detail:<br><%= row.soilname %> </p>
+                            <p class="soil-search"><span>Soil Detail<br><%= row.soilname %></span></p>
                             <p > <%= row.date %></p>
                             <p>Nitrogen: <%= row.nitrogen %> </p>
                             <p>Phosphorus:<%= row.phosphorous%> </p>
@@ -130,15 +130,14 @@
                             <p>pH: <%= row.ph %></p>
                             <p>temperature: <%= row.temperature%></p>
                             </div>
-                            
-             
+                         
                         </div>
                         
-                        
+                        <% })  %>
               
                    </div>
                 
-                   <% })  %>
+                   
            
        </section>
 
@@ -197,7 +196,27 @@
    </section>
    <script
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
-   defer
- ></script>
+   defer></script>
+    <script>
+        
+     function searchData() {
+          
+          var input = document.getElementById("myInput").value.toLowerCase();
+          var elements = document.getElementsByClassName("soil-search");
+
+         
+          for (var i = 0; i < elements.length; i++) {
+              
+              var textContent = elements[i].textContent.toLowerCase();
+              if (textContent.includes(input)) {
+                  
+                  elements[i].parentElement.parentElement.style.display = "flex";
+              } else {
+                  
+                  elements[i].parentElement.parentElement.style.display = "none";
+              }
+          }
+      }
+    </script>
          </body>
 </html>
