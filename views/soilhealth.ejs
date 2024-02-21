@@ -113,12 +113,13 @@
            <section class="contact">
             <h1>Soil Health Data</h1>
             <% soildatas.forEach((row,index) => { %>
+               
             <div class="contact-row">
                
                         <div class="data">
                             
                             <div class="image">
-                                <img src="<%= dataUrl %>">
+                                <img src="<%= row.dataUrl %>">
                                 <p > <%= row.date %></p>
                             </div>
                            
@@ -137,6 +138,7 @@
                         
               
                    </div>
+                
                    <% })  %>
            
        </section>
