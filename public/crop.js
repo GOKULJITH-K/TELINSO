@@ -78,7 +78,9 @@ switch(crop){
                 display: true,
                 text: "Visualization of Soil Sample - Bar Graph"
             }
+        }
         });
+    
 });
 
 
