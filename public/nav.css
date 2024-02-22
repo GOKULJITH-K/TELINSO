@@ -37,14 +37,12 @@
     writing-mode: vertical-rl;
     font-family: system-ui;
     font-weight: 600;
-    padding: 15px;
+    padding: 10px 15px;
     font-size: 15px;
     border-radius: 4px;
   }
   
-  #myBtn:hover {
-    background-color: #555;
-  }
+  
     
     .logo{
       margin: 15px;
