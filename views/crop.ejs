@@ -5,9 +5,10 @@
          <title>TELINSO</title>
         
          <link rel="stylesheet" href="/crop.css">
-         <link rel="stylesheet" href="/nav.css">
+         <script src="/topbtn.js" defer></script>
          <link rel="stylesheet" href="/overview.css">
          <script src="/navbar.js" defer></script>
+         <link rel="stylesheet" href="/nav.css">
          <link rel="stylesheet" href="/footer.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
         <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
@@ -25,6 +26,7 @@
             </head>
             
      <body>
+      <button onclick="topFunction()" id="myBtn" style="width:40px" class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
       <section class="header" >
             
         <div class="container">
@@ -64,7 +66,13 @@
             
             <i class="fa-solid fa-user fas" onclick="openmenu()"><a href="/index"></a></i>
         </nav>
-        
+        <div class="icons-header">
+                <a href="/savedata"><i class="fa-solid fa-download"></i></a>
+                <a href="/analysis"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+                <a href="/farmerassist"><i class="fa-solid fa-handshake-angle"></i></a>
+                <a href="/weather"><i class="fa-solid fa-cloud-bolt"></i></a>
+                <a href="/soilhealth"><i class="fa-solid fa-file-waveform"></i></a>
+      </div>
          
      </section>
      <section class="overview" >
@@ -102,14 +110,14 @@
           <h3>Enter a crop Name</h3>
           <form id="Form">
               <input class="crop-input" id="crop"  placeholder="E.g., rice, wheat, sugarcane" >
-              <select class="selection-btn">
-                <option> Choose a Crop</option>
+              <select class="selection-btn" >
+                <option>Crop list</option>
                 <option>rice</option>
                 <option>wheat</option>
                 <option>sugarcane</option>
               </select>
               <div class="separator"></div>
-              <button class="search-btn" onclick="myFunction(); return false" >Find out</button>
+              <button id="findout-btn" class="search-btn" onclick="myFunction(); return false" >Find out</button>
               
           </form>
         </div>
@@ -269,17 +277,17 @@
 switch(crop){
 
 case "rice":
-    if (`<%= nitrogen %>` == 120 && `<%= phosphorous %>` == 60 && `<%= potassium %>` == 60 && `<%= temperature %>` == 27 && pH == `<%= ph %>`)
+    if (`<%= nitrogen %>` == 120 && `<%= phosphorous %>` == 60 && `<%= potassium %>` == 60 && `<%= temperature %>` == 27 && `<%= ph %>` == 6.6)
     {
         selectioncrop = ` Discover the ideal conditions for rice cultivation with Telinso. Our soil analysis reveals optimum nitrogen, phosphorus, potassium, pH, and temperature levels. Tailored recommendations ensure your rice crops thrive, maximizing yield. Trust Telinso to guide you, 
         making each cultivation decision a step towards a successful and abundant harvest.`;
     }
-    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 60 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
+    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 60 && `<%= temperature %>` > 27 &&  `<%= ph %>`>6.6)
     {
         selectioncrop = `Telinso's thorough soil analysis indicates elevated levels of nitrogen, phosphorus, potassium, pH, and temperature—beyond optimal ranges for rice cultivation. We advise against rice 
         cultivation based on these findings, ensuring informed decisions for sustainable and successful farming practices.`;
     }
-    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 60 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
+    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 60 && `<%= temperature %>` > 27 &&  `<%= ph %>`>6.6)
     {
         selectioncrop = `Telinso's meticulous soil analysis reveals that nitrogen, phosphorus, potassium, pH, and temperature levels are below
          the optimal range for successful rice cultivation. Based on these findings, we recommend against rice cultivation to ensure informed 
@@ -294,17 +302,17 @@ case "rice":
 
 case "wheat" :
 
-   if (`<%= nitrogen %>` == 120 && `<%= phosphorous %>` == 60 && `<%= potassium %>` == 40 && `<%= temperature %>` == 27 && pH == `<%= ph %>`)
+   if (`<%= nitrogen %>` == 120 && `<%= phosphorous %>` == 60 && `<%= potassium %>` == 40 && `<%= temperature %>` == 27 &&  `<%= ph %>` == 6.6)
     {
         selectioncrop = ` Discover the ideal conditions for wheat cultivation with Telinso. Our soil analysis reveals optimum nitrogen, phosphorus, potassium, pH, and temperature levels. Tailored recommendations ensure your wheat crops thrive, maximizing yield. Trust Telinso to guide you, 
         making each cultivation decision a step towards a successful and abundant harvest.`;
     }
-    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 40 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
+    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 40 && `<%= temperature %>` > 27 && `<%= ph %>`>6.6)
     {
         selectioncrop = `Telinso's thorough soil analysis indicates elevated levels of nitrogen, phosphorus, potassium, pH, and temperature—beyond optimal ranges for wheat cultivation. We advise against wheat 
         cultivation based on these findings, ensuring informed decisions for sustainable and successful farming practices.`;
     }
-    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 40 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
+    else if (`<%= nitrogen %>` > 120 && `<%= phosphorous %>` > 60 && `<%= potassium %>` > 40 && `<%= temperature %>` > 27 && `<%= ph %>`>6.6)
     {
         selectioncrop = `Telinso's meticulous soil analysis reveals that nitrogen, phosphorus, potassium, pH, and temperature levels are below
          the optimal range for successful wheat cultivation. Based on these findings, we recommend against rice cultivation to ensure informed 
@@ -319,17 +327,17 @@ case "wheat" :
 
   case "sugarcane":
 
-   if (`<%= nitrogen %>` == 250 && `<%= phosphorous %>` == 75 && `<%= potassium %>` == 190 && `<%= temperature %>` == 27 && pH == `<%= ph %>`)
+   if (`<%= nitrogen %>` == 250 && `<%= phosphorous %>` == 75 && `<%= potassium %>` == 190 && `<%= temperature %>` == 27 &&  `<%= ph %>` == 6.6)
     {
         selectioncrop = ` Discover the ideal conditions for sugarcane cultivation with Telinso. Our soil analysis reveals optimum nitrogen, phosphorus, potassium, pH, and temperature levels. Tailored recommendations ensure your sugarcane crops thrive, maximizing yield. Trust Telinso to guide you, 
         making each cultivation decision a step towards a successful and abundant harvest.`;
     }
-    else if (`<%= nitrogen %>` > 250 && `<%= phosphorous %>` > 75 && `<%= potassium %>` > 190 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
+    else if (`<%= nitrogen %>` > 250 && `<%= phosphorous %>` > 75 && `<%= potassium %>` > 190 && `<%= temperature %>` > 27 && `<%= ph %>`>6.6)
     {
         selectioncrop = `Telinso's thorough soil analysis indicates elevated levels of nitrogen, phosphorus, potassium, pH, and temperature—beyond optimal ranges for rice cultivation. We advise against sugarcane 
         cultivation based on these findings, ensuring informed decisions for sustainable and successful farming practices.`;
     }
-    else if (`<%= nitrogen %>` > 250 && `<%= phosphorous %>` > 75 && `<%= potassium %>` > 190 && `<%= temperature %>` > 27 && pH > `<%= ph %>`)
+    else if (`<%= nitrogen %>` > 250 && `<%= phosphorous %>` > 75 && `<%= potassium %>` > 190 && `<%= temperature %>` > 27 && `<%= ph %>`>6.6)
     {
         selectioncrop = `Telinso's meticulous soil analysis reveals that nitrogen, phosphorus, potassium, pH, and temperature levels are below
          the optimal range for successful sugarcane cultivation. Based on these findings, we recommend against sugarcane cultivation to ensure informed 

@@ -5,6 +5,7 @@
          
          <link rel="stylesheet" href="/soilhealth.css">
          <script src="/navbar.js" defer></script>
+         <script src="/topbtn.js" defer></script>
         <link rel="stylesheet" href="/footer.css">
         <link rel="stylesheet" href="/nav.css">
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -22,7 +23,7 @@
          <link rel="manifest" href="/site.webmanifest">
         </head>
      <body>
-       
+      <button onclick="topFunction()" id="myBtn" class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button> 
         
          <section class="header">
             
@@ -63,17 +64,23 @@
                 
                 <i class="fa-solid fa-user fas" onclick="openmenu()"></i>
             </nav>
-            
+            <div class="icons-header">
+              <a href="/savedata"><i class="fa-solid fa-download"></i></a>
+                <a href="/analysis"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+                <a href="/farmerassist"><i class="fa-solid fa-handshake-angle"></i></a>
+                <a href="/weather"><i class="fa-solid fa-cloud-bolt"></i></a>
+                <a href="/crop"><i class="fa-solid fa-wheat-awn"></i></a>
+          </div>
              
          </section>
          <section class="overview" >
              
             <div class="row">
                <div class="overview-col">
-                   <h1>SOIL HEALTH ARCHIVE</h1>
+                   <h1>SOIL ARCHIVE</h1>
                    <span class="description"> Description </span>
                    <span class="overview-description">
-                    Empower your farming strategy with Telinso's Soil Health Archive. Access extensive soil data to optimize crop management and sustainability practices. Stay ahead with accurate insights for informed decisions and thriving harvests.
+                    Empower your farming strategy with Telinso's Soil Archive. Access extensive soil data to optimize crop management and sustainability practices. Stay ahead with accurate insights for informed decisions and thriving harvests.
                      Telinso ensures your farming operations align seamlessly with evolving soil conditions for enhanced productivity and long-term success.
                    </span>
                   
@@ -107,6 +114,8 @@
            ></gmp-advanced-marker>
            <% })  %>
          </gmp-map>
+         
+         
          
        </section>
        
@@ -220,6 +229,27 @@
               }
           }
       }
+      function showCurrentLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+
+          const marker = document.createElement("gmp-advanced-marker");
+          marker.setAttribute("position", `${lat},${lng}`);
+          marker.setAttribute("title", "Current Location");
+          document.getElementById("marker-click-event-example").appendChild(marker);
+        },
+        () => {
+          alert("Error: The Geolocation service failed.");
+        }
+      );
+    } else {
+      alert("Error: Your browser doesn't support geolocation.");
+    }
+  }
     </script>
+
          </body>
 </html>

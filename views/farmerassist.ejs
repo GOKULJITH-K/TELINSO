@@ -5,6 +5,7 @@
          
          <link rel="stylesheet" href="/farmerassist.css">
          <script src="/navbar.js" defer></script>
+         <script src="/topbtn.js" defer></script>
          <link rel="stylesheet" href="/overview.css">
          <link rel="stylesheet" href="/nav.css">
         <link rel="stylesheet" href="/footer.css">
@@ -22,7 +23,7 @@
         </head>
      <body>
        
-        
+        <button onclick="topFunction()" id="myBtn" class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
          <section class="header">
             
             <div class="container">
@@ -62,7 +63,13 @@
                 
                 <i class="fa-solid fa-user fas" onclick="openmenu()"></i>
             </nav>
-            
+            <div class="icons-header">
+                <a href="/savedata"><i class="fa-solid fa-download"></i></a>
+                <a href="/analysis"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+                <a href="/weather"><i class="fa-solid fa-cloud-bolt"></i></a>
+                <a href="/soilhealth"><i class="fa-solid fa-file-waveform"></i></a>
+                <a href="/crop"><i class="fa-solid fa-wheat-awn"></i></a>
+            </div>
              
          </section>
          <section class="overview" >
