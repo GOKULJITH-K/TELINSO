@@ -99,6 +99,8 @@
                </div>
                  
            </div>
+           <button class="overview-btn" onclick="Center()">Current Location</button>
+           
            <gmp-map
            id="marker-click-event-example"
            center="11.9858056 , 75.3811667 "
@@ -113,6 +115,13 @@
              gmp-clickable
            ></gmp-advanced-marker>
            <% })  %>
+           <gmp-advanced-marker
+            id="current-location"
+            position = ""
+            title="current Location"
+
+            gmp-clickable
+           ></gmp-advanced-marker>
          </gmp-map>
          
          
