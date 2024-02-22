@@ -1,0 +1,210 @@
+.icons-header{
+  display: none;
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 5;
+  border: none;
+  outline: none;
+  background-color: #1d1233;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #4c0db1 ;
+}
+@media only screen and (max-width:800px) {
+  
+  #myBtn {
+    display: none;
+    position: fixed;
+    top: 87%;
+    right: 5%;
+    bottom: 7%;
+    z-index:5;
+    border: none;
+    outline: none;
+    background-color: #1d1233;
+    color:white;
+    cursor: pointer;
+    writing-mode: vertical-rl;
+    font-family: system-ui;
+    font-weight: 600;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 4px;
+  }
+  
+  #myBtn:hover {
+    background-color: #555;
+  }
+    
+    .logo{
+      margin: 15px;
+      top:10px;
+      left:10px;
+      position: absolute;
+    }
+    .logo img{
+     
+      width: 35px;
+      height: 35px;
+    }
+    nav ul{
+      display: block;
+    }
+    nav .fa-solid{
+      display: block;
+      font-size: 25px;
+      margin: 30px;  
+      padding-left: 80%; 
+      color: white;
+      z-index: 1;
+      cursor: pointer;
+  }
+  
+  
+  .icons-header{
+ 
+
+      display: grid;
+      gap: 5px;
+      grid-template-columns: auto auto auto auto auto;
+      font-size: 20px;
+      position: absolute;
+      bottom: 35px;
+      right: 10px;
+      padding: 0 20px;
+      margin: 0 2px;
+      color: white;
+      z-index: 1;
+      
+      cursor: pointer;
+
+  }
+  .header .icons-header a{
+    text-decoration: none;
+    color: white;
+  }
+  .header .icons-header .fa-solid{
+    padding: 10px;
+    position: sticky;
+    background: #1d1233;
+    border-radius: 50%;
+    
+  }
+ 
+ 
+  nav .fa-times{
+    display: block;
+    font-size: 25px;
+    margin: 20px;  
+    color: white;
+    z-index: 2;
+    cursor: pointer;
+  }
+  nav .hero-btn2{
+    display: none;
+  }
+ 
+  nav ul li{
+    display: block;
+    margin: 10px;
+    padding: 5px;
+    font-size: 10px;
+   
+    
+      
+}
+  nav ul{
+    background:linear-gradient(#251742,#482b7c) ;
+    position: fixed;
+    top: 0;
+    right: -80%;
+    width: 80%;
+    text-align: center;
+    height: 100vh;
+    padding-top: 10px;
+    z-index: 2;
+    transition: right 0.5s;
+    cursor: pointer;
+    text-align: left;
+
+}
+nav #sidemenu .fa-solid{
+    margin: 3px;
+}
+#sidemenu li i{
+    color: white;
+  }
+  #sidemenu hr{
+    color: white;
+    height: 1px;
+  }
+  
+  #sidemenu p{
+    margin-top: 20px;
+    padding: 30px;
+    color: white;
+    text-align: left;
+    font-family: system-ui;
+    font-size: 20px;
+  }
+  .loginpage{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: space-evenly;
+  }
+  #sidemenu .login{
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    font-weight: 600;
+  }
+  #sidemenu .join{
+    background:#1d1233;
+    color: white;
+  }
+  nav ul li a{
+       color: white;
+       font-weight: 400;
+       font-size: 20px;
+      font-family: system-ui;
+      
+  }
+  nav ul .fas{
+      position: absolute;
+      top: 25px;
+      padding: 20px;
+      left: 300px;
+      cursor: pointer;
+      color: white;
+  }
+  
+ 
+  
+  nav ul li a:hover::after{
+    width: 0%;
+  }
+  nav ul li :hover{
+ 
+    color: black;
+  }
+  
+  
+  
+    
+  }
+  
