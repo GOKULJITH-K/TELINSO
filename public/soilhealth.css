@@ -22,6 +22,18 @@ gmp-map {
   width: 90%;
   margin: 0 auto;
 }
+.overview-btn{
+
+  padding: 10px 25px;
+  margin: 10px;
+  background: #1d1233;
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
 .logo{
   margin: 35px 80px;
   top:10px;
@@ -178,22 +190,7 @@ nav{
     color: rgb(31, 30, 30);
   
   }
-  .overview-btn{
-    
-    text-decoration: none;
-    color: white;
-    border: 1px solid rgb(4, 54, 74);
-    padding: 14px 34px;
-    font-size: 18px;
-    border-radius: 30px;
-    background: rgb(4, 54, 74);
-    text-align: center;
-    position: relative;
-    cursor: pointer;
-    
-    
-   
-  }
+  
   .overview-btn:hover{
     background-color: white;
     color: black;
@@ -351,6 +348,14 @@ form .btn2:hover{
      
       width: 35px;
       height: 35px;
+    }
+    .overview-btn{
+
+      padding: 10px 25px;
+      margin: 10px;
+      background: #1d1233;
+      color: white;
+      border-radius: 10px;
     }
     .logo span{
       display: inline;
