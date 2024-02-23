@@ -10,7 +10,7 @@ const port=process.env.PORT || 3000 ;
 const app = express();
 app.use(express.json());
 
-      
+       
 
 app.use(express.urlencoded({extended:false}));
 
@@ -144,8 +144,25 @@ app.get("/alert",async(req,res)=>{
    
      res.render("alert", {soildatas: soildatas});
 })
+app.get("/alert/:id",async(req,res)=>{
 
-app.get("/delete/:id",async(req,res)=>{
+    let id=req.params.id;
+    const alertdata = await savemodel.findById(id);
+    const soilname= alertdata.soilname;
+    const datealert = alertdata.date;
+    
+    
+   
+     res.render("alert",
+      {
+        soilname:soilname,
+        date:datealert,
+        id:id
+    });
+})
+
+  
+app.get("/alert/delete/:id",async(req,res)=>{
 
 
     let id=req.params.id;
