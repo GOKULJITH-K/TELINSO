@@ -14,6 +14,7 @@
     background-size: cover;
     position: relative;
     width: 100%;
+   
     
     
    
@@ -672,6 +673,74 @@ nav #sidemenu .fa-solid{
     color: white;
     
   }
+  .overview h1{
+        
+    display: none;
+ }
+ .overview h2{
+     
+     font-size: 25px;
+     text-align: left;
+     padding: 25px;
+     margin: 15px;
+     color: black;
+     display: block;
+
+     
+ }
+ .welcome-text{
+     display: flex;
+     justify-content: space-around;
+     padding: 10px;
+
+ }
+ .welcome-text h2{
+     font-size: 20px;
+     padding: 10px;
+     
+     
+ }
+ .overview-col h2{
+     font-size: 20px;
+     padding: 0px 15px;
+     text-align: justify;
+     font-family: system-ui;
+     
+ }
+ 
+ .Date-time{
+     background:linear-gradient(to bottom,#251742,#482b7c) ;
+     color: white;
+     border-radius: 10px;
+     display: flex;
+     justify-content: space-around;
+     margin: 20px;
+     padding: 10px;
+ }
+ .Date-time h2{
+     color: white;
+     padding: 5px;
+     display: flex;
+     font-size: 20px;
+     text-align: left;
+ }
+ .overview span{
+     font-size: 22px;
+     color: #482b7c;
+ }
+ .header .fa-solid {
+  display: block;
+  color: black;
+ }
+ .overview .fa-solid{
+  display: block;
+ }
+ nav span{
+  color: black;
+ }
+ .overview p{
+  display: none;
+ }
     
   }
 
