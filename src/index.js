@@ -138,6 +138,13 @@ app.get("/selection",async(req,res)=>{
 
     res.render("selection");
 })
+app.get("/alert",async(req,res)=>{
+
+    const soildatas = await savemodel.find().sort({_id:-1}).exec();
+   
+     res.render("alert", {soildatas: soildatas});
+})
+
 app.get("/delete/:id",async(req,res)=>{
 
 
@@ -145,7 +152,7 @@ app.get("/delete/:id",async(req,res)=>{
     await savemodel.findByIdAndDelete(id)
 
     const soildatas = await savemodel.find().sort({_id:-1}).exec();
-
+ 
      res.render("soilhealth", {soildatas: soildatas});
 })
 app.get("/selection/:id",async(req,res)=>{
