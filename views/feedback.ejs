@@ -3,7 +3,7 @@
          <meta name="viewport" content="width=device-width,initial-scale=1.0">
          <title>TELINSO</title>
          
-         <link rel="stylesheet" href="/farmerassist.css">
+         <link rel="stylesheet" href="/feedback.css">
          <script src="/navbar.js" defer></script>
         <link rel="stylesheet" href="/footer.css">
         <link rel="stylesheet" href="/nav.css">
@@ -110,24 +110,25 @@
          
            <section class="contact">
             <h1>Feedback</h1>
-            <% feedbackdata.forEach((row,index) => { %>
+            
             <div class="contact-row">
                
-                        
+                <% feedbackdata.forEach((row,index) => { %>
                             <div class="data">
-                            <p>name :<%= row.name %> </p>
-                            <p>email :<%= row.email %></p>
-                            <p>message: <%= row.message %> </p>
+                            <div class="feedback-email"><p><span><%= row.name %></span></p>
+                            <p class="italic-email"><%= row.email %></p>
+                            </div>
+                            <p class="feedback-message"><%= row.message %> </p>
                             </div>
                             
                             
         
-                        </div>
                         
                         
+                <% })  %>
               
                    </div>
-                   <% })  %>
+                
            
        </section>
 
