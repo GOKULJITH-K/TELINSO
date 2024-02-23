@@ -208,6 +208,11 @@ nav ul{
   
  
 }
+.savedata{
+
+  box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.3); 
+  
+}
 .contact h1{
   font-size: 35px;
   margin: 10px ;
@@ -294,14 +299,22 @@ form .btn2:hover{
   border: 1px solid black;
 }
 
+.savedata{
 
+  box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.3); 
+  
+  
+}
 .file-upload{
   background: #1d1233;
   color: white;
   border-radius: 10px;
   padding: 10px 20px;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  margin: 10px 25%;
+  text-align: center;
+  
   
   
 }
@@ -457,7 +470,7 @@ form .btn2:hover{
 }
 .contact-col{
   margin: 0px;
-  padding: 20px ;
+  padding: 10px ;
   flex-basis: 50%;
   text-align: center;
   border-radius: 10px;
@@ -587,7 +600,11 @@ form .btn2:hover{
   
   form input,form textarea{
     width: 100%;
-    border: 1px solid #4c0db1;
+    font-size: 16px;
+    border: none;
+    color: #1d1233;
+    background: rgb(247, 243, 243);
+    
   
   }
   
@@ -598,6 +615,10 @@ form .btn2:hover{
     text-align: left;
     margin: 0;
     padding: 0;
+    font-size: 16px;
+   }
+   .savedata{
+    padding: 0 15px;
    }
   
       
