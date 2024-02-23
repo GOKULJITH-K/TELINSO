@@ -140,8 +140,8 @@
                 <% soildatas.forEach((row,index) => { %>
                
                         <div class="data" id="myUL">
-                            <div>
-                            <p class="soil-search"><span>Soil Detail<br><%= row.soilname %></span></p>
+                            <div class="soildata">
+                            <p class="soil-search"><span>Soil Detail :<br><%= row.soilname %></span></p>
                             <p class="month-search" > <%= row.date %></p>
                             <p>Nitrogen: <%= row.nitrogen %> </p>
                             <p>Phosphorus:<%= row.phosphorous%> </p>
@@ -149,6 +149,13 @@
                             <p>pH: <%= row.ph %></p>
                             <p>temperature: <%= row.temperature%></p>
                             </div>
+                            <div class="feature-archive">
+                            <a href="/delete/<%= row._id %>"><i class="fa-solid fa-trash"></i></a>
+                            <a href="/archive/<%= row._id %>"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+                            <a href="/selection/<%= row._id %>"><i class="fa-solid fa-wheat-awn"></i></a>
+                            </div>
+                            
+                           
                          
                         </div>
                         
