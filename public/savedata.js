@@ -33,6 +33,7 @@ function initMap() {
         infoWindow.setContent(content);
         infoWindow.open(map);
     });
+    document.getElementById("coordinateValue").value = "0,0";
   }
   
   
