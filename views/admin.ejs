@@ -6,6 +6,8 @@
          <link rel="stylesheet" href="/admin.css">
          <script src="/navbar.js" defer></script>
          <link rel="stylesheet" href="/footer.css">
+         <link rel="stylesheet" href="/nav.css">
+         <script src="/topbtn.js" defer></script>
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
@@ -67,8 +69,23 @@
             <section class="overview" >
              
                 <div class="row">
-                   <div class="overview-col">
-                       <h1>ADMINISTRATION PAGE</h1>
+                    <div class="overview-col">
+                        <div class="welcome-text">
+                        <h1>WELCOME TO TELINSO</h1>
+                        <div><h2>Hi <span>Team</span></h2></div>
+                        <div><h2 id="greeting"></h2></div>
+                        
+                        
+                        </div>
+                        <h2>Lets Check Your Soil Health <i class="fa-solid fa-notes-medical"></i></h2>
+                        
+                        <div class="Date-time">
+                        
+                         <h2 id="day"></h2>
+                        
+                         <h2 id="dateNumber"></h2>
+ 
+                         </div>
                        
                       
                        
@@ -197,6 +214,32 @@
                 </p>
             </div>
    </section>
-              
+   <script>
+    // Get current date and time
+    var now = new Date();
+  
+    // Extract date, time, and day
+    var months = now.toLocaleDateString(undefined, { month: 'long', });
+    var time = now.toLocaleTimeString();
+    var dateNumber = now.getDate();
+    var day = now.toLocaleDateString(undefined, { weekday: 'long' });
+  
+    // Get hour to determine the greeting
+    var hour = now.getHours();
+    var greeting = "";
+  
+    if (hour < 12) {
+      greeting = "Good Morning";
+    } else if (hour < 18) {
+      greeting = "Good Afternoon";
+    } else {
+      greeting = "Good Evening";
+    }
+  
+   
+    document.getElementById("greeting").innerHTML = greeting;
+    document.getElementById("dateNumber").innerHTML = dateNumber +" "+ months;
+    document.getElementById("day").innerHTML =  day;
+  </script>
          </body>
 </html>
