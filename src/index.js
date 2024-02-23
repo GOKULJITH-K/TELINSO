@@ -116,7 +116,7 @@ app.get("/farmerassist",async(req,res)=>{
     const assistdata = await farmermodel.find().sort({_id:-1}).exec();
     res.render("farmerassist",{assistdata:assistdata});
 })
-
+  
 app.get("/feedback",async(req,res)=>{
     const feedbackdata = await feedbackmodel.find().sort({_id:-1}).exec();
     res.render("feedback",{feedbackdata:feedbackdata});
@@ -134,6 +134,140 @@ app.get("/soilhealth",async(req,res)=>{
 
      res.render("soilhealth", {soildatas: soildatas});
 })  
+app.get("/selection",async(req,res)=>{
+
+    res.render("selection");
+})
+app.get("/delete/:id",async(req,res)=>{
+
+
+    let id=req.params.id;
+    await savemodel.findByIdAndDelete(id)
+
+    const soildatas = await savemodel.find().sort({_id:-1}).exec();
+
+     res.render("soilhealth", {soildatas: soildatas});
+})
+app.get("/selection/:id",async(req,res)=>{
+    
+    let id=req.params.id;
+    
+    const soildatas = await savemodel.findById(id);
+    const nitrogen = soildatas.nitrogen;
+    const phosphorous = soildatas.phosphorous;
+    const potassium = soildatas.potassium;
+    const ph = soildatas.ph;
+    const temperature = soildatas.temperature;
+
+    
+
+     res.render("selection",{
+        nitrogen:nitrogen,
+        phosphorous:phosphorous,
+        potassium:potassium,
+        ph:ph,
+        temperature:temperature,
+    });
+})
+
+app.get("/archive/:id",async(req,res)=>{
+    
+    let id=req.params.id;
+    
+    const soildatas = await savemodel.findById(id);
+    const nitrogen = soildatas.nitrogen;
+    const phosphorous = soildatas.phosphorous;
+    const potassium = soildatas.potassium;
+    const ph = soildatas.ph;
+    const temperature = soildatas.temperature;
+    if (nitrogen> 300) {
+        nitrogenmsg = `Value of nitrogen is higher than optimum value. We can find
+         that the soil contains an excess quantity of nutrients for vegetable cultivation, we should maintain the ratio of npk.value is ${nitrogen}`;
+    }else if (nitrogen> 201 && nitrogen< 300 ) {
+        nitrogenmsg = `Value of nitrogen is optimum for vegetable cultivation.value is ${nitrogen}`;
+
+    }else if (nitrogen> 101 && nitrogen< 150){
+        nitrogenmsg = `Value of nitrogen is optimum for Field crop cultivation.value is ${nitrogen}`;
+    } 
+      else if(nitrogen> 150 && nitrogen< 200){
+       nitrogenmsg = `We can find that the soil does not have an adequate quantity of nutrients for vegetable cultivation. 
+       We can find that the soil contains an excess quantity of nutrients for field crop cultivation, we should maintain the ratio of npk.value is ${nitrogen}` ;
+    } else{
+      nitrogenmsg = `value of nitrogen is lower than optimum value for field crop cultivation and vegetable crop cultivation.value is ${nitrogen}`
+    }
+
+    if (phosphorous> 90) {
+        phosphorusmsg = `Value of phosphorus is higher than optimum value. We can find
+        that the soil contains an excess quantity of nutrients for vegetable cultivation, we should maintain the ratio of npk.Value is ${phosphorous}`;
+    }else if (phosphorous> 61 && phosphorous< 90 ) {
+        phosphorusmsg = `Value of phosphorus is optimum for vegetable cultivation.Value is ${phosphorous}`;
+
+    }else if (phosphorous> 11 && phosphorous< 20){
+        phosphorusmsg = `Value of phosphorus is optimum for Field crop cultivation.Value is ${phosphorous}`;
+    } 
+      else if(phosphorous> 20 && phosphorous< 61){
+        phosphorusmsg = `We can find that the soil does not have an adequate quantity of nutrients for vegetable cultivation. 
+        We can find that the soil contains an excess quantity of nutrients for field crop cultivation, we should maintain the ratio of npk.Value is ${phosphorous}` ;
+    } else{
+        phosphorusmsg = `value of phosphorus is lower than optimum value for field crop cultivation and vegetable crop cultivation.Value is ${phosphorous}`
+    }
+
+    if (potassium> 240) {
+        potassiummsg = `Value of potassium is higher than optimum value. We can find
+        that the soil contains an excess quantity of nutrients for vegetable cultivation, we should maintain the ratio of npk.Value is ${potassium}`;
+    }else if (potassium> 161 && potassium< 240 ) {
+        potassiummsg = `Value of potassium is optimum for vegetable cultivation.Value is ${potassium}`;
+
+    }else if (potassium> 101 && potassium< 150){
+        potassiummsg = `Value of potassium is optimum for Field crop cultivation.Value is ${potassium}`;
+    } 
+      else if(potassium> 150 && potassium< 161){
+        potassiummsg = `We can find that the soil does not have an adequate quantity of nutrients for vegetable cultivation. 
+        We can find that the soil contains an excess quantity of nutrients for field crop cultivation, we should maintain the ratio of npk.Value is ${potassium}` ;
+    } else{
+        potassiummsg = `value of potassium is lower than optimum value for field crop cultivation and vegetable crop cultivation.Value is ${potassium}`
+    }
+
+    if (ph> 7.5) {
+        pHmsg = `Should decrease the amount of pH.Value is ${ph}`;
+    }else if (ph> 6.6 && ph< 7.5 ) {
+        pHmsg = `Perfect range for plant growth and planting'.Value is ${ph}`;
+
+    }else {
+        pHmsg = `Should increase the amount of pH.Value is ${ph}`
+    }
+
+    if (temperature> 30) {
+        temperaturemsg = `It is not the perfect range for nitrification, plant growth, and planting.Value is ${temperature}`;
+    }else if (temperature> 19 && temperature< 30 ) {
+        temperaturemsg = `Perfect range of nitrification, plant growth, and planting.Value is ${temperature}`;
+
+    }else {
+
+        temperaturemsg = `value is lower than optimum value for plant growth.Value is ${temperature}`
+    }
+
+
+    console.log(nitrogen);  
+       
+    
+            
+        res.render("archive",
+        {
+            nitrogenmsg:nitrogenmsg,
+            phosphorusmsg:phosphorusmsg,
+            potassiummsg:potassiummsg,
+            pHmsg:pHmsg,
+            temperaturemsg:temperaturemsg,
+            nitrogen:nitrogen,
+            phosphorous:phosphorous,
+            potassium:potassium,
+            ph:ph,
+            temperature:temperature,
+       });
+
+
+})
   
 //
 app.get("/analysis",async(req,res)=>{
@@ -243,11 +377,7 @@ app.get("/analysis",async(req,res)=>{
         temperature:temperature,
        });
       
- 
-          
-      
-                
-        
+  
 });    
 
  
