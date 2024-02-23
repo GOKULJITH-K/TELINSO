@@ -237,6 +237,31 @@ nav{
 .soildata{
   flex-basis: 80%;
 }
+#alert-delete{
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+  
+
+}
+#alert-delete a{
+  padding: 18px;
+  margin: 10px;
+  background: #1d1233;
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  width: 90%;
+ 
+
+}
 .feature-archive a{
 
   padding: 18px;
@@ -356,10 +381,18 @@ form .btn2:hover{
     color: black;
     border: 1px solid black;
 }
+svg{
+  width: 400px;
+  height: 300px;
 
+}
+.mobile{
+  display: none;
+}
 #entry{
     justify-content: center;
 }
+
 
 @media(max-width:800px){
 
@@ -368,11 +401,23 @@ form .btn2:hover{
         height: 350px;
         
     }
+    .desktop{
+      display: none;
+    }
+    .mobile{
+      display: flex;
+
+    }
     .logo{
       margin: 6px 10px;
       top:10px;
       left:10px;
       position: absolute;
+    }
+    svg{
+      width: 300px;
+      height: 300px;
+    
     }
     .logo img{
      
@@ -680,6 +725,21 @@ form .btn2:hover{
       font-family:system-ui;
       text-align: left;
 
+  }
+  .overview-btn{
+    position: relative;
+    z-index: 60;
+    margin: 10px auto ;
+    padding: 15px;
+    font-size: 16px;
+  }
+  .overview-btn i{
+    font-size: 18px;
+    padding: 0;
+  }
+  .overview-btn span{
+  
+    padding: 0 10px;
   }
   .contact input{
        
