@@ -136,6 +136,13 @@ nav ul{
 
   
 }
+.view-change{
+  display: inline;
+}
+svg{
+  display: none;
+}
+
 .overview .row{
   margin-top: 0%;
   display: flex;
@@ -181,6 +188,9 @@ nav ul{
   background-color: white;
   color: black;
   border: 1px solid black;
+}
+.overview svg{
+  display: none;
 }
 
 
@@ -231,8 +241,10 @@ nav ul{
  
  }
  svg{
-  margin: 10px;
-  padding: 50px;
+  margin: 10px auto;
+  padding: 10px auto;
+  height: 500px ;
+  width: 500px;
  }
  .data img{
   height: 230px;
@@ -318,6 +330,7 @@ form .btn2:hover{
   
   
 }
+
 #entry{
   justify-content: center;
 }
@@ -417,6 +430,18 @@ form .btn2:hover{
     width: 310px;
     padding: 0px;
     margin: 0;
+   }
+   .overview svg{
+    display: inline;
+  }
+  .contact svg{
+    display: none;
+  }
+   .view-desk{
+    display: none;
+   }
+   .view-change{
+    display: inline;
    }
   .text-box .hero-btn{
       

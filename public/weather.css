@@ -182,6 +182,9 @@ nav ul{
   color: black;
   border: 1px solid black;
 }
+.overview svg{
+  display: none;
+}
 .product{
   width: auto;
   padding: 10 60;
@@ -575,7 +578,12 @@ color: white;
 .product-col{
   margin: 20px;
 }
-
+.overview svg{
+  display: inline;
+}
+.product svg{
+  display: none;
+}
 
 
 svg{

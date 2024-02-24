@@ -317,6 +317,9 @@ nav{
     color: black;
     border: 1px solid black;
 }
+.overview svg{
+    display: none;
+  }
 .feature{
     width: auto;
     padding: 120 100;
@@ -860,6 +863,7 @@ form .btn2:hover{
     }
     .product h1{
         font-size: 25px;
+        padding: 10px;
     }
     .product p{
         font-size: 20px;
@@ -915,7 +919,17 @@ form .btn2:hover{
         
         
     }
-    
+    .overview svg{
+        display: inline;
+      }
+      .product svg{
+        display: none;
+      }
+      svg{
+        width: 300px;
+        height: 300px;
+      
+      }
     
     .contact{
         width: auto;

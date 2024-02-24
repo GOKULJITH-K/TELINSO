@@ -142,6 +142,7 @@ nav{
 
     display: none;
   }
+  
   .overview h1{
     
     font-size: 50px;
@@ -285,7 +286,7 @@ nav{
       display: block;
       text-align: left ;
       font-size: 17px;
-      padding: 0px 25px;
+      padding: 10px 25px;
       font-weight: 600;
       font-family:system-ui;
       
@@ -435,13 +436,26 @@ nav{
       display: none;
     
   }
+  
   .overview-description{
     display: block;
     font-size: 16px;
       padding: 25px;
-      padding-top: 5px;
+      padding-top: 0px;
       font-family:system-ui;
       text-align: left;
+     
+
+  }
+  
+  .overview-description li{
+    
+      font-size: 16px;
+      padding: 10px 0;
+      font-family:system-ui;
+      text-align: left;
+      list-style-type: disc;
+      
 
   }
   .contact h1{
