@@ -744,6 +744,7 @@ svg{
     margin: 10px auto ;
     padding: 15px;
     font-size: 16px;
+    width: 90%;
   }
   .overview-btn i{
     font-size: 18px;
