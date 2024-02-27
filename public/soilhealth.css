@@ -397,7 +397,7 @@ svg{
 @media(max-width:800px){
 
     .header{
-        background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(archive.jpg);
+        background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(archive.JPG);
         height: 350px;
         
     }
