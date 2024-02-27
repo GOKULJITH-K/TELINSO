@@ -79,7 +79,7 @@ app.get("/crop",async(req,res)=>{
     });
 })
 app.get("/savedata",async(req,res)=>{
-    const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
+    const testdata = await testmodel.find().sort({_id:-1}).limit(30).exec();
 
     const nitrogenval=testdata.map(soil=>soil.nitrogen);
     const nitrogen=Number(mode(nitrogenval));
@@ -125,12 +125,6 @@ app.get("/soilhealth",async(req,res)=>{
     
     const soildatas = await savemodel.find().sort({_id:-1}).exec();
    
-    /* const soilDataWithImages = soildatas.map(soil => {
-        const imageData = soil.image.toString('base64');
-        const dataUrl = `data:image/jpeg;base64,${imageData}`;
-        return {...soil.toObject(), dataUrl: dataUrl};
-    });*/
-
 
      res.render("soilhealth", {soildatas: soildatas});
 })  
@@ -138,11 +132,49 @@ app.get("/selection",async(req,res)=>{
 
     res.render("selection");
 })
+app.get("/delete",async(req,res)=>{
+
+    //const deldata = await savemodel.findOne().sort({_id:-1}).exec();
+    //const soilname = deldata.soilname;
+    
+
+    res.render("delete");
+})
 app.get("/alert",async(req,res)=>{
 
     const soildatas = await savemodel.find().sort({_id:-1}).exec();
    
      res.render("alert", {soildatas: soildatas});
+})
+app.get("/delete/delete-data", async(req,res)=>{
+    
+  
+        await testmodel.deleteMany();
+        const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
+
+        const nitrogenval=testdata.map(soil=>soil.nitrogen);
+        const nitrogen=Number(mode(nitrogenval));
+    
+        const phosphorusval=testdata.map(soil=>soil.phosphorous);
+        const phosphorous=Number(mode(phosphorusval));
+    
+        const potassiumval=testdata.map(soil=>soil.potassium);
+        const potassium=Number(mode(potassiumval));
+    
+        const pHval=testdata.map(soil=>soil.ph);
+        const ph=Number(mode(pHval));
+    
+        const temperatureval=testdata.map(soil=>soil.temperature);
+        const temperature=Number(mode(temperatureval));
+        res.render("savedata",{
+            nitrogen:nitrogen,
+            phosphorous:phosphorous,
+            potassium:potassium,
+            ph:ph,
+            temperature:temperature,
+        });
+        
+      
 })
 app.get("/alert/:id",async(req,res)=>{
 
