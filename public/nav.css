@@ -50,6 +50,7 @@
       left:10px;
       position: absolute;
     }
+    
     .logo img{
      
       width: 35px;
@@ -74,7 +75,7 @@
 
       display: grid;
       gap: 5px;
-      grid-template-columns: auto auto auto auto auto;
+      grid-template-columns: auto auto auto auto auto auto;
       font-size: 20px;
       position: absolute;
       bottom: 35px;
