@@ -13,6 +13,31 @@
   width: 100%;
   
 }
+.save-delete{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.delete {
+  padding: 19px;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: auto;
+  flex-basis: 15%;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  background:linear-gradient(#251742,#482b7c) ;
+  border: none;
+}
+.delete i{
+  
+  color: white;
+  font-size: 18px;
+  align-items: center;
+  text-align: center;
+}
 #overlay{
   position: fixed;
   top: 0;
@@ -34,6 +59,11 @@
   padding: 10px 20px;
   border-radius: 10px;
 }
+.popup-inner i{
+  
+  color: #1d1233;
+  font-size: 16px;
+}
 .popup-onload{
   margin: 0 auto;
   display: none;
@@ -41,7 +71,7 @@
   z-index: 100;
   left: 50%;
   top: 50%;
-  margin-top: -80px;
+  margin-top: -130px;
   margin-left: -250px;
 }
 .popup-inner{
@@ -62,6 +92,31 @@
   color: white;
   padding: 10px;
 }
+
+.alert-description{
+  display: block;
+  font-size: 16px;
+    padding: 10px;
+    margin: 0px;
+    font-family:system-ui;
+    text-align: left;
+   
+
+}
+
+.alert-description li{
+  
+    font-size: 20px;
+    padding: 5px;
+    font-family:'Montserrat', sans-serif;
+    font-weight: 500;
+    text-align: left;
+    color: white;
+    list-style-type: disc;
+    
+
+}
+
 .logo{
   margin: 35px 80px;
   top:10px;
@@ -354,6 +409,7 @@ form .btn2{
   background:linear-gradient(#251742,#482b7c) ;
   border: none;
 }
+
 form .btn2:hover{
   background: white;
   color: black;
@@ -392,6 +448,11 @@ form .btn2:hover{
     
     
 }
+.save-delete{
+  display: grid;
+  grid-template-columns: 80% 20%;
+  gap: 5px;
+}
 .popup-onload{
   margin: 0 auto;
   display: none;
@@ -401,7 +462,7 @@ form .btn2:hover{
   top: 20%;
 }
 .popup-inner{
-  width: 300px;
+  width: 90%;
 }
 
   .logo{
@@ -705,6 +766,30 @@ form .btn2:hover{
    .savedata{
     padding: 0 15px;
    }
+   .alert-description{
+    display: block;
+    font-size: 16px;
+      padding: 10px;
+      margin: 0px;
+      font-family:system-ui;
+      text-align: left;
+     
+
+  }
+  
+  .alert-description li{
+    
+      font-size: 18px;
+      padding: 5px;
+      font-family:'Montserrat', sans-serif;
+      font-weight: 500;
+      text-align: left;
+      color: white;
+      list-style-type: disc;
+      
+
+  }
+ 
   
       
 }
