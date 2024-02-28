@@ -159,7 +159,7 @@
                         <div class="data" id="myUL">
                           <div class="soilname-date">
                           <p class="soil-search"><span><%= row.soilname %></span></p>
-                            <p id="month-search" ><span><%= row.date %></span></p>
+                            <p id="month-search" class="month-search" ><span><%= row.date %></span></p>
                             </div>
                             <button class="Showmore" onclick="Showmore('<%= index %>')">Show data &#9660;</button>
                             <div class="soildata" style="display: none;" id="<%= index %>">
@@ -251,16 +251,7 @@
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
    defer></script>
     <script>
-      
-    function Showmore(id){
-
-      const showdata = document.getElementById(id);
-      showdata.style.display = "grid";
-      showdata.previousElementSibling.textContent="";
-       
-
-    }
-     function searchData() {
+      function searchData() {
           
           var input = document.getElementById("myInput").value.toLowerCase();
           var elements = document.getElementsByClassName("soil-search");
@@ -280,6 +271,15 @@
               }
           }
       }
+    function Showmore(id){
+
+      const showdata = document.getElementById(id);
+      showdata.style.display = "grid";
+      showdata.previousElementSibling.textContent="";
+       
+
+    }
+     
       function showCurrentLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
