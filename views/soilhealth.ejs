@@ -116,6 +116,7 @@
             <span class="description"> User Instructions</span>
                    <span class="overview-description">
                     <ul class="overview-description">
+                      <li>Click on 'Show Data' to view the stored data.</li>
                       <li>Utilize the search bar to find soil data with specific details and by month.</li>
                       <li>View marked locations on the map for easy reference.</li>
                       <li>Utilize analytics, crop selection features, and data deletion options for enhanced usability.</li>
@@ -156,19 +157,29 @@
                 <% soildatas.forEach((row,index) => { %>
                
                         <div class="data" id="myUL">
-                            <div class="soildata">
-                            <p class="soil-search"><span>Soil Detail :<br><%= row.soilname %></span></p>
-                            <p class="month-search" > <%= row.date %></p>
+                          <div class="soilname-date">
+                          <p class="soil-search"><span><%= row.soilname %></span></p>
+                            <p id="month-search" ><span><%= row.date %></span></p>
+                            </div>
+                            <button class="Showmore" onclick="Showmore('<%= index %>')">Show data &#9660;</button>
+                            <div class="soildata" style="display: none;" id="<%= index %>">
+                            
                             <p>Nitrogen: <%= row.nitrogen %> </p>
                             <p>Phosphorus:<%= row.phosphorous%> </p>
                             <p>Potassium: <%= row.potassium %> </p>
                             <p>pH: <%= row.ph %></p>
-                            <p>temperature: <%= row.temperature%></p>
+                            <p>Temperature: <%= row.temperature%></p>
+                            <p>Humidity: <%= row.humidity %></p>
+                            <p>Electrical Conductivity : <%= row.electrical_conductivity %></p>
                             </div>
+                           
+                            
                             <div class="feature-archive">
-                            <a href="/alert/<%= row._id %>"><i class="fa-solid fa-trash"></i></a>
+                           
                             <a href="/archive/<%= row._id %>"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
                             <a href="/selection/<%= row._id %>"><i class="fa-solid fa-wheat-awn"></i></a>
+                            <a href="/alert/<%= row._id %>"><i class="fa-solid fa-trash"></i></a>
+                            
                             </div>
                             
                            
@@ -240,7 +251,15 @@
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn4lHzl_n5h7vQOz1jthHgTw-geOT5LIA&callback=initMap&libraries=marker&v=beta"
    defer></script>
     <script>
-        
+      
+    function Showmore(id){
+
+      const showdata = document.getElementById(id);
+      showdata.style.display = "grid";
+      showdata.previousElementSibling.textContent="";
+       
+
+    }
      function searchData() {
           
           var input = document.getElementById("myInput").value.toLowerCase();
