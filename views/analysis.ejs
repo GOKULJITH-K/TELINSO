@@ -124,7 +124,7 @@
                         
                     <div class="data">
                        
-                        <h3>nitrogen</h3>
+                        <h3>Nitrogen</h3>
                         
                          <p><%= nitrogenmsg %> </p>
                       </div>
@@ -134,7 +134,7 @@
                        
                        
                       
-                       <h3>phosphorus</h3>
+                       <h3>Phosphorus</h3>
                        
                      <p><%= phosphorusmsg %></p>
                                
@@ -144,7 +144,7 @@
                         
                    <div class="product-col"  >
                        
-                                   <h3>potassium</h3>
+                                   <h3>Potassium</h3>
                                    <p><%= potassiummsg %></p>
                                            
                    
@@ -167,13 +167,29 @@
                 
                <div class="product-col"  >
                    
-                   <h3>temperature</h3>
+                   <h3>Temperature</h3>
                    
                  <p><%= temperaturemsg %></p>
                            
                 </div>
+                <div class="product-col"  >
+                   
+                  <h3>Humidity</h3>
+                  
+                <p><%= humiditymsg %></p>
+                          
+               </div>
             
             
+              </div>
+              <div class="row2">
+                <div class="product-col"  >
+                   
+                  <h3>Electrical Conductivity</h3>
+                  
+                <p><%= electrical_conductivitymsg %></p>
+                          
+               </div>
               </div>
               <h1 >Visualization</h1>
               <div class="row1">
@@ -255,9 +271,9 @@
             </div>
    </section>
    <script>
-    var xValues = ["nitrogen", "phosphorus", "potassium", "pH", "temperature"];
-    var yValues = [`<%= nitrogen %>`, `<%= phosphorous %>`,`<%= potassium%>`,`<%= ph%>`,` <%= temperature%>`];
-    var barColors = ["red", "green","blue","orange","brown"];
+    var xValues = ["N", "P", "K", "pH", "Temp", "Humidity", "EC"];
+    var yValues = [`<%= nitrogen %>`, `<%= phosphorous %>`,`<%= potassium%>`,`<%= ph%>`,` <%= temperature%>`,`<%= humidity %>`,`<%= electrical_conductivity %>`];
+    var barColors = ["red", "green", "blue", "orange", "brown", "cyan","magenta"];
     
     new Chart("barChart", {
       type: "bar",
