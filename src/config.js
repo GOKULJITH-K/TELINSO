@@ -67,6 +67,14 @@ const saveSchema = new mongoose.Schema({
         required: true
         
     }, 
+    humidity:{
+        type: String,
+        required: true
+    },
+    electrical_conductivity:{
+        type: String,
+        required: true
+    },
     date:{
         type: String,
         required: true
@@ -166,6 +174,14 @@ const testSchema = new mongoose.Schema({
         required: true
     },
     temperature:{
+        type: String,
+        required: true
+    },
+    humidity:{
+        type: String,
+        required: true
+    },
+    electrical_conductivity:{
         type: String,
         required: true
     },
