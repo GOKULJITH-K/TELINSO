@@ -91,7 +91,15 @@ app.get("/welcome",extractToken,verifyToken, async(req,res)=>{
 
 })
 app.get("/weather",(req,res)=>{
-    res.render("weather");
+
+    if(req.cookies.token){
+
+        res.render("weather");
+
+    }else{
+
+        res.render("index");
+    }
 })
 app.get("/crop",async(req,res)=>{
     const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
@@ -117,18 +125,25 @@ app.get("/crop",async(req,res)=>{
     const electrical_conductivityVal=testdata.map(soil=>soil.electrical_conductivity);
     const electrical_conductivity=Number(mode(electrical_conductivityVal));
     
+    if(req.cookies.token){
 
-    res.render("crop",
-    {
-        nitrogen:nitrogen,
-        phosphorous:phosphorous,
-        potassium:potassium,
-        ph:ph,
-        temperature:temperature,
-        humidity:humidity,
-        electrical_conductivity:electrical_conductivity
-        
-    });
+        res.render("crop",
+        {
+            nitrogen:nitrogen,
+            phosphorous:phosphorous,
+            potassium:potassium,
+            ph:ph,
+            temperature:temperature,
+            humidity:humidity,
+            electrical_conductivity:electrical_conductivity
+            
+        });
+
+    }else{
+
+        res.render("index");
+    }
+   
 })
 app.get("/savedata",async(req,res)=>{
     const testdata = await testmodel.find().sort({_id:-1}).limit(30).exec();
@@ -153,16 +168,24 @@ app.get("/savedata",async(req,res)=>{
     
     const electrical_conductivityVal=testdata.map(soil=>soil.electrical_conductivity);
     const electrical_conductivity=Number(mode(electrical_conductivityVal));
+    if(req.cookies.token){
 
-    res.render("savedata",{
-        nitrogen:nitrogen,
-        phosphorous:phosphorous,
-        potassium:potassium,
-        ph:ph,
-        temperature:temperature,
-        humidity:humidity,
-        electrical_conductivity:electrical_conductivity,
-    });
+        res.render("savedata",{
+            nitrogen:nitrogen,
+            phosphorous:phosphorous,
+            potassium:potassium,
+            ph:ph,
+            temperature:temperature,
+            humidity:humidity,
+            electrical_conductivity:electrical_conductivity,
+        });
+
+    }else{
+
+        res.render("index");
+    }
+   
+    
 })
 app.get("/admin",(req,res)=>{
     res.render("admin");
@@ -175,7 +198,15 @@ app.get("/test",(req,res)=>{
 })
 app.get("/farmerassist",async(req,res)=>{
     const assistdata = await farmermodel.find().sort({_id:-1}).exec();
-    res.render("farmerassist",{assistdata:assistdata});
+   
+    if(req.cookies.token){
+
+        res.render("farmerassist",{assistdata:assistdata});
+    }else{
+
+        res.render("index");
+    }
+   
 })
   
 app.get("/feedback",async(req,res)=>{
@@ -186,26 +217,53 @@ app.get("/soilhealth",async(req,res)=>{
     
     const soildatas = await savemodel.find().sort({_id:-1}).exec();
    
+    if(req.cookies.token){
 
-     res.render("soilhealth", {soildatas: soildatas});
+        res.render("soilhealth", {soildatas: soildatas});
+    }else{
+
+        res.render("index");
+    }
+    
 })  
 app.get("/selection",async(req,res)=>{
 
-    res.render("selection");
+    if(req.cookies.token){
+
+        res.render("selection");
+    }else{
+
+        res.render("index");
+    }
+
+    
 })
 app.get("/delete",async(req,res)=>{
 
     //const deldata = await savemodel.findOne().sort({_id:-1}).exec();
     //const soilname = deldata.soilname;
     
+    if(req.cookies.token){
 
-    res.render("delete");
+        res.render("delete");
+    }else{
+
+        res.render("index");
+    }
+    
 })
 app.get("/alert",async(req,res)=>{
 
     const soildatas = await savemodel.find().sort({_id:-1}).exec();
-   
-     res.render("alert", {soildatas: soildatas});
+    if(req.cookies.token){
+
+        res.render("alert", {soildatas: soildatas});
+
+    }else{
+
+        res.render("index");
+    }
+     
 })
 app.get("/delete/delete-data", async(req,res)=>{
     
@@ -233,15 +291,24 @@ app.get("/delete/delete-data", async(req,res)=>{
         
         const electrical_conductivityVal=testdata.map(soil=>soil.electrical_conductivity);
         const electrical_conductivity=Number(mode(electrical_conductivityVal));
-        res.render("savedata",{
-            nitrogen:nitrogen,
-            phosphorous:phosphorous,
-            potassium:potassium,
-            ph:ph,
-            temperature:temperature,
-            humidity:humidity,
-            electrical_conductivity:electrical_conductivity,
-        });
+
+        if(req.cookies.token){
+
+            res.render("savedata",{
+                nitrogen:nitrogen,
+                phosphorous:phosphorous,
+                potassium:potassium,
+                ph:ph,
+                temperature:temperature,
+                humidity:humidity,
+                electrical_conductivity:electrical_conductivity,
+            });
+            
+        }else{
+    
+            res.render("index");
+        }
+        
         
       
 })
@@ -252,14 +319,21 @@ app.get("/alert/:id",async(req,res)=>{
     const soilname= alertdata.soilname;
     const datealert = alertdata.date;
     
-    
+    if(req.cookies.token){
+
+        res.render("alert",
+        {
+          soilname:soilname,
+          date:datealert,
+          id:id
+      });
+        
+    }else{
+
+        res.render("index");
+    }
    
-     res.render("alert",
-      {
-        soilname:soilname,
-        date:datealert,
-        id:id
-    });
+    
 })
 
   
@@ -270,8 +344,15 @@ app.get("/alert/delete/:id",async(req,res)=>{
     await savemodel.findByIdAndDelete(id)
 
     const soildatas = await savemodel.find().sort({_id:-1}).exec();
- 
-     res.render("soilhealth", {soildatas: soildatas});
+    if(req.cookies.token){
+
+        res.render("soilhealth", {soildatas: soildatas});
+        
+    }else{
+
+        res.render("index");
+    }
+     
 })
 app.get("/selection/:id",async(req,res)=>{
     
@@ -286,17 +367,24 @@ app.get("/selection/:id",async(req,res)=>{
     const humidity = soildatas.humidity;
     const electrical_conductivity = soildatas.electrical_conductivity;
 
-    
+    if(req.cookies.token){
 
-     res.render("selection",{
-        nitrogen:nitrogen,
-        phosphorous:phosphorous,
-        potassium:potassium,
-        ph:ph,
-        temperature:temperature,
-        humidity:humidity,
-        electrical_conductivity:electrical_conductivity,
-    });
+        res.render("selection",{
+            nitrogen:nitrogen,
+            phosphorous:phosphorous,
+            potassium:potassium,
+            ph:ph,
+            temperature:temperature,
+            humidity:humidity,
+            electrical_conductivity:electrical_conductivity,
+        });
+        
+    }else{
+
+        res.render("index");
+    }
+
+     
 })
 
 app.get("/archive/:id",async(req,res)=>{
@@ -401,8 +489,8 @@ app.get("/archive/:id",async(req,res)=>{
 
     console.log(nitrogen);  
        
-    
-            
+    if(req.cookies.token){
+
         res.render("archive",
         {
             nitrogenmsg:nitrogenmsg,
@@ -420,6 +508,14 @@ app.get("/archive/:id",async(req,res)=>{
             humidity:humidity,
             electrical_conductivity:electrical_conductivity,
        });
+        
+    }else{
+
+        res.render("index");
+    }
+
+            
+        
 
 
 })
@@ -540,8 +636,8 @@ app.get("/analysis",async(req,res)=>{
 
     console.log(nitrogen);  
        
-    
-            
+    if(req.cookies.token){
+
         res.render("analysis",
         {
             nitrogenmsg:nitrogenmsg,
@@ -560,6 +656,13 @@ app.get("/analysis",async(req,res)=>{
         electrical_conductivity:electrical_conductivity,
        });
       
+    }else{
+
+        res.render("index");
+    }
+
+            
+       
   
 });    
 
