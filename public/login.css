@@ -13,6 +13,9 @@
     width: 100%;
     
 }
+svg{
+  display: none;
+}
 nav{
     display: flex;
     align-items: center;
@@ -159,6 +162,10 @@ nav{
 .login-label{
   display: none;
 }
+.invalid-credential{
+  display: none;
+}
+
 .contact-col{
     margin: 10px;
     padding: 10px  20px;
@@ -203,6 +210,7 @@ form input,form textarea{
     border-radius: 10px;
     
 }
+
 form .btn2{
     padding: 14px 60px;
     font-size: 20px;
@@ -339,9 +347,30 @@ form .btn2:hover{
       display: block;
       font-size: 15px;
       padding: 0px;
-      margin: 0px 10px;
+      margin: -10px 10px;
+    }
+    .invalid-credential{
+      background: rgb(118, 9, 9);
+      border-radius: 10px;
+      text-align: center;
+      display: block;
+      padding: 0px;
+      margin: 0 20px;
+      cursor: pointer;
+  
+      
     }
     
+    .invalid-credential i {
+      padding-left: 15px ;
+
+    }
+    svg{
+      display: inline;
+      width: 300px;
+      height: 300px;
+    
+    }
     
     .contact-col p{
       font-size: 18px;
