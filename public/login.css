@@ -351,16 +351,20 @@ form .btn2:hover{
     .login-label{
       text-align: left;
       display: block;
-      font-size: 13px;
-      padding: 0;
-      margin: -20px 10px;
+      font-size: 15px;
+      padding: 0 5px;
+      margin:  0 15px;
+      color: #251742;
+    }
+    .login-pass{
+      margin-top: 10px;
     }
     .invalid-credential{
-      background: rgb(118, 9, 9);
+      background: rgb(111, 37, 37);
       border-radius: 10px;
       text-align: center;
       display: block;
-      padding: 0px;
+      padding: 0px ;
       font-size: 13px;
       margin: 0 20px;
       cursor: pointer;
@@ -431,7 +435,7 @@ form .btn2:hover{
        
         
         width: 90%;
-        
+        background: #171d4214;
     }
     .contact form textarea{
       

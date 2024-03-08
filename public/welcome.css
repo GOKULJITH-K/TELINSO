@@ -18,6 +18,9 @@
     
    
 }
+svg{
+    display: none;
+}
 .logo{
     margin: 35px 80px;
     top:10px;
@@ -786,7 +789,12 @@ form .btn2:hover{
         font-family: system-ui;
         
     }
-    
+    svg{
+        display: inline;
+        width: 230px;
+        height: 230px;
+      
+      }
     .Date-time{
         background:linear-gradient(to bottom,#251742,#482b7c) ;
         color: white;
