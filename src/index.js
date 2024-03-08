@@ -1,23 +1,46 @@
 const express = require('express');
 const path = require('path');
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
 const {loginmodel,savemodel,farmermodel,feedbackmodel,testmodel} = require("./config");
 const multer =require("multer");
 const fs = require('fs');
+const cookieParser = require('cookie-parser');
 const port=process.env.PORT || 3000 ;
 
 
 const app = express();
+ 
+const secretKey = process.env.SECRET_KEY || 'telinso';
+// middleware
 app.use(express.json());
-
-       
-
 app.use(express.urlencoded({extended:false}));
-
+app.use(cookieParser());
 app.set('view engine','ejs');
 
 app.use(express.static("public"));
 app.use(express.static("uploads"));
+
+const verifyToken = async(req,res)=>{
+    const token = req.cookies.token;
+    if(!token) return res.status(401).json({message:'Unauthorized'});
+
+ 
+    try{
+        const decoded = await jwt.verify(token,secretKey);
+        req.user = decoded;
+    }
+    catch(err){
+        return res.status(401).json({message:'Unauthorized'});
+    }
+};
+const extractToken = (req,res)=>{
+    const token = req.headers['authorization'];
+    if(token){
+        req.token= token.split(' ')[1];
+    }
+    
+};
 
 const storage=multer.diskStorage ({
         destination:function(req,file,cb)
@@ -30,18 +53,38 @@ const storage=multer.diskStorage ({
 
 const upload = multer({ storage:storage });
 
+
+
    
 
 app.get("/",(req,res)=>{
-    res.render("index");
+
+    if (req.cookies.token) {
+                
+        res.render("welcome");
+    } else {
+    
+        res.render("index");
+    }
+
+
 })
 app.get("/login",(req,res)=>{
-    res.render("login");
+
+    const message = ""; 
+    res.render("login", { message: message });
 })
 app.get("/signup",(req,res)=>{
     res.render("signup"); 
 })
-app.get("/welcome",async(req,res)=>{
+app.get("/logout", (req, res) => {
+    const message = ""; 
+    res.clearCookie('token'); 
+    res.render("login", { message: message });
+    
+    
+});
+app.get("/welcome",extractToken,verifyToken, async(req,res)=>{
 
     const farmerdata = await farmermodel.find().sort({_id:-1}).limit().exec();
     res.render("welcome",{farmerdata:farmerdata});
@@ -543,7 +586,7 @@ function mode(array){
 
 //login router
 
-app.post("/login", async(req,res)=>{
+app.post("/login", express.json(), async(req,res)=>{
 
     // cookie adding 
 
@@ -551,7 +594,8 @@ app.post("/login", async(req,res)=>{
         const check=await loginmodel.findOne({username: req.body.username});
         if(!check){
 
-            res.send("You have an invalid username");
+            const message = "You have an invalid username";
+            res.render("login", { message: message });
              
         } 
  
@@ -562,16 +606,27 @@ app.post("/login", async(req,res)=>{
 
         }else if(isPasswordMatch){
 
+            const token = jwt.sign({
+                userId: check._id,
+                username: check.username
+            }, secretKey, { expiresIn: '7d' });
+
+            res.cookie('token', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); 
+
             res.render("welcome");
+             
         } 
         else{ 
-
-            res.send("You have an invalid password");
+           const message = "You have an invalid password";
+            res.render("login",{message:message});
         }
     }catch{
-        res.send("You have an invalid credential");
+        const message = "You have an invalid password";
+            res.render("login",{message:message});
     }
-    const check=await loginmodel.findOne({username: req.body.username});
+    
+
+   
 
 })
 
