@@ -81,11 +81,14 @@
                             <p class="invalid-cred" style="color: white;"><%= message %> <i class="fa-solid fa-xmark" onclick="auth(this)"></i></p>
                         <% } %>
                         </div>
-                       
-                        <input type="text" name="username" placeholder="&#128100; username" required>
-                        
-                        <input type="password" name="password" placeholder="&#128274; password" required>
-                        
+                        <div class="login-pass">
+                        <label class="login-label"><i class="fa-solid fa-user"></i> username</label>
+                        <input type="text" name="username" placeholder="Telinso"  required>
+                        </div>
+                        <div class="login-pass">
+                        <label class="login-label"><i class="fa-solid fa-lock"></i> password</label>
+                        <input type="password" name="password" placeholder="*****" required>
+                        </div>
                         <button type="submit" class="btn btn2">Login</a></button>
                     </form> 
                      
