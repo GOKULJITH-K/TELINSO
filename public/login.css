@@ -29,7 +29,7 @@ nav{
   .logo{
     margin: 35px 80px;
     top:10px;
-    left:10px;
+    right:10px;
     position: absolute;
   }
   .logo span{
@@ -217,7 +217,7 @@ form .btn2{
     font-weight: 500;
     margin-top: 20px;
     width: 80%;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     color: white;
     background:linear-gradient(#251742,#482b7c) ;
@@ -235,15 +235,20 @@ form .btn2:hover{
 
 @media(max-width:800px){
 
+
+    body{
+      background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    }
     .header{
-        background-color: transparent;
-        height: 100px;
+   
+        height: 60px;
     }
     .logo{
       margin:15px;
       top:10px;
-      left:10px;
+      right:10px;
       position: absolute;
+
     }
     .logo img{
      
@@ -321,8 +326,10 @@ form .btn2:hover{
     
     .contact{
         width: auto;
-        padding: 15 5 130 5;
+        padding: 0 5 10 5;
+        height: 100vh;
        text-align: center;
+      
       
     
       
@@ -335,19 +342,18 @@ form .btn2:hover{
         
     }
     .contact-col{
-        margin: 10px;
-        padding: 10px;
+        margin: 0px;
+        padding: 0px 10px;
         
-
-       
+        
        
     }
     .login-label{
       text-align: left;
       display: block;
-      font-size: 15px;
-      padding: 0px;
-      margin: -10px 10px;
+      font-size: 13px;
+      padding: 0;
+      margin: -20px 10px;
     }
     .invalid-credential{
       background: rgb(118, 9, 9);
@@ -355,6 +361,7 @@ form .btn2:hover{
       text-align: center;
       display: block;
       padding: 0px;
+      font-size: 13px;
       margin: 0 20px;
       cursor: pointer;
   
@@ -367,8 +374,8 @@ form .btn2:hover{
     }
     svg{
       display: inline;
-      width: 300px;
-      height: 300px;
+      width: 250px;
+      height: 250px;
     
     }
     
@@ -563,7 +570,7 @@ form .btn2:hover{
       padding: 20px;
       margin: 10px;
       border: 2px solid #482b7c;
-      border-radius: 10px;
+      border-radius: 5px;
       
   }
   
