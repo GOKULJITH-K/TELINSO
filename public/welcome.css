@@ -979,10 +979,10 @@ form .btn2:hover{
         background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,43,115,1) 0%, rgb(67, 11, 67) 90% );
     }
     .product  .class2{
-        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(1, 7, 84) 0%, rgba(95,184,224,1) 99.7% );
+        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(147,67,67,1) 0%, rgba(111,27,27,1) 90% );
     }
     .product  .class3{
-        background-image: radial-gradient( circle farthest-corner at 17.1% 22.8%,  rgba(226,24,24,1) 0%, rgb(119, 4, 4) 90% );
+        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(1, 7, 84) 0%, rgba(95,184,224,1) 99.7% );
     }
     .product  .class4{
         background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,43,115,1) 0%, rgb(67, 11, 67) 90% );
