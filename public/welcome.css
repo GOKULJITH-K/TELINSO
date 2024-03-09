@@ -21,6 +21,12 @@
 svg{
     display: none;
 }
+.location i{
+    display: none;
+}
+ .date-time hr{
+    display: none;
+}
 .logo{
     margin: 35px 80px;
     top:10px;
@@ -781,7 +787,10 @@ form .btn2:hover{
         padding: 0px 15px;
         
         
+        
+        
     }
+    
     .overview-col h2{
         font-size: 20px;
         padding: 0px 15px;
@@ -796,23 +805,53 @@ form .btn2:hover{
       
       }
     .Date-time{
-        background:linear-gradient(to bottom,#251742,#482b7c) ;
-        color: white;
-        border-radius: 10px;
+        background:linear-gradient(rgb(231, 231, 244),rgb(196, 218, 225)) ;
+        color: black;
+        border-radius: 30px;
         display: flex;
         justify-content: space-around;
         margin: 20px;
         padding: 10px;
     }
-    .Date-time h2{
-        color: white;
-        padding: 5px;
+    .location{
         display: flex;
-        font-size: 20px;
-        text-align: left;
+        margin: 0;
+        padding: 0;
     }
+    .location-date{
+        padding-top: 5px;
+    }
+    .date-time hr{
+        display: inline;
+        height: 35px;
+        margin: 5px 0;
+    }
+    .location i{
+        display: inline;
+        justify-content: center;
+        position: relative;
+        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(176,229,208,1) 42%, rgba(92,202,238,0.41) 93.6% );
+        border-radius: 50px;
+        margin: 2px;
+        padding: 13px;
+        font-size: 13px;
+    }
+    
+    .location h2{
+        color: black;
+        padding: 0px;
+        padding-left: 5px;
+        margin: 0px;
+        display: flex;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        text-align: left;
+
+    }
+    
     .overview span{
         font-size: 22px;
+        font-family: 'Montserrat', sans-serif;
         color: #482b7c;
     }
     .overview-col p{
@@ -887,7 +926,7 @@ form .btn2:hover{
     .product{
         width: auto;
         padding: 10 ;
-        background: linear-gradient(to bottom, white 15%,#482b7c 90%,#251742 80%,white 20%);
+        background: none;
         
         
     
@@ -898,7 +937,7 @@ form .btn2:hover{
     .product a{
     
         margin: 10px;
-        box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.3);
+        box-shadow:  0px 0px 10px rgba(0, 0, 0, 0.3);
     }
     .product .row1{
         
@@ -914,8 +953,9 @@ form .btn2:hover{
     }
     .product h3{
         font-size: 22px;
-        font-family: system-ui;
+        font-family: 'Montserrat', sans-serif;
         text-align: left;
+        color: white;
     }
     .product-col{
         display: flex;
@@ -928,10 +968,30 @@ form .btn2:hover{
         align-self: center;
         margin: 10px;
         font-size: 35px;
+        color: white;
     }
     .product p{
         font-size: 20px;
+        color: white;
         font-family: system-ui;
+    }
+    .product  .class1{
+        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,43,115,1) 0%, rgb(67, 11, 67) 90% );
+    }
+    .product  .class2{
+        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(1, 7, 84) 0%, rgba(95,184,224,1) 99.7% );
+    }
+    .product  .class3{
+        background-image: radial-gradient( circle farthest-corner at 17.1% 22.8%,  rgba(226,24,24,1) 0%, rgb(119, 4, 4) 90% );
+    }
+    .product  .class4{
+        background-image: radial-gradient( circle 957px at 8.7% 50.5%,  rgb(203, 158, 12) 0%, rgba(249,47,47,1) 90% );
+    }
+    .product  .class5{
+        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% );
+    }
+    .product  .class6{
+        background-image: radial-gradient( circle 325px at 19.2% 64.8%,  rgb(193, 18, 53) 91.3%, rgb(171, 28, 152) 9.7% );
     }
     .conclusion{
         width: auto;
