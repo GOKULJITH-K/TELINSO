@@ -329,7 +329,7 @@ nav{
   box-sizing: border-box;
   text-align: center;
   transition: .5s;  
-  background: linear-gradient(to bottom, #e5e8e9, #a5d3f4);
+  background: linear-gradient(to bottom, #cce4cc, #95efbf);
   border-radius: 20px;
   text-decoration: none;
   display: flex;
