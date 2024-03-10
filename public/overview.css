@@ -22,6 +22,7 @@ nav .navbtn{
   justify-content: space-around;
   
 }
+
   nav .hero-btn2{
     display: inline-block;
     text-decoration: none;
@@ -190,7 +191,7 @@ nav .navbtn{
   
 
   nav .navbtn{
-    margin: 0px 20px;
+    margin: 0px;
     display: flex;
     justify-content: space-around;
     
