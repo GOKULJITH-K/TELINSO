@@ -1,7 +1,7 @@
 nav{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
   padding-top: 15px;
@@ -19,7 +19,7 @@ nav .navbtn{
   right:10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   
 }
   
@@ -115,7 +115,7 @@ nav .navbtn{
     nav{
       display: flex;
       align-items: center;
-      justify-content: space-evenly;       
+      justify-content: space-around;       
       padding-top: 10px;
       width: 100%;
       
@@ -125,7 +125,7 @@ nav .navbtn{
     nav .navbtn{
       margin: 0px 20px;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-around;
       
     }
       

@@ -731,7 +731,7 @@ form .btn2:hover{
       nav{
         display: flex;
         align-items: center;
-        justify-content: space-evenly;       
+        justify-content: space-around;       
         padding-top: 10px;
         width: 100%;
         
@@ -749,7 +749,7 @@ form .btn2:hover{
       nav .navbtn{
         margin: 0px 20px;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
         
       }
         
