@@ -1,39 +1,29 @@
 nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    
-    
-  }
-  .logo{
-    margin: 35px 80px;
-    top:10px;
-    left:10px;
-    position: absolute;
-  }
-  .logo span{
-    display: inline;
-    font-size: 30px;
-    text-decoration: none;
-    color: white;
-    outline: none;
-    left: 25px;
-   
-    position: absolute;
-  }
-  .logo img{
-   
-    width: 35px;
-    height: 35px;
-  }
-  nav .navbtn{
-    margin: 20px;
-    top:10px;
-    right:50px;
-    position: absolute;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 15px;
+  
+  
+}
+nav img{
+ 
+  width: 130px;
+  height: 20px;
+}
+nav .navbtn{
+  margin: 20px 60px;
+  top:15px;
+  right:10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+  
+  
   nav .hero-btn2{
     display: inline-block;
     text-decoration: none;
@@ -115,17 +105,30 @@ nav{
   
   @media only screen and (max-width:800px) {
     
-    .logo{
-      margin: 15px;
-      top:10px;
-      left:10px;
-      position: absolute;
-    }
-    .logo img{
+    nav img{
+   
+      width: 130px;
+      height: 20px;
+      filter: grayscale(100%) brightness(1000%);
      
-      width: 35px;
-      height: 35px;
     }
+    nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;       
+      padding-top: 10px;
+      width: 100%;
+      
+    }
+    
+  
+    nav .navbtn{
+      margin: 0px 20px;
+      display: flex;
+      justify-content: space-evenly;
+      
+    }
+      
     nav ul{
       display: block;
     }

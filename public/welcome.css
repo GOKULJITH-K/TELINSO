@@ -27,42 +27,34 @@
  .date-time hr{
     display: none;
 }
-.logo{
-    margin: 35px 80px;
-    top:10px;
-    left:10px;
-    position: absolute;
-  }
-  .logo span{
-    display: inline;
-    font-size: 30px;
-    text-decoration: none;
-    color: black;
-    outline: none;
-    left: 25px;
-   
-    position: absolute;
-  }
-  .logo img{
-   
-    width: 35px;
-    height: 35px;
-  }
+
   nav{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
+    padding-top: 15px;
     background: white;
     
     
   }
+  
+  
+  
+ nav img{
+   
+    width: 130px;
+    height: 20px;
+  }
   nav .navbtn{
-    margin: 20px;
-    top:10;
-    right:10;
-    position: absolute;
+    margin: 20px 60px;
+    top:15px;
+    right:10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
   }
   nav .hero-btn2{
     display: inline-block;
@@ -70,9 +62,9 @@
     background: black;
     color: white;
     margin-left: 15px;
-    padding: 10px 25px;
+    padding: 15px 25px;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 5px;
     border-radius: 10px;
     position: relative;
     cursor: pointer;
@@ -100,7 +92,7 @@
     background: black;
     position: absolute;
     left: 0;
-    bottom: -6px;
+    bottom: 15px;
     transition: 0.5s;
   }
   nav .heronew:hover::after{
@@ -726,20 +718,39 @@ form .btn2:hover{
 @media(max-width:800px){
 
     .header{
-        background-color: transparent;
+        
         height: 80px;
+      
     }
     
-    .logo{
-        margin: 15px;
-        top:10px;
-        left:10px;
-        position: absolute;
+      nav img{
+   
+        width: 130px;
+        height: 20px;
       }
-      .logo img{
+      nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;       
+        padding-top: 10px;
+        width: 100%;
+        
+        
+        
        
-        width: 35px;
-        height: 35px;
+        
+      }
+      
+     nav img{
+       
+        width: 130px;
+        height: 20px;
+      }
+      nav .navbtn{
+        margin: 0px 20px;
+        display: flex;
+        justify-content: space-evenly;
+        
       }
         
     .row{
@@ -751,9 +762,12 @@ form .btn2:hover{
         width: auto;
         padding: 0;
        text-align: center;
+    
+       
       
         
     }
+
    
     .overview-col{
         padding: 5px;
@@ -780,6 +794,7 @@ form .btn2:hover{
         display: flex;
         justify-content: space-around;
         padding: 10px;
+        
 
     }
     .welcome-text h2{

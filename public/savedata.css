@@ -117,43 +117,6 @@
 
 }
 
-.logo{
-  margin: 35px 80px;
-  top:10px;
-  left:10px;
-  position: absolute;
-}
-.logo span{
-  display: inline;
-  font-size: 30px;
-  text-decoration: none;
-  color: black;
-  outline: none;
-  left: 25px;
- 
-  position: absolute;
-}
-.logo img{
- 
-  width: 35px;
-  height: 35px;
-}
-nav{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  width: 100%;
-  background: white;
-  
-  
-}
-nav .navbtn{
-  margin: 20px;
-  top:10;
-  right:10;
-  position: absolute;
-}
 nav .hero-btn2{
   display: inline-block;
   text-decoration: none;
@@ -465,54 +428,7 @@ form .btn2:hover{
   width: 90%;
 }
 
-  .logo{
-    margin: 15px;
-    top:10px;
-    left:10px;
-    position: absolute;
-  }
-  .logo img{
-   
-    width: 35px;
-    height: 35px;
-  }
-  .text-box{
-      width:100%;
-      color: white;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      text-align: center;
-      padding-left: 0px;
-     
   
-  }
-  
-  .text-box h1{
-      font-size: 80px;
-      font-family: system-ui;
-  }
-  .text-box h4{
-      font-size: 25px;
-      text-align: center;
-      padding: 15px 35px;
-      font-weight: 100;
-      font-family: system-ui;
-      
-      
-    
-  }
-
-  
-  .text-box p{
-      color: white;
-      font-size: 16px;
-      padding: 0px 35px;
-      font-weight: 100;
-      font-family: system-ui;
-  }
-  
-      
   .row{
       
       flex-direction: column;
@@ -564,26 +480,7 @@ form .btn2:hover{
    .view-change{
     display: inline;
    }
-  .text-box .hero-btn{
-      
-      padding: 16px 32px 16px 12px;
-      font-size: 14px;
-      margin-left: 5px;
-      font-family: system-ui;
-     
-    }
-    .text-box .hero-btn2{
-      
-      display: none;
-      
-    }
-    
-  .text-box .hero-btn:hover{
-      border-left: 30px solid #482b7c;
-      background: #482b7c;
-     color: white;
-     
-  }
+ 
   .overview{
       width: auto;
       padding: 0;

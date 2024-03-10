@@ -13,43 +13,6 @@
     width: 100%;
     
 }
-.logo{
-  margin: 35px 80px;
-  top:10px;
-  left:10px;
-  position: absolute;
-}
-.logo span{
-  display: inline;
-  font-size: 30px;
-  text-decoration: none;
-  color: black;
-  outline: none;
-  left: 25px;
- 
-  position: absolute;
-}
-.logo img{
- 
-  width: 35px;
-  height: 35px;
-}
-nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    background: white;
-    
-    
-  }
-  nav .navbtn{
-    margin: 20px;
-    top:10;
-    right:10;
-    position: absolute;
-  }
   nav .hero-btn2{
     display: inline-block;
     text-decoration: none;
@@ -339,17 +302,7 @@ form .btn2:hover{
     height: 350px;
     
 }
-    .logo{
-      margin: 6px 10px;
-      top:10px;
-      left:10px;
-      position: absolute;
-    }
-    .logo img{
-     
-      width: 35px;
-      height: 35px;
-    }
+    
     .text-box{
         width:100%;
         color: white;

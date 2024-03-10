@@ -34,43 +34,6 @@ gmp-map {
   cursor: pointer;
   border: none;
 }
-.logo{
-  margin: 35px 80px;
-  top:10px;
-  left:10px;
-  position: absolute;
-}
-.logo span{
-  display: inline;
-  font-size: 30px;
-  text-decoration: none;
-  color: black;
-  outline: none;
-  left: 25px;
- 
-  position: absolute;
-}
-.logo img{
- 
-  width: 35px;
-  height: 35px;
-}
-nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    background: white;
-    
-    
-  }
-  nav .navbtn{
-    margin: 20px;
-    top:10;
-    right:10;
-    position: absolute;
-  }
   nav .hero-btn2{
     display: inline-block;
     text-decoration: none;
@@ -437,22 +400,13 @@ svg{
       display: flex;
 
     }
-    .logo{
-      margin: 6px 10px;
-      top:10px;
-      left:10px;
-      position: absolute;
-    }
+    
     svg{
       width: 300px;
       height: 300px;
     
     }
-    .logo img{
-     
-      width: 35px;
-      height: 35px;
-    }
+    
     .overview-btn{
 
       padding: 10px 25px;
@@ -461,16 +415,7 @@ svg{
       color: white;
       border-radius: 10px;
     }
-    .logo span{
-      display: inline;
-      font-size: 30px;
-      text-decoration: none;
-      color: white;
-      outline: none;
-      left: 25px;
-     
-      position: absolute;
-    }
+   
     .text-box{
         width:100%;
         color: white;
@@ -605,9 +550,7 @@ svg{
     font-size: 16px;
     padding: 6px;
    }
-    nav{
-      background: transparent;
-    }
+    
     
     nav ul{
         display: block;
