@@ -161,7 +161,7 @@
                           <p class="soil-search"><span><%= row.soilname %></span></p>
                             <p id="month-search" class="month-search" ><span><%= row.date %></span></p>
                             </div>
-                            <button class="Showmore" onclick="Showmore('<%= index %>')">Show data &#11167;</button>
+                            <button class="Showmore" onclick="Showmore('<%= index %>')">Show more <strong>&#11167;</strong></button>
                             <div class="soildata" style="display: none;" id="<%= index %>">
                             
                             <p>Nitrogen: <%= row.nitrogen %> </p>
@@ -274,8 +274,16 @@
     function Showmore(id){
 
       const showdata = document.getElementById(id);
-      showdata.style.display = "grid";
-      showdata.previousElementSibling.textContent="";
+      if (showdata.style.display === 'none') {
+        showdata.style.display = 'grid';
+        showdata.previousElementSibling.innerHTML="Show less <strong>&#11165;</strong>";
+        
+    } else {
+        showdata.style.display = 'none';
+        showdata.previousElementSibling.innerHTML="Show more <strong>&#11167;</strong>";
+    }
+     
+      
        
 
     }

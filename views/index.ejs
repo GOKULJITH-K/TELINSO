@@ -54,11 +54,13 @@
                        
                         <li><a href="login" class="login">Login</a></li>
                         <li><a href="/" class="login join">Join us</a></li>
-                   
+
                        
-                        
+                       
+                            
+                   
                 </ul>
-                
+               
                 <i class="fa-solid fa-user fas" onclick="openmenu()"></i>
             </nav>
             
@@ -180,7 +182,6 @@
                              The forecasting section is where they will receive the five-day weather forecast in advance. </P>
                        
                            
-                           <a href="login" class="about-btn"  >Explore now</a>
                    </div>
                       
                </div>
@@ -245,36 +246,34 @@
                 
                 <div class="row">
                    <div class="conclusion-col">
-                    <div class="row-2">
+                    <div class="row-2 " >
                         <div class="conclusion-col2" >
                             
-                            <h3>Empowernment</h3>
-                            <p>Empower your soil journey with Telinso, unraveling the depths of soil health through diverse
+                            <h3>Empowernment <i class="fa-solid fa-plus"onclick="show('conclusion-para-1')"></i></h3>
+                            <p id="conclusion-para-1" style="display: none;">Empower your soil journey with Telinso, unraveling the depths of soil health through diverse
                                  parameters for sustainable agriculture enlightenment.</p>
                           
                                 </div>
                         <div class="conclusion-col2">
                             
-                                        <h3>Innovation</h3>
-                                        <p>Revitalize farming practices with Telinso's inventive solutions, exploring various soil parameters to foster 
+                                        <h3>Innovation <i class="fa-solid fa-plus"onclick="show('conclusion-para-2')"></i></h3>
+                                        <p id="conclusion-para-2" style="display: none;">Revitalize farming practices with Telinso's inventive solutions, exploring various soil parameters to foster 
                                             sustainable agriculture and cultivate healthier, thriving soils.</p>
         
                                    
                         </div>
-                    </div>
-                    <div class="row-2">
-                        
+                    
                              <div class="conclusion-col2" >
                                
-                                 <h3>Possibilities</h3>
-                                 <p>Unlock the endless possibilities beneath your feet. Telinso explores
+                                 <h3>Possibilities <i class="fa-solid fa-plus"onclick="show('conclusion-para-3')"></i></h3>
+                                 <p id="conclusion-para-3" style="display: none;">Unlock the endless possibilities beneath your feet. Telinso explores
                                      diverse soil parameters, revealing potential for sustainable farming and environmental resilience.</p>
                                
                              </div>
                              <div class="conclusion-col2"  >
                                  
-                                <h3>Collaboration</h3>
-                                <p>Foster agricultural harmony through Telinso's collaborative platform, uniting stakeholders to
+                                <h3>Collaboration <i class="fa-solid fa-plus" onclick="show('conclusion-para-4')"></i></h3>
+                                <p id="conclusion-para-4" style="display: none;">Foster agricultural harmony through Telinso's collaborative platform, uniting stakeholders to
                                      interpret soil parameters for informed decisions and collective efforts towards sustainable farming.</p>
 
                                         
@@ -430,6 +429,17 @@
                 </p>
          </div>
    </section>
-              
+              <script>
+                function show(id){
+                   conclusionElement= document.getElementById(id);
+                    if (conclusionElement.style.display === 'none') {
+       
+                    conclusionElement.style.display = 'flex';
+                } else {
+                
+                    conclusionElement.style.display = 'none';
+                }
+                }
+              </script>
          </body>
 </html>
