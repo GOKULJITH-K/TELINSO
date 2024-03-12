@@ -1,37 +1,31 @@
+
+.logo{
+  margin: 35px 80px;
+  top:10px;
+  left:10px;
+  position: absolute;
+}
+
+.logo img{
+ 
+  width: auto;
+  height: 30px;
+}
 nav{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
+  background: white;
   
-  
-}
-.nav-bar{
-  display: flex;
-  align-items: center;
-  justify-content:space-around;
-  flex-wrap: nowrap;
-  
-  
-  
-}
-nav img{
- 
-  width: 130px;
-  height: 20px;
-  filter: grayscale(100%) brightness(1000%);
   
 }
 nav .navbtn{
-  margin: 20px 60px;
-  top:15px;
-  right:10px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  
-  
+  margin: 20px;
+  top:10;
+  right:10;
+  position: absolute;
 }
   nav .hero-btn2{
     display: inline-block;
@@ -182,42 +176,17 @@ nav .navbtn{
 @media(max-width:800px){
 
     
-  nav{
-    width: 100%;
-   
-    
-    
+  .logo{
+    margin: 20px 10px;
+    top:10px;
+    left:10px;
+    position: absolute;
   }
-  nav img{
+  .logo img{
    
-    width: 130px;
-    height: 20px;
+    width: 150px;
+    height: 23.8px;
     filter: grayscale(100%) brightness(1000%);
-   
-  }
-  nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;       
-    padding-top: 10px;
-    width: 100%;
-    
-  }
-  .nav-bar{
-    display: flex;
-    align-items: center;
-    justify-content:space-around;
-    flex-wrap: wrap;
-    width: 100%;
-    
-    
-  }
-
-  nav .navbtn{
-    margin: 0px 20px;
-    display: flex;
-    justify-content: space-evenly;
-    
   }
     
     .text-box{
@@ -307,6 +276,11 @@ nav .navbtn{
       
     }
     
+    
+   
+    nav{
+      background: transparent;
+    }
     
     nav ul{
         display: block;

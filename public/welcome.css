@@ -28,52 +28,34 @@
     display: none;
 }
 
+  
+.logo{
+    margin: 35px 80px;
+    top:10px;
+    left:10px;
+    position: absolute;
+  }
+  
+  .logo img{
+   
+    width: auto;
+    height: 30px;
+  }
   nav{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     width: 100%;
     background: white;
     
     
   }
-  .nav-bar{
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-    flex-wrap: wrap;
-    width: 100%;
-    position: absolute;
-    margin-top: 85px;
-    
-    
-  }
-  nav img{
-   
-    width: 130px;
-    height: 20px;
-   
-  }
-
   nav .navbtn{
-    margin: 20px 60px;
-    top:15px;
-    right:10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    
-  }
-  .nav-bar{
-    display: flex;
-    align-items: center;
-    justify-content:space-around;
-    flex-wrap: wrap;
-    padding-top: 15px;
-    width: 100%;
-    
-    
+    margin: 20px;
+    top:10;
+    right:10;
+    position: absolute;
   }
   nav .hero-btn2{
     display: inline-block;
@@ -742,17 +724,16 @@ form .btn2:hover{
       
     }
     
-      nav img{
-   
-        width: 130px;
-        height: 20px;
+    .logo{
+        margin: 20px 10px;
+        top:10px;
+        left:10px;
+        position: absolute;
       }
-      
-      nav .navbtn{
-        margin: 0 20px;
-        display: flex;
-        justify-content: space-around;
-        
+      .logo img{
+       
+        width: 150px;
+        height: 23.8px;
       }
         
     .row{
