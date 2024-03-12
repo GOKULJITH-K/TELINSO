@@ -292,7 +292,7 @@ gmp-map {
   box-sizing: border-box;
   text-align: center;
   transition: .5s;  
-  background: linear-gradient(to bottom, #cce4cc, #95efbf);
+  background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
   border-radius: 20px;
   text-decoration: none;
   display: flex;

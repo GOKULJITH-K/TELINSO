@@ -733,7 +733,7 @@ form .btn2:hover{
       .logo img{
        
         width: 150px;
-        height: 23.8px;
+        height: 21.8px;
       }
         
     .row{
@@ -977,19 +977,19 @@ form .btn2:hover{
         font-family: system-ui;
     }
     .product  .class1{
-        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(237, 222, 241) 0%, rgb(250, 201, 250) 90% );
+        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
     }
     .product  .class2{
-        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(228, 247, 236) 0%, rgb(180, 237, 193) 90% );
+        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
     }
     .product  .class3{
         background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
     }
     .product  .class4{
-        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(237, 222, 241) 0%, rgb(250, 201, 250) 90% );
+        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
     }
     .product  .class5{
-        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(228, 247, 236) 0%, rgb(180, 237, 193) 90% );
+        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
     }
     .product  .class6{
         background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
