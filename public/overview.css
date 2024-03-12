@@ -4,7 +4,15 @@ nav{
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  padding-top: 15px;
+  
+  
+}
+.nav-bar{
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  flex-wrap: wrap;
+  width: 100%;
   
   
 }
@@ -12,6 +20,7 @@ nav img{
  
   width: 130px;
   height: 20px;
+  filter: grayscale(100%) brightness(1000%);
 }
 nav .navbtn{
   margin: 20px 60px;
@@ -22,7 +31,6 @@ nav .navbtn{
   justify-content: space-around;
   
 }
-
   nav .hero-btn2{
     display: inline-block;
     text-decoration: none;
@@ -188,12 +196,20 @@ nav .navbtn{
     width: 100%;
     
   }
-  
+  .nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    
+    
+  }
 
   nav .navbtn{
-    margin: 0px;
+    margin: 0px 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     
   }
     

@@ -34,19 +34,28 @@
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    padding-top: 15px;
     background: white;
     
     
   }
   
   
-  
- nav img{
+  .nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    
+    
+  }
+  nav img{
    
     width: 130px;
     height: 20px;
+   
   }
+
   nav .navbtn{
     margin: 20px 60px;
     top:15px;
@@ -54,6 +63,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    
+  }
+  .nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    padding-top: 15px;
+    width: 100%;
+    
     
   }
   nav .hero-btn2{
@@ -728,28 +747,11 @@ form .btn2:hover{
         width: 130px;
         height: 20px;
       }
-      nav{
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;       
-        padding-top: 10px;
-        width: 100%;
-        
-        
-        
-       
-        
-      }
       
-     nav img{
-       
-        width: 130px;
-        height: 20px;
-      }
       nav .navbtn{
-        margin: 0px;
+        margin: 0 20px;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
         
       }
         
@@ -973,7 +975,7 @@ form .btn2:hover{
         font-size: 22px;
         font-family: 'Montserrat', sans-serif;
         text-align: left;
-        color: white;
+        color: black;
     }
     .product-col{
         display: flex;
@@ -986,30 +988,30 @@ form .btn2:hover{
         align-self: center;
         margin: 10px;
         font-size: 35px;
-        color: white;
+        color: black;
     }
     .product p{
         font-size: 20px;
-        color: white;
+        color: black;
         font-family: system-ui;
     }
     .product  .class1{
-        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,43,115,1) 0%, rgb(67, 11, 67) 90% );
+        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(237, 222, 241) 0%, rgb(250, 201, 250) 90% );
     }
     .product  .class2{
-        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% );
+        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(228, 247, 236) 0%, rgb(180, 237, 193) 90% );
     }
     .product  .class3{
-        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(1, 7, 84) 0%, rgba(95,184,224,1) 99.7% );
+        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
     }
     .product  .class4{
-        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,43,115,1) 0%, rgb(67, 11, 67) 90% );
+        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(237, 222, 241) 0%, rgb(250, 201, 250) 90% );
     }
     .product  .class5{
-        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% );
+        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(228, 247, 236) 0%, rgb(180, 237, 193) 90% );
     }
     .product  .class6{
-        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(1, 7, 84) 0%, rgba(95,184,224,1) 99.7% );
+        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
     }
     .conclusion{
         width: auto;
