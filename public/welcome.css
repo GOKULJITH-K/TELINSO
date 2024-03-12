@@ -38,14 +38,14 @@
     
     
   }
-  
-  
   .nav-bar{
     display: flex;
     align-items: center;
     justify-content:space-between;
     flex-wrap: wrap;
     width: 100%;
+    position: absolute;
+    margin-top: 85px;
     
     
   }

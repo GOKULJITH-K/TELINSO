@@ -13,6 +13,8 @@ nav{
   justify-content:space-between;
   flex-wrap: wrap;
   width: 100%;
+  position: absolute;
+  margin-top: 85px;
   
   
 }
@@ -21,6 +23,7 @@ nav img{
   width: 130px;
   height: 20px;
   filter: grayscale(100%) brightness(1000%);
+  
 }
 nav .navbtn{
   margin: 20px 60px;
@@ -29,6 +32,7 @@ nav .navbtn{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  
   
 }
   nav .hero-btn2{
