@@ -717,16 +717,17 @@ form .btn2:hover{
   }
   
   .logo{
-      margin: 15px;
-      top:10px;
-      left:10px;
-      position: absolute;
-    }
-    .logo img{
-     
-      width: 35px;
-      height: 35px;
-    }
+    margin: 20px 10px;
+    top:10px;
+    left:10px;
+    position: absolute;
+  }
+  .logo img{
+   
+    width: 150px;
+    height: 21.8px;
+  }
+    
       
   .row{
       
@@ -734,79 +735,124 @@ form .btn2:hover{
   }
   
   .overview{
-      width: auto;
-      padding: 0;
-     text-align: center;
-    
-      
-  }
- 
-  .overview-col{
-      padding: 5px;
-      text-align: center;
-      
-     
-  }
-  .overview h1{
-      
-     display: none;
-  }
-  .overview h2{
-      
-      font-size: 25px;
-      text-align: left;
-      padding: 25px;
-      margin: 15px;
-      color: black;
-      display: block;
+    width: auto;
+    padding: 0;
+   text-align: center;
 
-      
-  }
-  .welcome-text{
-      display: flex;
-      justify-content: space-around;
-      padding: 10px;
-
-  }
-  .welcome-text h2{
-      font-size: 20px;
-      padding: 0px 15px;
-      
-      
-  }
-  .overview-col h2{
-      font-size: 20px;
-      padding: 0px 15px;
-      text-align: justify;
-      font-family: system-ui;
-      
-  }
+   
   
-  .Date-time{
-      background:linear-gradient(to bottom,#251742,#482b7c) ;
-      color: white;
-      border-radius: 10px;
-      display: flex;
-      justify-content: space-around;
-      margin: 20px;
-      padding: 10px;
-  }
-  .Date-time h2{
-      color: white;
-      padding: 5px;
-      display: flex;
-      font-size: 20px;
-      text-align: left;
-  }
-  .overview span{
-      font-size: 22px;
-      color: #482b7c;
-  }
-  .overview-col p{
-      display: none;
-      
     
+}
+
+
+.overview-col{
+    padding: 5px;
+    text-align: center;
+    
+   
+}
+.overview h1{
+    
+   display: none;
+}
+.overview h2{
+    
+    font-size: 25px;
+    text-align: left;
+    padding: 25px;
+    margin: 15px;
+    color: black;
+    display: block;
+
+    
+}
+.welcome-text{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    
+
+}
+.welcome-text h2{
+    font-size: 20px;
+    padding: 0px 15px;
+    
+    
+    
+    
+}
+
+.overview-col h2{
+    font-size: 20px;
+    padding: 0px 15px;
+    text-align: justify;
+    font-family: system-ui;
+    
+}
+.overview-col img{
+    display: inline;
+    width: 230px;
+    height: 230px;
+  
   }
+.Date-time{
+    background:linear-gradient(rgb(231, 231, 244),rgb(196, 218, 225)) ;
+    color: black;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 10px;
+}
+.location{
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.location-date{
+    padding-top: 5px;
+}
+.date-time hr{
+    display: inline;
+    height: 35px;
+    margin: 5px 0;
+    outline: none;
+    border: 1px solid black;
+    
+}
+.location i{
+    display: inline;
+    justify-content: center;
+    position: relative;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(206, 239, 243) 42%, rgba(31, 180, 234, 0.41) 93.6% );
+    border-radius: 50px;
+    margin: 2px;
+    padding: 13px;
+    font-size: 15px;
+}
+
+.location h2{
+    color: black;
+    padding: 0px;
+    padding-left: 5px;
+    margin: 0px;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-align: left;
+
+}
+
+.overview span{
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+    color: #482b7c;
+}
+.overview-col p{
+    display: none;
+    
+  
+}
   .feature{
       width: auto;
       margin-top: 20px;
