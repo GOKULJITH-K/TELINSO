@@ -2,15 +2,16 @@ const express = require('express');
 const path = require('path');
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
-const {loginmodel,savemodel,farmermodel,feedbackmodel,testmodel} = require("./config");
+const {loginmodel,savemodel,farmermodel,feedbackmodel,testmodel,test2model} = require("./config");
 const multer =require("multer");
+const axios = require("axios");
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const port=process.env.PORT || 3000 ;
-
-
+  
+  
 const app = express();
- 
+  
 const secretKey = process.env.SECRET_KEY || 'telinso';
 // middleware
 app.use(express.json());
@@ -42,16 +43,16 @@ const extractToken = (req,res)=>{
     
 };
 
-const storage=multer.diskStorage ({
-        destination:function(req,file,cb)
-        {cb(null, './uploads'); 
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads'); 
     },
-    filename:function(req,file,cb){
-        cb(null,`${file.originalname}`);
+    filename: function(req, file, cb) {
+        cb(null, `${file.originalname}`); 
     },
-    });
+});
 
-const upload = multer({ storage:storage });
+const upload = multer({ storage: storage });
 
 
 
@@ -88,8 +89,8 @@ app.get("/welcome",extractToken,verifyToken, async(req,res)=>{
 
     const farmerdata = await farmermodel.find().sort({_id:-1}).limit().exec();
     res.render("welcome",{farmerdata:farmerdata});
-
-})
+  
+})  
 app.get("/weather",(req,res)=>{
 
     if(req.cookies.token){
@@ -101,7 +102,31 @@ app.get("/weather",(req,res)=>{
         res.render("index");
     }
 })
-app.get("/crop",async(req,res)=>{
+app.get("/crophealth",(req,res)=>{
+
+    if(req.cookies.token){
+
+
+        res.render("crophealth",{classname:"",reasons:"",symptoms:"",mitigations:""});
+
+    }else{
+
+        res.render("index");
+    }
+})
+app.get("/test2",(req,res)=>{
+
+    if(req.cookies.token){
+
+        res.render("test2");
+
+    }else{
+
+        res.render("index");
+    }
+})
+app.post('/cropPredict', async(req,res)=> {
+
     const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
 
     const nitrogenval=testdata.map(soil=>soil.nitrogen);
@@ -114,6 +139,101 @@ app.get("/crop",async(req,res)=>{
     const potassium=Number(mode(potassiumval));
 
     const pHval=testdata.map(soil=>soil.ph);
+    const pH=Number(mode(pHval));
+
+    const temperatureval=testdata.map(soil=>soil.temperature);
+    const temperaturev=Number(mode(temperatureval));
+
+    const humidityval=testdata.map(soil=>soil.humidity);
+    const humidityv=Number(mode(humidityval));
+    
+    const electrical_conductivityVal=testdata.map(soil=>soil.electrical_conductivity);
+    const electrical_conductivity=Number(mode(electrical_conductivityVal));
+    
+    const { N, P, K, ph, humidity, ec, temperature } = req.body;
+       
+        
+        const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
+            N,
+            P,
+            K,
+            ph,
+            humidity,
+            ec,
+            temperature,
+
+        });
+    
+   const suggested_crop= pythonResponse.data.suggested_crop;
+   const success_percentage= pythonResponse.data.success_percentage;
+    if(req.cookies.token){
+   
+        res.render("crop",
+        {
+            nitrogen:nitrogen,
+            phosphorous:phosphorous,
+            potassium:potassium,
+            ph:pH,
+            temperature:temperaturev,
+            humidity:humidityv,
+            electrical_conductivity:electrical_conductivity,
+            suggested_crop:suggested_crop,
+            success_percentage:success_percentage,
+            
+        });
+
+    }else{
+
+        res.render("index");
+    }
+   
+    
+})
+app.post('/upload', upload.single('image'), async (req, res) => {
+   
+    // Ensure the file is uploaded
+  console.log(req.file.path);
+
+  const image = fs.readFileSync(req.file.path, {
+    encoding: "base64"
+}); 
+  
+const response = await axios({
+    method: "POST",
+    url: "https://detect.roboflow.com/telinso/1",
+    params: {
+        api_key: "dVbUXioOhtnfoCsVFylB"
+    },
+    data: image,
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+
+})  
+     const predictions = response.data.predictions;
+
+    const classname = predictions[0].class;
+    console.log(predictions[0].class)
+    const data =await  test2model.findOne({name:classname}).exec();
+    const reasons = data.reasons;
+    const symptoms = data.symptoms;
+    const mitigations= data.mitigations;
+   
+res.render("crophealth",{classname:classname,reasons:reasons,symptoms:symptoms,mitigations:mitigations});
+})    
+app.get("/crop",async(req,res)=>{
+    const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
+
+    const nitrogenval=testdata.map(soil=>soil.nitrogen);
+    const N=Number(mode(nitrogenval));
+
+    const phosphorusval=testdata.map(soil=>soil.phosphorous);
+    const P=Number(mode(phosphorusval));
+
+    const potassiumval=testdata.map(soil=>soil.potassium);
+    const K=Number(mode(potassiumval));
+
+    const pHval=testdata.map(soil=>soil.ph);
     const ph=Number(mode(pHval));
 
     const temperatureval=testdata.map(soil=>soil.temperature);
@@ -123,21 +243,38 @@ app.get("/crop",async(req,res)=>{
     const humidity=Number(mode(humidityval));
     
     const electrical_conductivityVal=testdata.map(soil=>soil.electrical_conductivity);
-    const electrical_conductivity=Number(mode(electrical_conductivityVal));
+    const ec=Number(mode(electrical_conductivityVal));
     
+    
+     
+    const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
+        N,
+        P,
+        K,
+        ph,
+        humidity,
+        ec,
+        temperature,
+
+    });
+
+const suggested_crop= pythonResponse.data.suggested_crop;
+const success_percentage= pythonResponse.data.success_percentage;
     if(req.cookies.token){
 
         res.render("crop",
         {
-            nitrogen:nitrogen,
-            phosphorous:phosphorous,
-            potassium:potassium,
+            nitrogen:N,
+            phosphorous:P,
+            potassium:K,
             ph:ph,
             temperature:temperature,
             humidity:humidity,
-            electrical_conductivity:electrical_conductivity
+            electrical_conductivity:ec,
+            suggested_crop:suggested_crop,
+            success_percentage:success_percentage
             
-        });
+        }); 
 
     }else{
 
@@ -359,25 +496,41 @@ app.get("/selection/:id",async(req,res)=>{
     let id=req.params.id;
     
     const soildatas = await savemodel.findById(id);
-    const nitrogen = soildatas.nitrogen;
-    const phosphorous = soildatas.phosphorous;
-    const potassium = soildatas.potassium;
+    const N = soildatas.nitrogen;
+    const P = soildatas.phosphorous;
+    const K = soildatas.potassium;
     const ph = soildatas.ph;
     const temperature = soildatas.temperature;
     const humidity = soildatas.humidity;
-    const electrical_conductivity = soildatas.electrical_conductivity;
+    const ec = soildatas.electrical_conductivity;
+
+    const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
+        N,
+        P,
+        K,
+        ph,
+        humidity,
+        ec,
+        temperature,
+
+    });
+
+const suggested_crop= pythonResponse.data.suggested_crop;
+const success_percentage= pythonResponse.data.success_percentage;
 
     if(req.cookies.token){
 
         res.render("selection",{
-            nitrogen:nitrogen,
-            phosphorous:phosphorous,
-            potassium:potassium,
+            nitrogen:N,
+            phosphorous:P,
+            potassium:K,
             ph:ph,
             temperature:temperature,
             humidity:humidity,
-            electrical_conductivity:electrical_conductivity,
-        });
+            electrical_conductivity:ec,
+            suggested_crop:suggested_crop,
+            success_percentage:success_percentage,
+        }); 
         
     }else{
 
@@ -400,106 +553,13 @@ app.get("/archive/:id",async(req,res)=>{
     const humidity = soildatas.humidity;
     const electrical_conductivity = soildatas.electrical_conductivity;
 
-    if (nitrogen> 300) {
-        nitrogenmsg = `Value of nitrogen is higher than optimum value. We can find
-         that the soil contains an excess quantity of nutrients for vegetable cultivation, we should maintain the ratio of npk.value is ${nitrogen}`;
-    }
-    else if (nitrogen> 201 && nitrogen< 300 ) {
-        nitrogenmsg = `Value of nitrogen is optimum for vegetable cultivation.value is ${nitrogen}`;
-
-    }else if (nitrogen> 101 && nitrogen< 150){
-        nitrogenmsg = `Value of nitrogen is optimum for Field crop cultivation.value is ${nitrogen}`;
-    } 
-      else if(nitrogen> 150 && nitrogen< 200){
-       nitrogenmsg = `We can find that the soil does not have an adequate quantity of nutrients for vegetable cultivation. 
-       We can find that the soil contains an excess quantity of nutrients for field crop cultivation, we should maintain the ratio of npk.value is ${nitrogen}` ;
-    } else{
-      nitrogenmsg = `value of nitrogen is lower than optimum value for field crop cultivation and vegetable crop cultivation.value is ${nitrogen}`
-    }
-
-    if (phosphorous> 90) {
-        phosphorusmsg = `Value of phosphorus is higher than optimum value. We can find
-        that the soil contains an excess quantity of nutrients for vegetable cultivation, we should maintain the ratio of npk.Value is ${phosphorous}`;
-    }else if (phosphorous> 61 && phosphorous< 90 ) {
-        phosphorusmsg = `Value of phosphorus is optimum for vegetable cultivation.Value is ${phosphorous}`;
-
-    }else if (phosphorous> 11 && phosphorous< 20){
-        phosphorusmsg = `Value of phosphorus is optimum for Field crop cultivation.Value is ${phosphorous}`;
-    } 
-    else if(phosphorous> 20 && phosphorous< 61){
-        phosphorusmsg = `We can find that the soil does not have an adequate quantity of nutrients for vegetable cultivation. 
-        We can find that the soil contains an excess quantity of nutrients for field crop cultivation, we should maintain the ratio of npk.Value is ${phosphorous}` ;
-    } else{
-        phosphorusmsg = `value of phosphorus is lower than optimum value for field crop cultivation and vegetable crop cultivation.Value is ${phosphorous}`
-    }
-
-    if (potassium> 240) {
-        potassiummsg = `Value of potassium is higher than optimum value. We can find
-        that the soil contains an excess quantity of nutrients for vegetable cultivation, we should maintain the ratio of npk.Value is ${potassium}`;
-    }else if (potassium> 161 && potassium< 240 ) {
-        potassiummsg = `Value of potassium is optimum for vegetable cultivation.Value is ${potassium}`;
-
-    }else if (potassium> 101 && potassium< 150){
-        potassiummsg = `Value of potassium is optimum for Field crop cultivation.Value is ${potassium}`;
-    } 
-      else if(potassium> 150 && potassium< 161){
-        potassiummsg = `We can find that the soil does not have an adequate quantity of nutrients for vegetable cultivation. 
-        We can find that the soil contains an excess quantity of nutrients for field crop cultivation, we should maintain the ratio of npk.Value is ${potassium}` ;
-    } else{
-        potassiummsg = `value of potassium is lower than optimum value for field crop cultivation and vegetable crop cultivation.Value is ${potassium}`
-    }
-
-    if (ph > 7.5) {
-        pHmsg = `Should decrease the amount of pH.Value is ${ph}`;
-    }else if (ph> 6.6 && ph< 7.5 ) {
-        pHmsg = `Perfect range for plant growth and planting'.Value is ${ph}`;
-
-    }else {
-        pHmsg = `Should increase the amount of pH.Value is ${ph}`
-    }
-
-    if (temperature> 30) {
-        temperaturemsg = `It is not the perfect range for nitrification, plant growth, and planting.Value is ${temperature}`;
-    }else if (temperature> 19 && temperature< 30 ) {
-        temperaturemsg = `Perfect range of nitrification, plant growth, and planting.Value is ${temperature}`;
-
-    }else {
-
-        temperaturemsg = `value is lower than optimum value for plant growth.Value is ${temperature}`
-    }
-    if (humidity > 90) {
-        humiditymsg = `It is not the perfect range for nitrification, plant growth, and planting.Value is ${humidity}`;
-    }else if (humidity >  70 && humidity < 90 ) {
-        humiditymsg = `Perfect range of nitrification, plant growth, and planting.Value is ${humidity}`;
-
-    }else {
-
-        humiditymsg = `value is lower than optimum value for plant growth.Value is ${humidity}`
-    }
-    if (electrical_conductivity > 2) {
-        electrical_conductivitymsg = `It is not the perfect range for nitrification, plant growth, and planting.Value is ${electrical_conductivity}`;
-    }else if (electrical_conductivity> 1 && electrical_conductivity < 2 ) {
-        electrical_conductivitymsg = `Perfect range of nitrification, plant growth, and planting.Value is ${electrical_conductivity}`;
-
-    }else {
-
-        electrical_conductivitymsg= `value is lower than optimum value for plant growth.Value is ${humidity}`
-    }
-
-
-    console.log(nitrogen);  
+     
        
     if(req.cookies.token){
 
         res.render("archive",
         {
-            nitrogenmsg:nitrogenmsg,
-            phosphorusmsg:phosphorusmsg,
-            potassiummsg:potassiummsg,
-            pHmsg:pHmsg,
-            temperaturemsg:temperaturemsg,
-            humiditymsg:humiditymsg,
-            electrical_conductivitymsg:electrical_conductivitymsg,
+            
             nitrogen:nitrogen,
             phosphorous:phosphorous,
             potassium:potassium,
@@ -517,7 +577,7 @@ app.get("/archive/:id",async(req,res)=>{
             
         
 
-
+ 
 })
   
 //
@@ -546,107 +606,13 @@ app.get("/analysis",async(req,res)=>{
     const electrical_conductivityVal=testdata.map(soil=>soil.electrical_conductivity);
     const electrical_conductivity=Number(mode(electrical_conductivityVal));
     
-    // processing nitrogen
     
-    if (nitrogen> 300) {
-        nitrogenmsg = `Value of nitrogen is higher than optimum value. We can find
-         that the soil contains an excess quantity of nutrients for vegetable cultivation, we should maintain the ratio of npk.value is ${nitrogen}`;
-    }else if (nitrogen> 201 && nitrogen< 300 ) {
-        nitrogenmsg = `Value of nitrogen is optimum for vegetable cultivation.value is ${nitrogen}`;
-
-    }else if (nitrogen> 101 && nitrogen< 150){
-        nitrogenmsg = `Value of nitrogen is optimum for Field crop cultivation.value is ${nitrogen}`;
-    } 
-    else if(nitrogen> 150 && nitrogen< 200){
-       nitrogenmsg = `We can find that the soil does not have an adequate quantity of nutrients for vegetable cultivation. 
-       We can find that the soil contains an excess quantity of nutrients for field crop cultivation, we should maintain the ratio of npk.value is ${nitrogen}` ;
-    } else{
-      nitrogenmsg = `value of nitrogen is lower than optimum value for field crop cultivation and vegetable crop cultivation.value is ${nitrogen}`
-    }
-
-    if (phosphorous> 90) {
-        phosphorusmsg = `Value of phosphorus is higher than optimum value. We can find
-        that the soil contains an excess quantity of nutrients for vegetable cultivation, we should maintain the ratio of npk.Value is ${phosphorous}`;
-    }else if (phosphorous> 61 && phosphorous< 90 ) {
-        phosphorusmsg = `Value of phosphorus is optimum for vegetable cultivation.Value is ${phosphorous}`;
-
-    }else if (phosphorous> 11 && phosphorous< 20){
-        phosphorusmsg = `Value of phosphorus is optimum for Field crop cultivation.Value is ${phosphorous}`;
-    } 
-      else if(phosphorous> 20 && phosphorous< 61){
-        phosphorusmsg = `We can find that the soil does not have an adequate quantity of nutrients for vegetable cultivation. 
-        We can find that the soil contains an excess quantity of nutrients for field crop cultivation, we should maintain the ratio of npk.Value is ${phosphorous}` ;
-    } else{
-        phosphorusmsg = `value of phosphorus is lower than optimum value for field crop cultivation and vegetable crop cultivation.Value is ${phosphorous}`
-    }
-
-    if (potassium> 240) {
-        potassiummsg = `Value of potassium is higher than optimum value. We can find
-        that the soil contains an excess quantity of nutrients for vegetable cultivation, we should maintain the ratio of npk.Value is ${potassium}`;
-    }else if (potassium> 161 && potassium< 240 ) {
-        potassiummsg = `Value of potassium is optimum for vegetable cultivation.Value is ${potassium}`;
-
-    }else if (potassium> 101 && potassium< 150){
-        potassiummsg = `Value of potassium is optimum for Field crop cultivation.Value is ${potassium}`;
-    } 
-      else if(potassium> 150 && potassium< 161){
-        potassiummsg = `We can find that the soil does not have an adequate quantity of nutrients for vegetable cultivation. 
-        We can find that the soil contains an excess quantity of nutrients for field crop cultivation, we should maintain the ratio of npk.Value is ${potassium}` ;
-    } else{
-        potassiummsg = `value of potassium is lower than optimum value for field crop cultivation and vegetable crop cultivation.Value is ${potassium}`
-    }
-
-    if (ph> 7.5) {
-        pHmsg = `Should decrease the amount of pH.Value is ${ph}`;
-    }else if (ph> 6.6 && ph< 7.5 ) {
-        pHmsg = `Perfect range for plant growth and planting'.Value is ${ph}`;
-
-    }else {
-        pHmsg = `Should increase the amount of pH.Value is ${ph}`
-    }
-
-    if (temperature> 30) {
-        temperaturemsg = `It is not the perfect range for nitrification, plant growth, and planting.Value is ${temperature}`;
-    }else if (temperature> 19 && temperature< 30 ) {
-        temperaturemsg = `Perfect range of nitrification, plant growth, and planting.Value is ${temperature}`;
-
-    }else {
-
-        temperaturemsg = `value is lower than optimum value for plant growth.Value is ${temperature}`
-    }
-    if (humidity > 90) {
-        humiditymsg = `It is not the perfect range for nitrification, plant growth, and planting.Value is ${humidity}`;
-    }else if (humidity >  70 && humidity < 90 ) {
-        humiditymsg = `Perfect range of nitrification, plant growth, and planting.Value is ${humidity}`;
-
-    }else {
-
-        humiditymsg = `value is lower than optimum value for plant growth.Value is ${humidity}`
-    }
-    if (electrical_conductivity > 2) {
-        electrical_conductivitymsg = `It is not the perfect range for nitrification, plant growth, and planting.Value is ${electrical_conductivity}`;
-    }else if (electrical_conductivity > 1 && electrical_conductivity< 2 ) {
-        electrical_conductivitymsg = `Perfect range of nitrification, plant growth, and planting.Value is ${electrical_conductivity}`;
-
-    }else {
-
-        electrical_conductivitymsg= `value is lower than optimum value for plant growth.Value is ${humidity}`
-    }
-
-
-    console.log(nitrogen);  
        
     if(req.cookies.token){
 
         res.render("analysis",
         {
-            nitrogenmsg:nitrogenmsg,
-        phosphorusmsg:phosphorusmsg,
-        potassiummsg:potassiummsg,
-        pHmsg:pHmsg,
-        temperaturemsg:temperaturemsg,
-        humiditymsg:humiditymsg,
-        electrical_conductivitymsg:electrical_conductivitymsg,
+            
         nitrogen:nitrogen,
         phosphorous:phosphorous,
         potassium:potassium,
@@ -656,8 +622,8 @@ app.get("/analysis",async(req,res)=>{
         electrical_conductivity:electrical_conductivity,
        });
       
-    }else{
-
+    }else{   
+ 
         res.render("index");
     }
 
@@ -764,7 +730,29 @@ app.post("/signup", async(req,res) =>{
 })
  
 // save data router
+app.post("/test2data", async(req,res) =>{
 
+    // const imageBuffer = fs.readFileSync(req.file.path);
+     const userdata={
+ 
+         name:req.body.name,
+         reasons:req.body.reasons,
+         symptoms:req.body.symptoms,
+         mitigations:req.body.mitigations,
+         
+            
+     } 
+    
+        
+         const savedata=await test2model.insertMany(userdata);
+         console.log(savedata);
+        
+         
+         res.render("welcome");
+   
+   
+     
+ })
 app.post("/savedata", upload.single("image"), async(req,res) =>{
 
    // const imageBuffer = fs.readFileSync(req.file.path);

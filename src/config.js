@@ -33,6 +33,27 @@ const LoginSchema = new mongoose.Schema({
 // model users
 const loginmodel = mongoose.model("users",LoginSchema);
 
+const test2Schema = new mongoose.Schema({
+    name:{
+        type: String,
+        required: true
+    },
+    reasons:{
+        type: String,
+        required: true
+    },
+    symptoms:{
+        type: String,
+        required: true
+    },
+    mitigations:{
+        type: String,
+        required: true
+    }
+});
+
+// model users
+const test2model = mongoose.model("test2",test2Schema);
 
 // schema savedata
 const saveSchema = new mongoose.Schema({
@@ -199,5 +220,6 @@ module.exports ={
     farmermodel,
     feedbackmodel,
     testmodel,
+    test2model,
 };
 
