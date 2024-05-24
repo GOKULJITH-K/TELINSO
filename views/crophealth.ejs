@@ -18,12 +18,18 @@
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
              <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
              <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
              <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
              <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
              <link rel="manifest" href="/site.webmanifest">
-             
+             <style>
+              @media (max-width:800px){
+            .header{
+                background-image:linear-gradient(to bottom, rgba(14, 13, 13, 0.838) 15%,transparent 90%),url(crophealth.jpg);
+            }
+            
+           }
+             </style>
             </head>
             
      <body>
@@ -87,12 +93,13 @@
              
       <div class="row">
          <div class="overview-col">
-             <h1>CROP SELECTION</h1>
+             <h1>CROP HEALTH</h1>
              <span class="description"> Description </span>
                    <span class="overview-description">
-                    Embark on your farming journey with Telinso's innovative crop selection feature. Seamlessly record soil details with accompanying pictures to inform optimal crop choices. Track changes, monitor trends, and make informed decisions for successful cultivation.
-                     This tool ensures a comprehensive archive, empowering users with a visual timeline for enhanced farming experiences and productivity.</span>
-             
+                    Embark on your journey to crop health excellence with Telinso's Crop Health Insights. 
+                    Access expert advice and actionable strategies for disease, pest, and weed management,
+                     ensuring your crops thrive and reach their full potential.
+
             
              
              <P>
@@ -108,7 +115,7 @@
          </div>
            
      </div>
-     <img src="selection.png" height="270px" width="380px">    
+     <img src="health.png" height="270px" width="380px">
       
  </section>
      <section class="product">
@@ -117,54 +124,50 @@
         <span class="description"> User Instructions</span>
         <span class="overview-description">
          <ul class="overview-description">
-           <li>Select a crop from the provided list or type the crop and press 'Predict Crop'.</li>
-           <li>Receive tailored recommendations based on the current soil sample analysis.</li>
-           <li>View recommendations along with the ideal values based on research for optimal crop cultivation.</li>
+          <li>Upload an image of your crop to identify potential issues and receive an expert analysis.</li>
+          <li>Receive detailed insights and tailored recommendations based on the health assessment of your crop.</li>
+          <li>Access research-based guidelines and ideal conditions for optimal crop growth and mitigation strategies.</li>
+          
          </ul>
         </span>
         <div class="product-col inputfield" >
-          <form action="/cropPredict" method="POST">
+         
+          <form action="/upload" method="POST" enctype="multipart/form-data">
+                        
+                
+                
+              
+                
+                <input style="border: none;" type="file" id="img" name="image" >
+               
+  
             
-            <input type="hidden" id="N" name="N" value="<%= nitrogen %>" required>
-            <input type="hidden" id="P" name="P" value="<%= phosphorous %>" required>
-            <input type="hidden" id="K" name="K" value="<%= potassium %>" required>
-            <input type="hidden" id="humidity" value="<%= humidity %>" name="humidity" required>
-            <input type="hidden" id="ph" value="<%= ph %>" name="ph" required>
-            <input type="hidden" id="ec" value="<%= electrical_conductivity %>" name="ec" required>
-            <input type="hidden" id="temperature" value="<%= temperature %>" name="temperature" required>
-    
-
-            <button type="submit" class="btn btn2">Predict Crop</button>
-        </form>
-    
-            
+                <button type="submit" class="btn btn2">Upload</button>
+     
+        </form> 
         </div>
         
-      </div>
+        
+        </div>
       
       <div class="row2">
-        <div class="product-col" >
-          <h3> <%= suggested_crop %></h3>
-          
-          <div class="data">
-          
-          <p>
-            Given current soil conditions, <%= suggested_crop %> cultivation is recommended for sustainable farming. By optimizing soil health, successful cultivation and sustainable practices can be achieved.
-          </p></div> 
-          
+            <div class="product-col"  style="padding: 0px;">
+              <h3 style="padding-top: 25px;"><%= classname %></h3>
+              
+              <div class="data">
+              
+                <span class="overview-description">
+                 <ul class="overview-description">
+                   <li>Reasons: <%= reasons %></li>
+                   <li>Symptoms: <%= symptoms %></li>
+                   <li>Mitigations: <%= mitigations %></li>
+                 </ul>
+                </span>
+              </div> 
+              
 
-        </div>
-          
-          <div class="product-col" >
-              <canvas id="doughnutChart"></canvas>
-          </div>
-
-          <div class="product-col"  >
-            <h5>Visualization of Soil Parameters</h5>
-            <canvas  id="myChart"></canvas>
-        </div>
-        </div>
-        
+            </div>
+           
                 
           </div>
                          
@@ -227,199 +230,8 @@
                 </p>
             </div>
    </section>
-   <script>
-    var xValues = ["succuss"];
-    var yValues = [`<%= success_percentage %>`,100-`<%= success_percentage%>`];
-    var barColors = ["green","whitesmoke"];
-    new Chart("doughnutChart", {
-      type: "doughnut",
-      data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-        }]
-      },
-      options: {
-        legend: {display: false},
-        title: {
-          display: true,
-          text: "Visualization of Crop Prediction"
-        }
-      }
-    });
-
-    let crop = `<%= suggested_crop %>`;
-    
-    if ( crop == "Rice") {
-        nitrogenval = "125";
-        phosphorousval = "30";
-        potassiumval = "100";
-        phval = "7.25";
-        temperatureval = "30";
-        humidityval="75";
-        electrical_conductivityval="0.4";
-    }
-    else if( crop == "Coconut"){
-
-      nitrogenval = "150";
-      phosphorousval = "60";
-        potassiumval = "300";
-        phval = "7.25";
-        temperatureval = "25";
-        humidityval="65";
-        electrical_conductivityval="0.3";
-
-    }
-        else if( crop == "Carrot"){
-
-    nitrogenval = "125";
-    phosphorousval = "80";
-      potassiumval = "100";
-      phval = "6.5";
-      temperatureval = "20";
-      humidityval="60";
-      electrical_conductivityval="0.7";
-
-    }
-    else if( crop == "Pepper"){
-
-      nitrogenval = "150";
-      phosphorousval = "80";
-      potassiumval = "150";
-      phval = "7.25";
-      temperatureval = "25";
-      humidityval="60";
-      electrical_conductivityval="0.8";
-
-    }
-    else if( crop == "Cocoa"){
-
-      nitrogenval = "150";
-      phosphorousval = "60";
-      potassiumval = "225";
-      phval = "6.5";
-      temperatureval = "27.5";
-      humidityval="75";
-      electrical_conductivityval="0.4";
-
-      }
-      else if( crop == "Banana"){
-
-      nitrogenval = "175";
-      phosphorousval = "80";
-      potassiumval = "300";
-      phval = "7.25";
-      temperatureval = "27.5";
-      humidityval="65";
-      electrical_conductivityval="0.35";
-
-      }
-      else if( crop == "Tapioca"){
-
-        nitrogenval = "125";
-        phosphorousval = "80";
-        potassiumval = "100";
-        phval = "6";
-        temperatureval = "30";
-        humidityval="60";
-        electrical_conductivityval="0.75";
-
-        }
-        else if( crop == "Tomatoes"){
-
-        nitrogenval = "160";
-        phosphorousval = "100";
-        potassiumval = "160";
-        phval = "6.4";
-        temperatureval = "25";
-        humidityval="60";
-        electrical_conductivityval="1";
-
-        }
-        else if( crop == "Cabbage"){
-
-        nitrogenval = "175";
-        phosphorousval = "80";
-        potassiumval = "175";
-        phval = "6.5";
-        temperatureval = "20";
-        humidityval="60";
-        electrical_conductivityval="0.75";
-
-        }
-    else{
-      nitrogenval = "0";
-      phosphorousval = "0";
-      potassiumval = "0";
-      phval = "0";
-      temperatureval = "0";
-      humidityval="0";
-      electrical_conductivityval="0";
-
-    }
-    
    
-    
-    const data = {
-      labels: ["N", "P", "K", "pH", "Temp", "Humidity", "EC"],
-      datasets: [{
-        label: 'Ideal Values',
-        data: [nitrogenval,phosphorousval,potassiumval,phval,temperatureval,humidityval,electrical_conductivityval],
-        backgroundColor: [
-          'rgba(255, 26, 104, 0.2)',
-          
-        ],
-        borderColor: [
-          
-          'rgba(54, 162, 235, 1)',
-         
-          
-        ],
-        borderWidth: 1
-      },{
-        label: 'Sample Values',
-        data: [`<%= nitrogen %>`,`<%= phosphorous %>`,`<%= potassium %>`,`<%= ph %>`,`<%= temperature %>`,`<%= humidity %>`,`<%= electrical_conductivity %>`],
-        backgroundColor: [
-          'rgba(75, 192, 192, 0.2)',
-          
-        ],
-        borderColor: [
-          
-          'rgba(0, 0, 0, 1)',
-         
-          
-        ],
-        borderWidth: 1
-      }]
-    };
-// config 
-const config = {
-      type: 'line',
-      data,
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        },
-
-      
-        
-      }
-    };
-
-    // render init block
-    const myChart = new Chart(
-      document.getElementById('myChart'),
-      config
-    );
-
-    
-    
-
-
-    </script>
+   
  
      </body>
 </html>
