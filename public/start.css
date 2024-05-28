@@ -363,7 +363,7 @@ form .btn2:hover{
     .selection{
       
       display: flex;
-      margin: 0 80px;
+      margin: 0 100px;
       border-radius: 10px;
       justify-content: space-around;
       cursor: pointer;
@@ -380,7 +380,7 @@ form .btn2:hover{
       font-family: 'Montserrat', sans-serif;
     }
     .getstarted{
-      width: 100%;
+      width: 90%;
     }
     .contact .getstarted a{
       color: white;
