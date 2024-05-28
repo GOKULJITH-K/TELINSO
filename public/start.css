@@ -249,7 +249,7 @@ form .btn2:hover{
 
 
     body{
-      background-image: linear-gradient(to top, #fff1eb 0%, white 100%);
+      background-image: linear-gradient(to top, white 100%, white 100%);
     }
     .header{
    
