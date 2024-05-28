@@ -4,7 +4,7 @@
          <title>TELINSO</title>
          
          <link rel="stylesheet" href="/welcome.css">
-         <link rel="stylesheet" href="/farmer.css">
+        
          <script src="/navbar.js" defer></script>
          <link rel="stylesheet" href="/footer.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +18,7 @@
          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
          <link rel="manifest" href="/site.webmanifest">
+        
         </head>
      <body>
        
@@ -50,23 +51,29 @@
                 
             
                 <ul id="sidemenu">
-                    <li><a  onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
-                    <hr>
-                    <li><a href="#about">Home</a></li>
-                    <hr>
-                        <li><a href="#about">Product</a></li>
-                    <hr>
-                        <li><a href="#about">About</a></li>
-                        <hr>
-                        <li><a href="#contact">Contact</a></li>
-                        <hr>
-                        <p>
-                            Thank you for choosing Telinso. We value your trust and support. Please free to Contact us anytime
-                        </p>
-                       
-                        <li><a href="/logout" class="login">Logout</a></li>
-                        <li><a href="" class="login join">Subscription</a></li>
-                   
+                    
+                    <li ><a style="background: whitesmoke;border-radius: 5px;padding: 5px;"  onclick="closemenu()" style="font-size: 13px;"><i class="fa-solid fa-xmark"></i></a></li>
+
+                    
+            
+                    <p>General</p>
+                    <li><a href="/profile"><i class="fa-solid fa-user"></i> Profile</a></li>
+                    <li><a href="/savedata"><i class="fa-solid fa-arrow-up-from-bracket"></i> Store data</a></li>
+                    <li><a href="/analysis"><i class="fa-solid fa-chart-simple"></i> Soil analysis</a></li>
+                    <li><a href="/farmerassist"><i class="fa-solid fa-fan"></i> Farmer assist</a></li>
+                    <li><a href="/weather"><i class="fa-solid fa-bolt"></i> Weather forecast</a></li>
+                    <li><a href="/soilhealth"><i class="fa-solid fa-file-waveform"></i> Soil archives</a></li>
+                    <li><a href="/crop"><i class="fa-solid fa-wheat-awn"></i> Crop selection</a></li>
+                    <li><a href="/crophealth"> <i class="fa-solid fa-seedling"></i> Crop health</a></li>
+
+                    <p>Support</p>
+                    <li><a href="tel:+919447140767"><i class="fa-solid fa-headset"></i> Help </a></li>
+                    <li><a href="mailto:gokuljithk@gmail.com"><i class="fa-solid fa-circle-info"></i> Feedback</a></li>
+
+                
+                        <li><a href="/logout" class="login"><i class="fa-solid fa-right-from-bracket"></i>LogOut</a></li>
+                        
+                   <p style="text-align: center;">Terms of Use | Privacy Policy</p>
                                
                 </ul>
                 
@@ -82,13 +89,13 @@
                    <div class="overview-col">
                        <div class="welcome-text">
                        <h1>WELCOME TO TELINSO</h1>
-                        <h2>Hello <span>Gokuljith</span></h2>
-                       <h2 id="greeting"></h2>
+                        <h2 style="font-size: 18px;" id="greeting"></h2>
+                        <h2><span><%= firstname %></span></h2>
                        
                        </div>
-                       <img src="welcome.png" alt="">
-                       <h2 id="day"></h2>
-                       <h2>Lets Check Your Soil Health <i class="fa-solid fa-heart-circle-plus"></i></h2>
+                       <img src="wello.png" alt="" >
+                       <h2 id="day" style="padding-top: 20px;"></h2>
+                       <h2 style="margin-top: -10px;" >Lets Check Your Soil Health <i class="fa-solid fa-heart-circle-plus"></i></h2>
                        
                        <div class="Date-time">
                        <div class="location">
@@ -140,7 +147,7 @@
                 <a href="/savedata" class="class1">
                     <div class="product-col " >
                         
-                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
                             <div>
                                 <h3>Store Data</h3>
                                 
@@ -165,7 +172,7 @@
                            </a>
                            <a href="/farmerassist" class="class3">    
                             <div class="product-col"  >
-                                <i class="fa-solid fa-handshake-angle"></i>
+                                <i class="fa-solid fa-fan"></i>
                                     <div>
                                     <h3>Farmer Assist</h3>
                                     
@@ -182,7 +189,7 @@
                
               <a href="/weather" class="class4">
                <div class="product-col "  >
-                   <i class="fa-solid fa-cloud-bolt"></i>
+                <i class="fa-solid fa-bolt"></i>
                         <div>
                         <h3>Weather Forecast</h3>
                         
@@ -239,7 +246,7 @@
                </section>
               
          
-           <section class="contact">
+           <section class="contact" id="contact">
             <div class="row">
                <div class="contact-col">
                   
@@ -325,31 +332,30 @@
             </div>
    </section>
    <script>
-    // Get current date and time
+    
     var now = new Date();
   
-    // Extract date, time, and day
     var months = now.toLocaleDateString(undefined, { month: 'long', });
     var time = now.toLocaleTimeString();
     var dateNumber = now.getDate();
     var day = now.toLocaleDateString(undefined, { weekday: 'long' });
   
-    // Get hour to determine the greeting
     var hour = now.getHours();
     var greeting = "";
   
     if (hour < 12) {
-      greeting = "Good Morning";
+      greeting = "Good Morning,";
     } else if (hour < 18) {
-      greeting = "Good Afternoon";
+      greeting = "Good Afternoon,";
     } else {
-      greeting = "Good Evening";
+      greeting = "Good Evening,";
     }
   
    
     document.getElementById("greeting").innerHTML = greeting;
     document.getElementById("dateNumber").innerHTML = dateNumber +" "+ months;
     document.getElementById("day").innerHTML = "How's Your "+day+" Going";
+   
   </script>
   
                          

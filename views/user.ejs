@@ -3,10 +3,12 @@
          <meta name="viewport" content="width=device-width,initial-scale=1.0">
          <title>TELINSO</title>
          
-         <link rel="stylesheet" href="/admin.css">
+         <link rel="stylesheet" href="/soilhealth.css">
          <script src="/navbar.js" defer></script>
-         <link rel="stylesheet" href="/footer.css">        
+         <link rel="stylesheet" href="/footer.css">
+         <link rel="stylesheet" href="/nav.css">
          <script src="/topbtn.js" defer></script>
+         <link rel="stylesheet" href="/overview.css">
          <link rel="preconnect" href="https://fonts.googleapis.com">
          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
          <script src="https://kit.fontawesome.com/01780eab25.js" crossorigin="anonymous"></script>
@@ -18,10 +20,25 @@
          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
          <link rel="manifest" href="/site.webmanifest">
+         <style>
+            @media (max-width:800px){
+           
+            .icons-header{
+                display: grid;
+                 grid-template-columns: auto; 
+                 padding-left: 80%;
+                 padding: 0;
+                 margin: 10;
+                 font-size: 17px;
+            }
+           }
+         </style>
+         
         </head>
      <body>
-       
-          <section class="header" >
+        <button onclick="topFunction()" id="myBtn" class="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
+        
+        <section class="header" >
            
            <div class="container">
 
@@ -72,58 +89,35 @@
                
                
            </nav>
+            <div class="icons-header" >
+            <a href="/admin"><i class="fa-solid fa-house"></i></a>
+            <a href="/farmer" ><i class="fa-solid fa-handshake-angle"></i></a>
+            <a href="/feedback"><i class="fa-solid fa-comments"></i></a>
+            </div>
              
          </section>
          <section class="overview" >
              
             <div class="row">
                <div class="overview-col">
-                   <div class="welcome-text">
-                   <h1>WELCOME TO TELINSO</h1>
-                    <h2>Hello <span>Gokuljith</span></h2>
-                   <h2 id="greeting"></h2>
-                   
-                   </div>
-                   <img src="welcome.png" alt="">
-                   <h2 id="day"></h2>
-                   <h2>Empowering farmers, sustaining tomorrow, reflecting today.<i class="fa-solid fa-notes-medical"></i></h2>
-                   
-                   <div class="Date-time">
-                   <div class="location">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="location-date">
-                        <h2 >Location</h2>
-                        <h2>India</h2>
-                    </div>
-                    
-                   </div>
-                   <hr>
-                   <div class="location">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    <div class="location-date">
-                        <h2 >Date</h2>
-                        <h2 id="dateNumber"></h2>
-                    </div>
-                   </div>
-
-                    </div>
-                    
-                   
-
-    
+                   <h1>USER LOGIN</h1>
+                   <span class="description"> Description </span>
+                   <span class="overview-description">
+                    Elevate your farming strategy with Telinso's User Management feature. Access extensive soil data to optimize crop management and sustainability practices. Stay ahead with accurate insights for informed decisions and thriving harvests. 
+                    Telinso ensures seamless alignment of farming operations with evolving soil conditions for enhanced productivity and long-term success.</span>
                    
                   
                    
-                <P>
-
-                    Soil health and crop productivity are crucial factors in agriculture, playing a pivotal role in maintaining a sustainable environment.
-                     The primary cause of soil degradation is the excessive use of fertilizers. Therefore, it is essential to conduct soil testing before 
-                     initiating agriculture. Soil testing holds significance for various reasons: optimizing crop production, improving the nutritional 
-                     balance of the growing media, and saving money and energy by applying only the necessary amount of fertilizer. Our solution is designed 
-                     to assist farmers comprehensively, including monitoring soil conditions and nutrients. Data collected from the monitoring system will be
-                      stored on a cloud server for analysis. The primary objective is to keep track of nutrient levels in the soil.
-                     Having knowledge of their soil before commencing farming will aid farmers in precise cultivation planning.
+                   <P>
+                    Capture the essence of your soil's health journey with Telinso's innovative feature 
+                    data storage with soil detail pictures. Seamlessly record and preserve vital information about your soil, 
+                    accompanied by visual snapshots. Effortlessly track changes, monitor trends, and make informed decisions for
+                     optimal soil health. This powerful tool ensures a comprehensive archive for future reference, empowering users with 
+                     a visual timeline of their soil's evolution. Telinso simplifies the complexity of soil health monitoring, bringing
+                      precision and clarity to your agricultural practices. Enhance your farming experience by preserving the past for 
+                      a thriving future.
                 </P>
+                   
                        
                     
                </div>
@@ -131,72 +125,62 @@
            </div>
           
        </section>
-          
-           
-              
-              <section class="product">
-               <div class="row1">
-                <a href="/user">
-                    <div class="product-col" >
-                        
-                        <i class="fa-solid fa-right-to-bracket"></i>
-                       
-                        <h3>User Management</h3>
-                        
-                      <p>Streamline logins, manage users securely</p>
-                                
-                    
-                                
-                            </div>
-                         </a>
-                   <a href="/farmer">
-                   <div class="product-col" >
-                       
-                    <i class="fa-solid fa-handshake-angle"></i>
-                      
-                       <h3>Farmer Assist</h3>
-                       
-                     <p>Farm smarter with personalized crop assistance.</p>
-                               
-                   
-                               
-                           </div>
-                        </a>
-                        <a href="/feedback">
-                            <div class="product-col" >
-                                
-                                <i class="fa-solid fa-comments"></i>
-                               
-                                <h3>User Feedback</h3>
-                                
-                              <p>Collect insights, improve site continuously.</p>
-                                        
-                            
-                                        
-                                    </div>
-                        </a>
-                       
+           <section class="contact">
+            <h1>User Management</h1>
+            <div class="row">
                 
-              
-              </div>
-               </section>
-              
-         
+               <div class="contact-row">
+                  
+                <% userdatas.forEach((row,index) => { %>
+               
+                  <div class="data" id="myUL">
+                    <div class="soilname-date">
+                    <p class="soil-search"><span><%= row.firstname %></span></p>
+                      <p id="month-search" class="month-search" ><span><%= row.approval %></span></p>
+                      </div>
+                      <button class="Showmore" onclick="Showmore('<%= index %>')">Show more <strong>&#x25BD; </strong></button>
+                      <div class="soildata" style="display: none;grid-template-columns: auto;" id="<%= index %>">
+                      
+                        <p>Username : <%= row.username %></p>
+                        <p>Phone Number : <%= row.number %> </p>
+                        <p>Email :<%= row.email%> </p>
+                        
+                        
+                      </div>
+                     
+                      
+                      <div class="feature-archive">
+                     
+                      <a href="/approval/<%= row._id %>"><i class="fa-solid fa-person-circle-check"></i></a>
+                      <a href="/delete-user/<%= row._id %>"><i class="fa-solid fa-trash"></i></a>
           
+                      
+                      </div>
+                      
+                     
+                   
+                  </div>
+                  
+                  <% })  %>
+        
+
+                 
+                </div>
+                
+            </div>
+           
+       </section>
 
        <section class="footer">
           
-       
             <div class="row">
                 <div class="footer-col" >
                     <p>Soil Analysis</p>
                     <p>Visualization</p>
                     <p>Farmer Assist</p>
                     <p>Weather Forecast</p>
-                   
                   
                         </div>
-                        <hr>
                 <div class="footer-col"  >
                       <p>Data Analytics</p>
                       <p>Cloud computing</p>
@@ -204,7 +188,6 @@
                       <p>Artificial intelligence</p>
                            
                                     </div>
-                                    <hr>
                 <div class="footer-col"  >
                    <p>Empowernment</p>
                    <p>Innovation</p>
@@ -212,7 +195,6 @@
                    <p>Collaboration</p>
                     
                 </div>
-                <hr>
             
             
            
@@ -224,7 +206,6 @@
                 <p>About</p>
                 <p>Contact</p>
             </div>
-            <hr>
     </div>
             <div class="footer-col" style="text-align: center;" >     
                    <p>
@@ -237,34 +218,25 @@
                    <br>
                    <p > 	&copy; TEAM TELINSO</p>
                 </p>
-            </div>
+         </div>
    </section>
-   <script>
-    // Get current date and time
-    var now = new Date();
-  
-    // Extract date, time, and day
-    var months = now.toLocaleDateString(undefined, { month: 'long', });
-    var time = now.toLocaleTimeString();
-    var dateNumber = now.getDate();
-    var day = now.toLocaleDateString(undefined, { weekday: 'long' });
-  
-    // Get hour to determine the greeting
-    var hour = now.getHours();
-    var greeting = "";
-  
-    if (hour < 12) {
-      greeting = "Good Morning";
-    } else if (hour < 18) {
-      greeting = "Good Afternoon";
-    } else {
-      greeting = "Good Evening";
-    }
-  
-   
-    document.getElementById("greeting").innerHTML = greeting;
-    document.getElementById("dateNumber").innerHTML = dateNumber +" "+ months;
-    document.getElementById("day").innerHTML = "How's Your "+day+" Going";
-  </script>
+              <script>
+                function Showmore(id){
+
+                  const showdata = document.getElementById(id);
+                  if (showdata.style.display === 'none') {
+                    showdata.style.display = 'grid';
+                    showdata.previousElementSibling.innerHTML="Show less <strong>&#x25B3;</strong>";
+                    
+                  } else {
+                    showdata.style.display = 'none';
+                    showdata.previousElementSibling.innerHTML="Show more <stron>&#x25BD;</strong>";
+                  }
+
+
+                  
+
+                  }
+                </script>
          </body>
 </html>
