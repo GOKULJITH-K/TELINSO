@@ -8,7 +8,7 @@ const axios = require("axios");
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const port=process.env.PORT || 3000 ;
-  
+   
   
 const app = express();
   
@@ -58,11 +58,15 @@ const upload = multer({ storage: storage });
 
    
 
-app.get("/",(req,res)=>{
+app.get("/",async(req,res)=>{
 
     if (req.cookies.token) {
                 
-        res.render("welcome");
+        const decoded = jwt.verify(req.cookies.token, secretKey);
+        const user = await loginmodel.findOne({username:decoded.username}).exec();
+        const firstname = user.firstname;
+        res.render("welcome",{firstname,firstname});
+
     } else {
     
         res.render("index");
@@ -74,6 +78,11 @@ app.get("/login",(req,res)=>{
 
     const message = ""; 
     res.render("login", { message: message });
+})
+app.get("/start",(req,res)=>{
+
+     
+    res.render("start");
 })
 app.get("/signup",(req,res)=>{
     res.render("signup"); 
@@ -87,10 +96,13 @@ app.get("/logout", (req, res) => {
 });
 app.get("/welcome",extractToken,verifyToken, async(req,res)=>{
 
-    const farmerdata = await farmermodel.find().sort({_id:-1}).limit().exec();
-    res.render("welcome",{farmerdata:farmerdata});
-  
-})  
+   
+    
+        const user = await loginmodel.findOne({username:req.user.username}).exec();
+        const firstname = user.firstname;
+        res.render("welcome",{firstname,firstname});
+
+})   
 app.get("/weather",(req,res)=>{
 
     if(req.cookies.token){
@@ -101,6 +113,77 @@ app.get("/weather",(req,res)=>{
 
         res.render("index");
     }
+})
+app.get("/profile",async(req,res)=>{
+
+    if(req.cookies.token){
+        const decoded = jwt.verify(req.cookies.token, secretKey);
+        const user = await loginmodel.findOne({username:decoded.username}).exec();
+        const firstname = user.firstname;
+        const lastname = user.lastname;
+        const username = user.username;
+        const number =user.number;
+        const email= user.email;
+        const password = user.password;
+        const id = user._id;
+
+
+
+        res.render("profile",{firstname,lastname,username,number,email,password,id});
+
+    }else{ 
+
+        res.render("index");
+    }
+})
+app.post("/update-profile" ,async(req,res)=>{
+
+    const data={
+        firstname:req.body.firstname,
+        lastname:req.body.lastname,
+        username:req.body.username,
+        number:req.body.number,
+        email:req.body.email,
+
+        
+    }   
+    if(req.body.password){
+
+        const password=req.body.password;
+        const saltRounds=10;
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        data.password = hashedPassword;
+    }
+    else{
+        const decoded = jwt.verify(req.cookies.token, secretKey);
+    const userdate = await loginmodel.findOne({username:decoded.username}).exec();
+     data.password = userdate.password;
+
+    }
+    
+    
+    const decoded = jwt.verify(req.cookies.token, secretKey);
+    const userdate = await loginmodel.findOne({username:decoded.username}).exec();
+    const id = userdate._id;
+    console.log(id)
+    console.log(data)
+    const existingUser = await loginmodel.findByIdAndUpdate(id,data);
+
+    const user = await loginmodel.findOne({username:decoded.username}).exec();
+    const firstname = user.firstname;
+    const lastname = user.lastname;
+    const username = user.username;
+    const number =user.number;
+    const email= user.email;
+    const password = user.password;
+    
+  
+
+
+    res.render("profile",{firstname,lastname,username,number,email,password,id});
+
+
 })
 app.get("/crophealth",(req,res)=>{
 
@@ -155,7 +238,7 @@ app.post('/cropPredict', async(req,res)=> {
         
         const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
             N,
-            P,
+            P, 
             K,
             ph,
             humidity,
@@ -203,7 +286,7 @@ const response = await axios({
     url: "https://detect.roboflow.com/telinso/1",
     params: {
         api_key: "dVbUXioOhtnfoCsVFylB"
-    },
+    }, 
     data: image,
     headers: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -245,8 +328,8 @@ app.get("/crop",async(req,res)=>{
     const electrical_conductivityVal=testdata.map(soil=>soil.electrical_conductivity);
     const ec=Number(mode(electrical_conductivityVal));
     
-    
-     
+      
+      
     const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
         N,
         P,
@@ -362,6 +445,36 @@ app.get("/soilhealth",async(req,res)=>{
         res.render("index");
     }
     
+})  
+app.get("/user",async(req,res)=>{
+    
+   
+    const userdatas = await loginmodel.find().sort({_id:-1}).exec();
+   
+    res.render("user", {userdatas: userdatas});
+      
+})  
+app.get("/approval/:id",async(req,res)=>{
+    
+    let id = req.params.id;
+    const userdata = await loginmodel.findByIdAndUpdate(id,{approval:"approved"});
+   
+    const userdatas = await loginmodel.find().sort({_id:-1}).exec();
+   
+    res.render("user", {userdatas: userdatas});
+    
+      
+})
+app.get("/delete-user/:id",async(req,res)=>{
+    
+    let id = req.params.id;
+    const userdata = await loginmodel.findByIdAndDelete(id);
+   
+    const userdatas = await loginmodel.find().sort({_id:-1}).exec();
+   
+    res.render("user", {userdatas: userdatas});
+    
+      
 })  
 app.get("/selection",async(req,res)=>{
 
@@ -494,7 +607,7 @@ app.get("/alert/delete/:id",async(req,res)=>{
 app.get("/selection/:id",async(req,res)=>{
     
     let id=req.params.id;
-    
+       
     const soildatas = await savemodel.findById(id);
     const N = soildatas.nitrogen;
     const P = soildatas.phosphorous;
@@ -503,7 +616,7 @@ app.get("/selection/:id",async(req,res)=>{
     const temperature = soildatas.temperature;
     const humidity = soildatas.humidity;
     const ec = soildatas.electrical_conductivity;
-
+       
     const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
         N,
         P,
@@ -513,7 +626,7 @@ app.get("/selection/:id",async(req,res)=>{
         ec,
         temperature,
 
-    });
+    });                 
 
 const suggested_crop= pythonResponse.data.suggested_crop;
 const success_percentage= pythonResponse.data.success_percentage;
@@ -574,8 +687,8 @@ app.get("/archive/:id",async(req,res)=>{
         res.render("index");
     }
 
-            
-        
+               
+         
 
  
 })
@@ -648,7 +761,7 @@ function mode(array){
             maxEl=el;
             maxCount=modeMap[el];
         }
-    }
+    } 
     return maxEl;
 }
        
@@ -660,30 +773,33 @@ app.post("/login", express.json(), async(req,res)=>{
     // cookie adding 
 
     try{
-        const check=await loginmodel.findOne({username: req.body.username});
+        const check=await loginmodel.findOne({username: req.body.username,approval:"approved"});
+        if(req.body.username=="admin" && req.body.password=="admin" ){
+
+            res.render("admin");
+ 
+        }
+       
         if(!check){
 
             const message = "You have an invalid username";
             res.render("login", { message: message });
              
-        } 
+        }   
  
         const isPasswordMatch=await bcrypt.compare(req.body.password, check.password);
-        if(req.body.username=="admin" && req.body.password=="admin" ){
-
-            res.render("admin");
-
-        }else if(isPasswordMatch){
+        if(isPasswordMatch){
 
             const token = jwt.sign({
                 userId: check._id,
                 username: check.username
             }, secretKey, { expiresIn: '7d' });
+            
 
             res.cookie('token', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); 
-
-            res.render("welcome");
-             
+        
+            res.render("welcome",{firstname:check.firstname});
+              
         } 
         else{ 
            const message = "You have an invalid password";
@@ -693,13 +809,13 @@ app.post("/login", express.json(), async(req,res)=>{
         const message = "You have an invalid password";
             res.render("login",{message:message});
     }
-    
+  
 
    
 
 })
 
-// signup router
+
 
 app.post("/signup", async(req,res) =>{
 
@@ -707,15 +823,19 @@ app.post("/signup", async(req,res) =>{
         firstname:req.body.firstname,
         lastname:req.body.lastname,
         username:req.body.username,
-        password:req.body.password
+        password:req.body.password,
+        number:req.body.number,
+        email:req.body.email,
+        approval:req.body.approval
     }
 
-    const existingUser = await loginmodel.findOne({name:data.username});
+    const existingUser = await loginmodel.findOne({username:data.username});
 
     if(existingUser){
         
-        res.send("User exist");
-    }
+        const message = "Username already in use.Please try another";
+            res.render("login",{message:message});
+    } 
     else{ 
         const saltRounds=10;
         const hashedPassword = await bcrypt.hash(data.password, saltRounds);
@@ -723,9 +843,11 @@ app.post("/signup", async(req,res) =>{
         data.password = hashedPassword;
         const logindata=await loginmodel.insertMany(data);
         console.log(logindata);
+        const message = "Your account will be activated upon approval";
+            res.render("login",{message:message});
  
     }
-     res.render("signup");
+     
     
 })
  
@@ -813,9 +935,9 @@ app.post("/feedback", async(req,res) =>{
         name:req.body.name,
         email:req.body.email,
         message:req.body.message,
-        
+         
     }
-   
+    
        
         const feedbacksdata=await feedbackmodel.insertMany(feedbackdata);
         console.log(feedbacksdata);
