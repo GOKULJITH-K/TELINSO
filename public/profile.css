@@ -148,11 +148,11 @@
        
        
         
-    width: 90%;
+    width: 92%;
     height: 40px;
     font-size: 15px;
     padding: 20px;
-    margin: 10px;
+    margin: 15px ;
     border: 2px solid #482b7c;
     border-radius: 10px;
     
@@ -166,7 +166,7 @@ nav form .btn1{
     font-size: 20px;
     font-weight: 300;
     font-family: system-ui;
-    width: 90%;
+    width: 92%;
     border-radius: 10px;
    
 }
@@ -181,11 +181,11 @@ nav .btn1:hover{
     font-size: 20px;
     font-weight: 300;
     font-family: system-ui;
-    width: 90%;
+    width: 92%;
     background: #482b7c;
     color: white;
     border-radius: 10px;
-    margin: 10px;
+    margin: 15px;
    
 }
   
