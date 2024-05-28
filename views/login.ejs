@@ -80,12 +80,16 @@
                     </div>
                   <div class="signup-login">
                     <div class="selection">
-                        <a onClick="signup()" style="background:#146a91 ; color: white;" id="signup">Signup</a>
-                        <a onClick="login()" id="login">Login</a>
+                        <a onClick="signup()"  id="signup">Signup</a>
+                        <a onClick="login()" style="background:#146a91 ; color: white;" id="login">Login</a>
                     </div>
                    
-                    <div class="login" style="display: none;">
+                    <div class="login" >
                     <form action="/login" method="POST">
+                        <div class="login-pass">
+                            <p style="margin-left: 10px; font-size: 16px;">Already have an account? Log in here.</p>
+
+                        </div>
                         
                         <div class="login-pass">
                         <label class="login-label"><i class="fa-solid fa-user"></i> username</label>
@@ -98,10 +102,13 @@
                         <button type="submit" class="btn btn2">Login</a></button>
                     </form> 
                     </div>
-                    <div class="signup">
-                        
-                    <form action="/signup" method="POST">
+                    <div class="signup" style="display: none;">
+                        <div class="login-pass">
+                            <p style="margin-left: 10px; font-size: 15px;">Create an account to access Telinso's features.</p>
 
+                        </div>
+                    <form action="/signup" method="POST">
+                     
                         <input type="text" name="firstname" placeholder="First Name" required >
                         <input type="text" name="lastname" placeholder="Last Name" required>
                         <input type="tel" name="number" placeholder="Phone number" required>
