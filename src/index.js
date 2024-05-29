@@ -247,20 +247,18 @@ app.post('/cropPredict', async(req,res)=> {
 
         });
 
-        if(pythonResponse.status===200){
-
-            const suggested_crop= pythonResponse.data.suggested_crop;
-            const success_percentage= pythonResponse.data.success_percentage;
-
-        }
-        else{  
-            const suggested_crop= " ";
-            const success_percentage= " ";
-        }
+        let suggested_crop,success_percentage;             
+        if(req.cookies.token){
+            if(pythonResponse.status===200){
     
-   
-    if(req.cookies.token){
-   
+                suggested_crop= pythonResponse.data.suggested_crop;
+                success_percentage= pythonResponse.data.success_percentage;
+        
+            }
+            else{  
+                suggested_crop= " ";
+                success_percentage= " ";
+            }
         res.render("crop",
         {
             nitrogen:nitrogen,
@@ -351,17 +349,18 @@ app.get("/crop",async(req,res)=>{
 
     });
 
-    if(pythonResponse.status===200){
-
-        const suggested_crop= pythonResponse.data.suggested_crop;
-        const success_percentage= pythonResponse.data.success_percentage;
-
-    }
-    else{  
-        const suggested_crop= " ";
-        const success_percentage= " ";
-    }
+    let suggested_crop,success_percentage;
     if(req.cookies.token){
+        if(pythonResponse.status===200){
+
+            suggested_crop= pythonResponse.data.suggested_crop;
+            success_percentage= pythonResponse.data.success_percentage;
+    
+        }
+        else{  
+            suggested_crop= " ";
+            success_percentage= " ";
+        }
 
         res.render("crop",
         {
@@ -644,19 +643,20 @@ app.get("/selection/:id",async(req,res)=>{
         ec,
         temperature,
 
-    });                 
-    if(pythonResponse.status===200){
+    });    
 
-        const suggested_crop= pythonResponse.data.suggested_crop;
-        const success_percentage= pythonResponse.data.success_percentage;
-
-    }
-    else{  
-        const suggested_crop= " ";
-        const success_percentage= " ";
-    }
+    let suggested_crop,success_percentage;             
     if(req.cookies.token){
+        if(pythonResponse.status===200){
 
+            suggested_crop= pythonResponse.data.suggested_crop;
+            success_percentage= pythonResponse.data.success_percentage;
+    
+        }
+        else{  
+            suggested_crop= " ";
+            success_percentage= " ";
+        }
         res.render("selection",{
             nitrogen:N,
             phosphorous:P,
