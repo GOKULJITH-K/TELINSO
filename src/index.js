@@ -2,16 +2,16 @@ const express = require('express');
 const path = require('path');
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
-const {loginmodel,savemodel,farmermodel,feedbackmodel,testmodel,test2model} = require("./config");
+const {loginmodel,savemodel,farmermodel,feedbackmodel,testmodel,test2model,predictionmodel} = require("./config");
 const multer =require("multer");
 const axios = require("axios");
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const port=process.env.PORT || 3000 ;
-    
-  
+     
+   
 const app = express();
-  
+   
 const secretKey = process.env.SECRET_KEY || 'telinso';
 // middleware
 app.use(express.json());
@@ -236,33 +236,40 @@ app.post('/cropPredict', async(req,res)=> {
     const { N, P, K, ph, humidity, ec, temperature } = req.body;
        
         
-        const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-            N,
-            P, 
-            K,
-            ph,
-            humidity,
-            ec,
-            temperature,
+    const decoded = jwt.verify(req.cookies.token, secretKey);
+    const user = await loginmodel.findOne({username:decoded.username}).exec();
+    const username = user.username;
+    const userId = user._id;
+      
+    const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
+        N: N.toString(),
+        P: P.toString(),
+        K: K.toString(),
+        ph: ph.toString(),
+        humidity: humidity.toString(),
+        ec: ec.toString(),
+        temperature: temperature.toString(),
+        username:username.toString(),
+        id:userId.toString(),
 
-        });
-
-        let suggested_crop,success_percentage;             
-        if(req.cookies.token){
-            if(pythonResponse.status===200){
-    
-                suggested_crop= pythonResponse.data.suggested_crop;
-                success_percentage= pythonResponse.data.success_percentage;
+   
+    });           
+ 
+   
+    if(req.cookies.token){
         
+             
+        let suggested_crop,success_percentage;
+        const decoded = jwt.verify(req.cookies.token, secretKey);
+        const response = await axios.get('https://telinsoapi.onrender.com/predictCrop');
+        const responseData = response.data;
+        for (const data of responseData) {
+            if (data.username === decoded.username) {
+              
+                suggested_crop=data.suggested_crop;
+                success_percentage=data.success_percentage;
             }
-            else if(pythonResponse.status===503){  
-                suggested_crop= " Service Unavailable: The server is temporarily unable to handle the request. Please try again later.";
-                success_percentage= " ";
-            }
-            else{
-                suggested_crop= " The server is temporarily unable to handle the request. Please try again later.Contact us if the issue persists for a long time.";
-                success_percentage= " ";
-            }
+          }
         res.render("crop",
         {
             nitrogen:nitrogen,
@@ -340,37 +347,41 @@ app.get("/crop",async(req,res)=>{
     const electrical_conductivityVal=testdata.map(soil=>soil.electrical_conductivity);
     const ec=Number(mode(electrical_conductivityVal));
     
-      
+    const decoded = jwt.verify(req.cookies.token, secretKey);
+    const user = await loginmodel.findOne({username:decoded.username}).exec();
+    const username = user.username;
+    const userId = user._id;
       
     const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-        N,
-        P,
-        K,
-        ph,
-        humidity,
-        ec,
-        temperature,
+        N: N.toString(),
+        P: P.toString(),
+        K: K.toString(),
+        ph: ph.toString(),
+        humidity: humidity.toString(),
+        ec: ec.toString(),
+        temperature: temperature.toString(),
+        username:username.toString(),
+        id:userId.toString(),
 
-    });
-
-    let suggested_crop,success_percentage;
+   
+    });           
+ 
+   
     if(req.cookies.token){
         
-        if(pythonResponse.status===200){
-    
-            suggested_crop= pythonResponse.data.suggested_crop;
-            success_percentage= pythonResponse.data.success_percentage;
-    
-        }
-        else if(pythonResponse.status===503){  
-            suggested_crop= " Service Unavailable: The server is temporarily unable to handle the request. Please try again later.";
-            success_percentage= " ";
-        }
-        else{
-            suggested_crop= " The server is temporarily unable to handle the request. Please try again later.Contact us if the issue persists for a long time.";
-            success_percentage= " ";
-        }
-
+             
+        let suggested_crop,success_percentage;
+        const decoded = jwt.verify(req.cookies.token, secretKey);
+        const response = await axios.get('https://telinsoapi.onrender.com/predictCrop');
+        const responseData = response.data;
+        for (const data of responseData) {
+            if (data.username === decoded.username) {
+              
+                suggested_crop=data.suggested_crop;
+                success_percentage=data.success_percentage;
+            }
+          }
+        
         res.render("crop",
         {
             nitrogen:N,
@@ -383,7 +394,7 @@ app.get("/crop",async(req,res)=>{
             suggested_crop:suggested_crop,
             success_percentage:success_percentage
             
-        }); 
+        });  
 
     }else{
 
@@ -643,33 +654,40 @@ app.get("/selection/:id",async(req,res)=>{
     const humidity = soildatas.humidity;
     const ec = soildatas.electrical_conductivity;
        
+    const decoded = jwt.verify(req.cookies.token, secretKey);
+    const user = await loginmodel.findOne({username:decoded.username}).exec();
+    const username = user.username;
+    const userId = user._id;
+      
     const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-        N,
-        P,
-        K,
-        ph,
-        humidity,
-        ec,
-        temperature,
+        N: N.toString(),
+        P: P.toString(),
+        K: K.toString(),
+        ph: ph.toString(),
+        humidity: humidity.toString(),
+        ec: ec.toString(),
+        temperature: temperature.toString(),
+        username:username.toString(),
+        id:userId.toString(),
 
-    });    
-
-    let suggested_crop,success_percentage;             
+   
+    });           
+ 
+   
     if(req.cookies.token){
-        if(pythonResponse.status===200){
-    
-            suggested_crop= pythonResponse.data.suggested_crop;
-            success_percentage= pythonResponse.data.success_percentage;
-    
-        }
-        else if(pythonResponse.status===503){  
-            suggested_crop= " The server is temporarily unable to handle the request. Please try again later.";
-            success_percentage= " ";
-        }
-        else{
-            suggested_crop= " The server is temporarily unable to handle the request. Please try again later.Contact us if the issue persists for a long time.";
-            success_percentage= " ";
-        }
+        
+             
+        let suggested_crop,success_percentage;
+        const decoded = jwt.verify(req.cookies.token, secretKey);
+        const response = await axios.get('https://telinsoapi.onrender.com/predictCrop');
+        const responseData = response.data;
+        for (const data of responseData) {
+            if (data.username === decoded.username) {
+              
+                suggested_crop=data.suggested_crop;
+                success_percentage=data.success_percentage;
+            }
+          }
         res.render("selection",{
             nitrogen:N,
             phosphorous:P,

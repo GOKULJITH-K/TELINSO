@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const connect=mongoose.connect("mongodb+srv://mongo:UNE8bmYvV38FARx5@cluster0.l2ubs1d.mongodb.net/login-tut");
 
+     
 
 
 connect.then(() =>{
@@ -224,6 +225,35 @@ const testSchema = new mongoose.Schema({
 // model test
 const testmodel = mongoose.model("tests",testSchema);
 
+
+const cropSchema = new mongoose.Schema({
+    crop_prediction:{
+        type: String,
+        required: true,
+        
+        
+    },
+    success_percentage:{
+        type: Number,
+        required: true,
+    },
+    suggested_crop:{
+        type: String,
+        required: true,
+        
+    },
+    username:{
+        type: String,
+        required: true,
+        
+    }
+   
+     
+});
+
+
+const predictionmodel = mongoose.model("prediction",cropSchema);
+
 // exports
 
 module.exports ={
@@ -233,5 +263,6 @@ module.exports ={
     feedbackmodel,
     testmodel,
     test2model,
+    predictionmodel,
 };
 
