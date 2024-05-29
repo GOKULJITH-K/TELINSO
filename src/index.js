@@ -255,8 +255,12 @@ app.post('/cropPredict', async(req,res)=> {
                 success_percentage= pythonResponse.data.success_percentage;
         
             }
-            else{  
-                suggested_crop= " ";
+            else if(pythonResponse.status===503){  
+                suggested_crop= " Service Unavailable: The server is temporarily unable to handle the request. Please try again later.";
+                success_percentage= " ";
+            }
+            else{
+                suggested_crop= " The server is temporarily unable to handle the request. Please try again later.Contact us if the issue persists for a long time.";
                 success_percentage= " ";
             }
         res.render("crop",
@@ -351,14 +355,19 @@ app.get("/crop",async(req,res)=>{
 
     let suggested_crop,success_percentage;
     if(req.cookies.token){
+        
         if(pythonResponse.status===200){
-
+    
             suggested_crop= pythonResponse.data.suggested_crop;
             success_percentage= pythonResponse.data.success_percentage;
     
         }
-        else{  
-            suggested_crop= " ";
+        else if(pythonResponse.status===503){  
+            suggested_crop= " Service Unavailable: The server is temporarily unable to handle the request. Please try again later.";
+            success_percentage= " ";
+        }
+        else{
+            suggested_crop= " The server is temporarily unable to handle the request. Please try again later.Contact us if the issue persists for a long time.";
             success_percentage= " ";
         }
 
@@ -648,13 +657,17 @@ app.get("/selection/:id",async(req,res)=>{
     let suggested_crop,success_percentage;             
     if(req.cookies.token){
         if(pythonResponse.status===200){
-
+    
             suggested_crop= pythonResponse.data.suggested_crop;
             success_percentage= pythonResponse.data.success_percentage;
     
         }
-        else{  
-            suggested_crop= " ";
+        else if(pythonResponse.status===503){  
+            suggested_crop= " The server is temporarily unable to handle the request. Please try again later.";
+            success_percentage= " ";
+        }
+        else{
+            suggested_crop= " The server is temporarily unable to handle the request. Please try again later.Contact us if the issue persists for a long time.";
             success_percentage= " ";
         }
         res.render("selection",{
