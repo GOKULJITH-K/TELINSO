@@ -8,7 +8,7 @@ const axios = require("axios");
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const port=process.env.PORT || 3000 ;
-   
+    
   
 const app = express();
   
@@ -246,9 +246,19 @@ app.post('/cropPredict', async(req,res)=> {
             temperature,
 
         });
+
+        if(pythonResponse.status===200){
+
+            const suggested_crop= pythonResponse.data.suggested_crop;
+            const success_percentage= pythonResponse.data.success_percentage;
+
+        }
+        else{  
+            const suggested_crop= " ";
+            const success_percentage= " ";
+        }
     
-   const suggested_crop= pythonResponse.data.suggested_crop;
-   const success_percentage= pythonResponse.data.success_percentage;
+   
     if(req.cookies.token){
    
         res.render("crop",
@@ -341,8 +351,16 @@ app.get("/crop",async(req,res)=>{
 
     });
 
-const suggested_crop= pythonResponse.data.suggested_crop;
-const success_percentage= pythonResponse.data.success_percentage;
+    if(pythonResponse.status===200){
+
+        const suggested_crop= pythonResponse.data.suggested_crop;
+        const success_percentage= pythonResponse.data.success_percentage;
+
+    }
+    else{  
+        const suggested_crop= " ";
+        const success_percentage= " ";
+    }
     if(req.cookies.token){
 
         res.render("crop",
@@ -627,10 +645,16 @@ app.get("/selection/:id",async(req,res)=>{
         temperature,
 
     });                 
+    if(pythonResponse.status===200){
 
-const suggested_crop= pythonResponse.data.suggested_crop;
-const success_percentage= pythonResponse.data.success_percentage;
+        const suggested_crop= pythonResponse.data.suggested_crop;
+        const success_percentage= pythonResponse.data.success_percentage;
 
+    }
+    else{  
+        const suggested_crop= " ";
+        const success_percentage= " ";
+    }
     if(req.cookies.token){
 
         res.render("selection",{
