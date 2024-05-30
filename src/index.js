@@ -5,11 +5,12 @@ const jwt = require('jsonwebtoken');
 const {loginmodel,savemodel,farmermodel,feedbackmodel,testmodel,test2model,predictionmodel} = require("./config");
 const multer =require("multer");
 const axios = require("axios");
+const cron = require('node-cron');
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const port=process.env.PORT || 3000 ;
-     
-   
+      
+    
 const app = express();
    
 const secretKey = process.env.SECRET_KEY || 'telinso';
@@ -89,9 +90,12 @@ app.get("/signup",(req,res)=>{
 })
 app.get("/logout", (req, res) => {
     const message = ""; 
-    res.clearCookie('token'); 
-    warmup.stop();
-    warmup=null;
+    res.clearCookie('token');
+    if(warmup){
+        warmup.stop();
+        warmup=null;
+    }
+    
     res.render("login", { message: message });
     
     
@@ -104,9 +108,9 @@ app.get("/welcome",extractToken,verifyToken, async(req,res)=>{
         const user = await loginmodel.findOne({username:req.user.username}).exec();
         const firstname = user.firstname;
         res.render("welcome",{firstname,firstname});
-        startwarmup();
+        
 
-})   
+})    
 app.get("/weather",(req,res)=>{
 
     if(req.cookies.token){
@@ -332,15 +336,9 @@ const response = await axios({
    
 res.render("crophealth",{classname:classname,reasons:reasons,symptoms:symptoms,mitigations:mitigations});
 }) 
-let warmup=null;
-function startwarmup(){
-    if(!warmup){
-        warmup=cron.schedule('*/5****',async()=>{
-            const response= await fetch(url)
-            console.log(response);
-        })
-    }
-}    
+
+
+          
 app.get("/crop",async(req,res)=>{
     const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
 
@@ -852,7 +850,7 @@ function mode(array){
        
 
 //login router
-
+let warmup;
 app.post("/login", express.json(), async(req,res)=>{
 
     // cookie adding 
@@ -884,7 +882,15 @@ app.post("/login", express.json(), async(req,res)=>{
             res.cookie('token', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); 
         
             res.render("welcome",{firstname:check.firstname});
-            startwarmup();
+           
+            if (!warmup) {
+                const url = "https://telinsoapi.onrender.com/docs";
+                warmup = cron.schedule('*/5 * * * *', async () => {
+                    const response = await fetch(url);
+                    console.log(`${url} - Status: ${response.status}`);
+                });
+            }
+              
               
         } 
         else{ 
