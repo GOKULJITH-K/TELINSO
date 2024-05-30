@@ -66,8 +66,7 @@ app.get("/",async(req,res)=>{
         const user = await loginmodel.findOne({username:decoded.username}).exec();
         const firstname = user.firstname;
         res.render("welcome",{firstname,firstname});
-         const response = await axios.get('https://telinsoapi.onrender.com/docs');
-        console.log(response.data);   
+            
 
     } else {
     
@@ -876,8 +875,7 @@ app.post("/login", express.json(), async(req,res)=>{
             
 
             res.cookie('token', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); 
-           const response = await axios.get('https://telinsoapi.onrender.com/docs');
-        console.log(response.data);   
+           
             res.render("welcome",{firstname:check.firstname});
               
         } 
