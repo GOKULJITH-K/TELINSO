@@ -361,19 +361,7 @@ app.get("/crop",async(req,res)=>{
     const response = await axios.get('https://telinsoapi.onrender.com/docs');
         console.log(response.data);  
 
-      const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-        N: parseFloat(N),
-        P: parseFloat(P),
-        K: parseFloat(K),
-        ph: parseFloat(ph),
-        humidity: parseFloat(humidity),
-        ec: parseFloat(ec),
-        temperature: parseFloat(temperature),
-        username: username,
-        id: userId, 
-
-   
-    });          
+      
  
    
     if(req.cookies.token){
@@ -393,8 +381,8 @@ app.get("/crop",async(req,res)=>{
         */
         
           const data = await predictionmodel.findOne({username:decoded.username});
-          suggested_crop=data.suggested_crop;
-          success_percentage=data.success_percentage;
+          suggested_crop="";
+          success_percentage="";
           
         res.render("crop",
         {
