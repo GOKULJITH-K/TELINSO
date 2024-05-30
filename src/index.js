@@ -242,19 +242,19 @@ app.post('/cropPredict', async(req,res)=> {
     const userId = user._id;
       
     const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-        N: N.toString(),
-        P: P.toString(),
-        K: K.toString(),
-        ph: ph.toString(),
-        humidity: humidity.toString(),
-        ec: ec.toString(),
-        temperature: temperature.toString(),
-        username:username.toString(),
-        id:userId.toString(),
+        N: N,
+        P: P,
+        K: K,
+        ph: ph,
+        humidity: humidity,
+        ec: ec,
+        temperature: temperature,
+        username:username,
+        id:userId,
 
    
-    });           
- 
+    });             
+     
    
     if(req.cookies.token){
         
@@ -358,18 +358,18 @@ app.get("/crop",async(req,res)=>{
     const userId = user._id;
       
     const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-        N: N.toString(),
-        P: P.toString(),
-        K: K.toString(),
-        ph: ph.toString(),
-        humidity: humidity.toString(),
-        ec: ec.toString(),
-        temperature: temperature.toString(),
-        username:username.toString(),
-        id:userId.toString(),
+        N: N,
+        P: P,
+        K: K,
+        ph: ph,
+        humidity: humidity,
+        ec: ec,
+        temperature: temperature,
+        username:username,
+        id:userId,
 
    
-    });           
+    });     
  
    
     if(req.cookies.token){
@@ -670,18 +670,18 @@ app.get("/selection/:id",async(req,res)=>{
     const userId = user._id;
       
     const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-        N: N.toString(),
-        P: P.toString(),
-        K: K.toString(),
-        ph: ph.toString(),
-        humidity: humidity.toString(),
-        ec: ec.toString(),
-        temperature: temperature.toString(),
-        username:username.toString(),
-        id:userId.toString(),
+        N: N,
+        P: P,
+        K: K,
+        ph: ph,
+        humidity: humidity,
+        ec: ec,
+        temperature: temperature,
+        username:username,
+        id:userId,
 
    
-    });           
+    });     
  
    
     if(req.cookies.token){
