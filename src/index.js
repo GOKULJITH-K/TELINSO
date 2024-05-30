@@ -66,7 +66,6 @@ app.get("/",async(req,res)=>{
         const user = await loginmodel.findOne({username:decoded.username}).exec();
         const firstname = user.firstname;
         res.render("welcome",{firstname,firstname});
-            
 
     } else {
     
@@ -91,7 +90,10 @@ app.get("/signup",(req,res)=>{
 app.get("/logout", (req, res) => {
     const message = ""; 
     res.clearCookie('token'); 
+    warmup.stop();
+    warmup=null;
     res.render("login", { message: message });
+    
     
     
 });
@@ -102,6 +104,7 @@ app.get("/welcome",extractToken,verifyToken, async(req,res)=>{
         const user = await loginmodel.findOne({username:req.user.username}).exec();
         const firstname = user.firstname;
         res.render("welcome",{firstname,firstname});
+        startwarmup();
 
 })   
 app.get("/weather",(req,res)=>{
@@ -241,17 +244,17 @@ app.post('/cropPredict', async(req,res)=> {
     const user = await loginmodel.findOne({username:decoded.username}).exec();
     const username = user.username;
     const userId = user._id;
-      
+       
     const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-        N: parseFloat(N),
-        P: parseFloat(P),
-        K: parseFloat(K),
-        ph: parseFloat(ph),
-        humidity: parseFloat(humidity),
-        ec: parseFloat(ec),
-        temperature: parseFloat(temperature),
-        username: username,
-        id: userId, 
+        N: N,
+        P: P, 
+        K: K,
+        ph: ph,
+        humidity: humidity,
+        ec: ec, 
+        temperature: temperature,
+        username:username,
+        id:userId,
 
    
     });             
@@ -328,7 +331,16 @@ const response = await axios({
     const mitigations= data.mitigations;
    
 res.render("crophealth",{classname:classname,reasons:reasons,symptoms:symptoms,mitigations:mitigations});
-})    
+}) 
+let warmup=null;
+function startwarmup(){
+    if(!warmup){
+        warmup=cron.schedule('*/5****',async()=>{
+            const response= await fetch(url)
+            console.log(response);
+        })
+    }
+}    
 app.get("/crop",async(req,res)=>{
     const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
 
@@ -358,11 +370,6 @@ app.get("/crop",async(req,res)=>{
     const username = user.username;
     const userId = user._id;
       
-    const response = await axios.get('https://telinsoapi.onrender.com/docs');
-        console.log(response.data);  
-
-      
-   
     const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
         N: parseFloat(N),
         P: parseFloat(P),
@@ -375,9 +382,11 @@ app.get("/crop",async(req,res)=>{
         id: userId, 
 
    
-    });          
+    });  
+    
+ 
    
-    if(req.cookies.token){
+    if(req.cookies.token){ 
         
              
         let suggested_crop,success_percentage;
@@ -673,20 +682,17 @@ app.get("/selection/:id",async(req,res)=>{
     const user = await loginmodel.findOne({username:decoded.username}).exec();
     const username = user.username;
     const userId = user._id;
-
-     const response = await axios.get('https://telinsoapi.onrender.com/docs');
-        console.log(response.data); 
-     
+      
     const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-        N: parseFloat(N),
-        P: parseFloat(P),
-        K: parseFloat(K),
-        ph: parseFloat(ph),
-        humidity: parseFloat(humidity),
-        ec: parseFloat(ec),
-        temperature: parseFloat(temperature),
-        username: username,
-        id: userId, 
+        N: N,
+        P: P,
+        K: K,
+        ph: ph,
+        humidity: humidity,
+        ec: ec,
+        temperature: temperature,
+        username:username,
+        id:userId,
 
    
     });     
@@ -876,8 +882,9 @@ app.post("/login", express.json(), async(req,res)=>{
             
 
             res.cookie('token', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); 
-           
+        
             res.render("welcome",{firstname:check.firstname});
+            startwarmup();
               
         } 
         else{ 
