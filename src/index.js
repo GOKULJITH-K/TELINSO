@@ -261,15 +261,20 @@ app.post('/cropPredict', async(req,res)=> {
              
         let suggested_crop,success_percentage;
         const decoded = jwt.verify(req.cookies.token, secretKey);
-        const response = await axios.get('https://telinsoapi.onrender.com/predictCrop');
-        const responseData = response.data;
-        for (const data of responseData) {
-            if (data.username === decoded.username) {
-              
-                suggested_crop=data.suggested_crop;
-                success_percentage=data.success_percentage;
-            }
-          }
+        /*
+                const response = await axios.get('http://localhost:8000/predictCrop');
+                const responseData = response.data;
+                for (const data of responseData) {
+                    if (data.username === decoded.username) {
+                    
+                        
+                    }
+                }
+        */
+        
+          const data = await predictionmodel.findOne({username:decoded.username});
+          suggested_crop=data.suggested_crop;
+          success_percentage=data.success_percentage;
         res.render("crop",
         {
             nitrogen:nitrogen,
@@ -372,16 +377,21 @@ app.get("/crop",async(req,res)=>{
              
         let suggested_crop,success_percentage;
         const decoded = jwt.verify(req.cookies.token, secretKey);
-        const response = await axios.get('https://telinsoapi.onrender.com/predictCrop');
-        const responseData = response.data;
-        for (const data of responseData) {
-            if (data.username === decoded.username) {
-              
-                suggested_crop=data.suggested_crop;
-                success_percentage=data.success_percentage;
-            }
-          }
+        /*
+                const response = await axios.get('http://localhost:8000/predictCrop');
+                const responseData = response.data;
+                for (const data of responseData) {
+                    if (data.username === decoded.username) {
+                    
+                        
+                    }
+                }
+        */
         
+          const data = await predictionmodel.findOne({username:decoded.username});
+          suggested_crop=data.suggested_crop;
+          success_percentage=data.success_percentage;
+          
         res.render("crop",
         {
             nitrogen:N,
@@ -679,15 +689,21 @@ app.get("/selection/:id",async(req,res)=>{
              
         let suggested_crop,success_percentage;
         const decoded = jwt.verify(req.cookies.token, secretKey);
-        const response = await axios.get('https://telinsoapi.onrender.com/predictCrop');
-        const responseData = response.data;
-        for (const data of responseData) {
-            if (data.username === decoded.username) {
-              
-                suggested_crop=data.suggested_crop;
-                success_percentage=data.success_percentage;
-            }
-          }
+        /*
+                const response = await axios.get('http://localhost:8000/predictCrop');
+                const responseData = response.data;
+                for (const data of responseData) {
+                    if (data.username === decoded.username) {
+                    
+                        
+                    }
+                }
+        */
+        
+          const data = await predictionmodel.findOne({username:decoded.username});
+          suggested_crop=data.suggested_crop;
+          success_percentage=data.success_percentage;
+       
         res.render("selection",{
             nitrogen:N,
             phosphorous:P,
