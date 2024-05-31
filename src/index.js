@@ -880,16 +880,16 @@ app.post("/login", express.json(), async(req,res)=>{
             
 
             res.cookie('token', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); 
-        
+               if (!warmup) {
+                      const url = "https://telinsoapi.onrender.com/predictCrop";
+                      warmup = cron.schedule('*/5 * * * *', async () => {
+                          const response = await fetch(url);
+                          console.log(`${url} - Status: ${response.status}`);
+                      });
+                  }
             res.render("welcome",{firstname:check.firstname});
            
-            if (!warmup) {
-                const url = "https://telinsoapi.onrender.com/docs";
-                warmup = cron.schedule('*/5 * * * *', async () => {
-                    const response = await fetch(url);
-                    console.log(`${url} - Status: ${response.status}`);
-                });
-            }
+           
               
               
         } 
