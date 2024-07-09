@@ -22,15 +22,16 @@
         </head>
      <body>
        
-        
+        <div id="loader-container" class="loader-container">
+            <div class="loader">
+                <div class="spinner"></div>
+            </div>
+        </div>
          <section class="header" >
             
             <div class="container">
 
             <nav >
-                
-                
-               
                     
                         <a href="/" class="logo"><img src="/logo.png"></a>
              
@@ -116,12 +117,6 @@
                        </div>
 
                         </div>
-                        
-                       
-
-        
-                       
-                      
                        
                     <P>
    
@@ -144,7 +139,7 @@
               
               <section class="product">
                <div class="row1">
-                <a href="/savedata" class="class1">
+                <a href="/savedata" class="class1 card">
                     <div class="product-col " >
                         
                         <i class="fa-solid fa-arrow-up-from-bracket"></i>
@@ -157,7 +152,7 @@
                                 
                             </div>
                          </a>
-                   <a href="/analysis" class="class2">
+                   <a href="/analysis" class="class2 card">
                    <div class="product-col" >
                        
                     <i class="fa-solid fa-chart-simple"></i>
@@ -170,7 +165,7 @@
                                
                            </div>
                            </a>
-                           <a href="/farmerassist" class="class3">    
+                           <a href="/farmerassist" class="class3 card">    
                             <div class="product-col"  >
                                 <i class="fa-solid fa-fan"></i>
                                     <div>
@@ -187,7 +182,7 @@
                </div>
               <div class="row2">
                
-              <a href="/weather" class="class4">
+              <a href="/weather" class="class4 card">
                <div class="product-col "  >
                 <i class="fa-solid fa-bolt"></i>
                         <div>
@@ -198,7 +193,7 @@
                     </div>   
                 </div>
             </a>
-            <a href="/soilhealth" class="class5">    
+            <a href="/soilhealth" class="class5 card">    
                 <div class="product-col"  >
                     <i class="fa-solid fa-file-waveform"></i>
                         <div>
@@ -209,7 +204,7 @@
                             
                 </div>
              </a>  
-             <a href="/crop" class="class6">    
+             <a href="/crop" class="class6 card">    
                 <div class="product-col"  >
                     <i class="fa-solid fa-wheat-awn"></i>
                         <div>
@@ -220,14 +215,11 @@
                             
                 </div>
              </a>    
-                
-                
-            
-              
+             
               </div>
               <div class="row2">
                
-                <a href="/crophealth" class="class4">
+                <a href="/crophealth" class="class4 card">
                  <div class="product-col "  >
                     <i class="fa-solid fa-seedling"></i>
                           <div>
@@ -356,6 +348,39 @@
     document.getElementById("dateNumber").innerHTML = dateNumber +" "+ months;
     document.getElementById("day").innerHTML = "How's Your "+day+" Going";
    
+
+    document.addEventListener("DOMContentLoaded", function() {
+ 
+    setTimeout(function() {
+        
+        document.getElementById('loader-container').style.display = 'none';
+        
+
+        document.getElementById('content').style.display = 'block';
+    }, 3000); 
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const cards = document.querySelectorAll('.card');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+});
+
+
   </script>
   
                          
