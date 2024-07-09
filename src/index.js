@@ -370,21 +370,19 @@ app.get("/crop",async(req,res)=>{
     const userId = user._id;
       
     const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-        N: parseFloat(N),
-        P: parseFloat(P),
-        K: parseFloat(K),
-        ph: parseFloat(ph),
-        humidity: parseFloat(humidity),
-        ec: parseFloat(ec),
-        temperature: parseFloat(temperature),
-        username: username,
-        id: userId, 
+    N: parseFloat(N),
+    P: parseFloat(P),
+    K: parseFloat(K),
+    ph: parseFloat(ph),
+    humidity: parseFloat(humidity),
+    ec: parseFloat(ec),
+    temperature: parseFloat(temperature),
+    username: username,
+    id: userId
+}, {
+    timeout: 30000 
+});
 
-   
-    } {
-      timeout: 30000
-      }
-    );  
     
  
    
