@@ -313,19 +313,22 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     encoding: "base64"
 }); 
   
-const response = await axios({
-    method: "POST",
-    url: "https://detect.roboflow.com/telinso/1",
-    params: {
-        api_key: "dVbUXioOhtnfoCsVFylB"
-    },
-    data: image,
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-    },
-    timeout: 70000 
-});
-      
+        const api_key = "dVbUXioOhtnfoCsVFylB";
+        const imageUrl = "https://detect.roboflow.com/telinso/1";
+        const data_img = image; // 
+
+        const response = await axios.post(imageUrl, data_img, {
+            params: {
+                api_key: api_key
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            timeout: 40000,
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity
+        });
+             
      const predictions = response.data.predictions;
 
     const classname = predictions[0].class;
