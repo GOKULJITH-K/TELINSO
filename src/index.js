@@ -237,7 +237,6 @@ async function getLatestTestData() {
 
     return { N, P, K, ph, temperature, humidity, ec };
 }
-
 app.post('/cropPredict', async (req, res) => {
     let message = null;
 
@@ -302,11 +301,82 @@ app.post('/cropPredict', async (req, res) => {
         });
     }
 });
-app.post('/predictCrop', async (req, res) => {
+
+async function getLatestArchiveData(id) {
+    const testdata = await savemodel.find(id).exec();
+
+    const nitrogenval = testdata.map(soil => soil.nitrogen);
+    const phosphorusval = testdata.map(soil => soil.phosphorous);
+    const potassiumval = testdata.map(soil => soil.potassium);
+    const pHval = testdata.map(soil => soil.ph);
+    const temperatureval = testdata.map(soil => soil.temperature);
+    const humidityval = testdata.map(soil => soil.humidity);
+    const electrical_conductivityVal = testdata.map(soil => soil.electrical_conductivity);
+ 
+    const N = nitrogenval.length > 0 ? Number(mode(nitrogenval)) : null;
+    const P = phosphorusval.length > 0 ? Number(mode(phosphorusval)) : null;
+    const K = potassiumval.length > 0 ? Number(mode(potassiumval)) : null;
+    const ph = pHval.length > 0 ? Number(mode(pHval)) : null;
+    const temperature = temperatureval.length > 0 ? Number(mode(temperatureval)) : null;
+    const humidity = humidityval.length > 0 ? Number(mode(humidityval)) : null;
+    const ec = electrical_conductivityVal.length > 0 ? Number(mode(electrical_conductivityVal)) : null;
+
+    return { N, P, K, ph, temperature, humidity, ec };
+}
+
+app.get("/selection/:id",async(req,res)=>{
+    
+   
+      
+    try {
+        let id=req.params.id;
+
+       
+       
+    const soildatas = await savemodel.findById(id);
+    const N = soildatas.nitrogen;
+    const P = soildatas.phosphorous;
+    const K = soildatas.potassium;
+    const ph = soildatas.ph;
+    const temperature = soildatas.temperature;
+    const humidity = soildatas.humidity;
+    const ec = soildatas.electrical_conductivity;
+       
+   
+        
+
+        if (req.cookies.token) {
+            
+
+            res.render("selection", {
+                nitrogen: N,
+                phosphorous: P,
+                potassium: K,
+                ph: ph,
+                temperature: temperature,
+                humidity: humidity,
+                electrical_conductivity: ec,
+                suggested_crop: "",
+                success_percentage: "",
+                message:" ",
+                id,
+            });
+        } else {
+            res.render("index");
+        }
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).send('An error occurred. Please try again later.');
+    }
+     
+})
+
+app.post('/predictCrop/:id', async (req, res) => {
     let message = null;
+    let id=req.params.id;
 
     try {
-        const { N, P, K, ph, temperature, humidity, ec } = await getLatestTestData();
+        const { N, P, K, ph, temperature, humidity, ec } = await getLatestArchiveData(id);
 
         const decoded = jwt.verify(req.cookies.token, secretKey);
         const user = await loginmodel.findOne({ username: decoded.username }).exec();
@@ -334,7 +404,8 @@ app.post('/predictCrop', async (req, res) => {
                 electrical_conductivity: ec,
                 suggested_crop: suggested_crop,
                 success_percentage: success_percentage,
-                message: ""
+                message: "",
+                id
             });
         } else {
             message = "You need to be logged in to access this page.";
@@ -362,7 +433,8 @@ app.post('/predictCrop', async (req, res) => {
             electrical_conductivity: ec,
             suggested_crop: " ",
             success_percentage: " ",
-            message: message
+            message: message,
+            id
         });
     }
 });
@@ -695,49 +767,6 @@ app.get("/alert/delete/:id",async(req,res)=>{
     }else{
 
         res.render("index");
-    }
-     
-})
-app.get("/selection/:id",async(req,res)=>{
-    
-   
-      
-    try {
-        let id=req.params.id;
-       
-    const soildatas = await savemodel.findById(id);
-    const N = soildatas.nitrogen;
-    const P = soildatas.phosphorous;
-    const K = soildatas.potassium;
-    const ph = soildatas.ph;
-    const temperature = soildatas.temperature;
-    const humidity = soildatas.humidity;
-    const ec = soildatas.electrical_conductivity;
-       
-   
-        
-
-        if (req.cookies.token) {
-            
-
-            res.render("selection", {
-                nitrogen: N,
-                phosphorous: P,
-                potassium: K,
-                ph: ph,
-                temperature: temperature,
-                humidity: humidity,
-                electrical_conductivity: ec,
-                suggested_crop: "",
-                success_percentage: "",
-                message:" ",
-            });
-        } else {
-            res.render("index");
-        }
-    } catch (error) {
-        console.error('Error:', error.message);
-        res.status(500).send('An error occurred. Please try again later.');
     }
      
 })
