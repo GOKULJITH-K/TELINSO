@@ -130,7 +130,7 @@
          </ul>
         </span>
         <div class="product-col inputfield" >
-          <form action="/cropPredict" method="POST">
+          <form action="/predictCrop" method="POST">
             
             <input type="hidden" id="N" name="N" value="<%= nitrogen %>" required>
             <input type="hidden" id="P" name="P" value="<%= phosphorous %>" required>
@@ -144,7 +144,7 @@
             <button type="submit" class="btn btn2">Predict Crop</button>
         </form>
     
-            
+       
         </div>
       
       
@@ -153,10 +153,13 @@
           <h3> <%= suggested_crop %></h3>
           
           <div class="data">
-          
-          <p>
-            Given current soil conditions, <%= suggested_crop %> cultivation is recommended for sustainable farming. By optimizing soil health, successful cultivation and sustainable practices can be achieved.
-          </p></div> 
+            <% if (message) { %>
+              <p style="padding: 10px;margin: 10px;color: rgb(90, 8, 8);"><%= message %></p> 
+          <% } else { %>
+              <p>Given current soil conditions, <%= suggested_crop %> cultivation is recommended for sustainable farming. By optimizing soil health, successful cultivation and sustainable practices can be achieved.
+              </p>
+          <% } %>
+          </div> 
           
 
         </div>
