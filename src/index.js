@@ -705,7 +705,7 @@ app.get("/delete/delete-data", async(req,res)=>{
 
         if(req.cookies.token){
 
-            res.render("/savedata");
+            res.redirect("/savedata");
             
         }else{
     
