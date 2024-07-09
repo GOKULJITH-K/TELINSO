@@ -130,7 +130,7 @@
          </ul>
         </span>
         <div class="product-col inputfield" >
-          <form action="/predictCrop" method="POST">
+          <form action="/predictCrop/<%= id %>" method="POST">
             
             <input type="hidden" id="N" name="N" value="<%= nitrogen %>" required>
             <input type="hidden" id="P" name="P" value="<%= phosphorous %>" required>
