@@ -701,40 +701,11 @@ app.get("/delete/delete-data", async(req,res)=>{
     
   
         await testmodel.deleteMany();
-        const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
-
-        const nitrogenval=testdata.map(soil=>soil.nitrogen);
-        const nitrogen=Number(mode(nitrogenval));
-    
-        const phosphorusval=testdata.map(soil=>soil.phosphorous);
-        const phosphorous=Number(mode(phosphorusval));
-    
-        const potassiumval=testdata.map(soil=>soil.potassium);
-        const potassium=Number(mode(potassiumval));
-    
-        const pHval=testdata.map(soil=>soil.ph);
-        const ph=Number(mode(pHval));
-    
-        const temperatureval=testdata.map(soil=>soil.temperature);
-        const temperature=Number(mode(temperatureval));
-
-        const humidityval=testdata.map(soil=>soil.humidity);
-        const humidity=Number(mode(humidityval));
         
-        const electrical_conductivityVal=testdata.map(soil=>soil.electrical_conductivity);
-        const electrical_conductivity=Number(mode(electrical_conductivityVal));
 
         if(req.cookies.token){
 
-            res.render("savedata",{
-                nitrogen:nitrogen,
-                phosphorous:phosphorous,
-                potassium:potassium,
-                ph:ph,
-                temperature:temperature,
-                humidity:humidity,
-                electrical_conductivity:electrical_conductivity,
-            });
+            res.render("/savedata");
             
         }else{
     
