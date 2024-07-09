@@ -252,7 +252,7 @@ const cropSchema = new mongoose.Schema({
 });
 
 
-const predictionmodel = mongoose.model("prediction",cropSchema);
+const predictionmodel = mongoose.model("predictions",cropSchema);
 
 // exports
 
