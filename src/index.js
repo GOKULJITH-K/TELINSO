@@ -322,7 +322,10 @@ const response = await axios({
     data: image,
     headers: {
         "Content-Type": "application/x-www-form-urlencoded"
-    }
+    },
+      {
+      timeout: 30000
+      }
 
 })  
      const predictions = response.data.predictions;
@@ -380,7 +383,10 @@ app.get("/crop",async(req,res)=>{
         id: userId, 
 
    
-    });  
+    } {
+      timeout: 30000
+      }
+    );  
     
  
    
