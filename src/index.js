@@ -215,7 +215,7 @@ app.get("/test2",(req,res)=>{
 
         res.render("index");
     }
-})
+}) 
 async function getLatestTestData() {
     const testdata = await testmodel.find().sort({ _id: -1 }).limit(15).exec();
 
@@ -254,10 +254,18 @@ app.post('/cropPredict', async (req, res) => {
             timeout: 30000
         });
 
-        if (req.cookies.token) {
+        let suggested_crop = null;
+        let success_percentage = null;
+        if (pythonResponse.status === 200) {
             const data = await predictionmodel.findOne({ username: decoded.username });
-            const suggested_crop = data ? data.suggested_crop : null;
-            const success_percentage = data ? data.success_percentage : null;
+            suggested_crop = data ? data.suggested_crop : null;
+            success_percentage = data ? data.success_percentage : null;
+        } else {
+          
+            message = "Prediction service did not respond successfully.";
+        }
+
+        if (req.cookies.token) {
 
             res.render("crop", {
                 nitrogen: N,
@@ -303,23 +311,23 @@ app.post('/cropPredict', async (req, res) => {
 });
 
 async function getLatestArchiveData(id) {
-    const testdata = await savemodel.find(id).exec();
+    const testdata = await savemodel.findById(id).exec();
 
-    const nitrogenval = testdata.map(soil => soil.nitrogen);
-    const phosphorusval = testdata.map(soil => soil.phosphorous);
-    const potassiumval = testdata.map(soil => soil.potassium);
-    const pHval = testdata.map(soil => soil.ph);
-    const temperatureval = testdata.map(soil => soil.temperature);
-    const humidityval = testdata.map(soil => soil.humidity);
-    const electrical_conductivityVal = testdata.map(soil => soil.electrical_conductivity);
+    const nitrogenval = testdata.nitrogen;
+    const phosphorusval = testdata.phosphorous;
+    const potassiumval = testdata.potassium;
+    const pHval = testdata.ph;
+    const temperatureval = testdata.temperature;
+    const humidityval = testdata.humidity;
+    const electrical_conductivityVal = testdata.electrical_conductivity;
  
-    const N = nitrogenval.length > 0 ? Number(mode(nitrogenval)) : null;
-    const P = phosphorusval.length > 0 ? Number(mode(phosphorusval)) : null;
-    const K = potassiumval.length > 0 ? Number(mode(potassiumval)) : null;
-    const ph = pHval.length > 0 ? Number(mode(pHval)) : null;
-    const temperature = temperatureval.length > 0 ? Number(mode(temperatureval)) : null;
-    const humidity = humidityval.length > 0 ? Number(mode(humidityval)) : null;
-    const ec = electrical_conductivityVal.length > 0 ? Number(mode(electrical_conductivityVal)) : null;
+    const N = nitrogenval.length > 0 ? Number(nitrogenval) : null;
+    const P = phosphorusval.length > 0 ? Number(phosphorusval) : null;
+    const K = potassiumval.length > 0 ? Number(potassiumval) : null;
+    const ph = pHval.length > 0 ? Number(pHval) : null;
+    const temperature = temperatureval.length > 0 ? Number(temperatureval) : null;
+    const humidity = humidityval.length > 0 ? Number(humidityval) : null;
+    const ec = electrical_conductivityVal.length > 0 ? Number(electrical_conductivityVal) : null;
 
     return { N, P, K, ph, temperature, humidity, ec };
 }
@@ -389,10 +397,18 @@ app.post('/predictCrop/:id', async (req, res) => {
             timeout: 30000
         });
 
-        if (req.cookies.token) {
+        let suggested_crop = null;
+        let success_percentage = null;
+        if (pythonResponse.status === 200) {
             const data = await predictionmodel.findOne({ username: decoded.username });
-            const suggested_crop = data ? data.suggested_crop : null;
-            const success_percentage = data ? data.success_percentage : null;
+            suggested_crop = data ? data.suggested_crop : null;
+            success_percentage = data ? data.success_percentage : null;
+        } else {
+          
+            message = "Prediction service did not respond successfully.";
+        }
+
+        if (req.cookies.token) {
 
             res.render("selection", {
                 nitrogen: N,
@@ -421,7 +437,7 @@ app.post('/predictCrop/:id', async (req, res) => {
             message = "An error occurred. Please try again later.";
         }
 
-        const { N, P, K, ph, temperature, humidity, ec } = await getLatestTestData();
+        const { N, P, K, ph, temperature, humidity, ec } = await getLatestArchiveData(id);
         
         res.render("selection", {
             nitrogen: N,
