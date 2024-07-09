@@ -73,7 +73,7 @@ app.get("/",async(req,res)=>{
         res.render("index");
     }
 
-
+ 
 })
 app.get("/login",(req,res)=>{
 
@@ -216,96 +216,157 @@ app.get("/test2",(req,res)=>{
         res.render("index");
     }
 })
-app.post('/cropPredict', async(req,res)=> {
+async function getLatestTestData() {
+    const testdata = await testmodel.find().sort({ _id: -1 }).limit(15).exec();
 
-    const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
+    const nitrogenval = testdata.map(soil => soil.nitrogen);
+    const phosphorusval = testdata.map(soil => soil.phosphorous);
+    const potassiumval = testdata.map(soil => soil.potassium);
+    const pHval = testdata.map(soil => soil.ph);
+    const temperatureval = testdata.map(soil => soil.temperature);
+    const humidityval = testdata.map(soil => soil.humidity);
+    const electrical_conductivityVal = testdata.map(soil => soil.electrical_conductivity);
 
-    const nitrogenval=testdata.map(soil=>soil.nitrogen);
-    const nitrogen=Number(mode(nitrogenval));
+    const N = nitrogenval.length > 0 ? Number(mode(nitrogenval)) : null;
+    const P = phosphorusval.length > 0 ? Number(mode(phosphorusval)) : null;
+    const K = potassiumval.length > 0 ? Number(mode(potassiumval)) : null;
+    const ph = pHval.length > 0 ? Number(mode(pHval)) : null;
+    const temperature = temperatureval.length > 0 ? Number(mode(temperatureval)) : null;
+    const humidity = humidityval.length > 0 ? Number(mode(humidityval)) : null;
+    const ec = electrical_conductivityVal.length > 0 ? Number(mode(electrical_conductivityVal)) : null;
 
-    const phosphorusval=testdata.map(soil=>soil.phosphorous);
-    const phosphorous=Number(mode(phosphorusval));
+    return { N, P, K, ph, temperature, humidity, ec };
+}
 
-    const potassiumval=testdata.map(soil=>soil.potassium);
-    const potassium=Number(mode(potassiumval));
+app.post('/cropPredict', async (req, res) => {
+    let message = null;
 
-    const pHval=testdata.map(soil=>soil.ph);
-    const pH=Number(mode(pHval));
+    try {
+        const { N, P, K, ph, temperature, humidity, ec } = await getLatestTestData();
 
-    const temperatureval=testdata.map(soil=>soil.temperature);
-    const temperaturev=Number(mode(temperatureval));
-
-    const humidityval=testdata.map(soil=>soil.humidity);
-    const humidityv=Number(mode(humidityval));
-    
-    const electrical_conductivityVal=testdata.map(soil=>soil.electrical_conductivity);
-    const electrical_conductivity=Number(mode(electrical_conductivityVal));
-    
-    const { N, P, K, ph, humidity, ec, temperature } = req.body;
-       
-        
-    const decoded = jwt.verify(req.cookies.token, secretKey);
-    const user = await loginmodel.findOne({username:decoded.username}).exec();
-    const username = user.username;
-    const userId = user._id;
-       
-    const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-        N: N,
-        P: P, 
-        K: K,
-        ph: ph,
-        humidity: humidity,
-        ec: ec, 
-        temperature: temperature,
-        username:username,
-        id:userId,
-
-   
-    });             
-     
-   
-    if(req.cookies.token){
-        
-             
-        let suggested_crop,success_percentage;
         const decoded = jwt.verify(req.cookies.token, secretKey);
-        /*
-                const response = await axios.get('http://localhost:8000/predictCrop');
-                const responseData = response.data;
-                for (const data of responseData) {
-                    if (data.username === decoded.username) {
-                    
-                        
-                    }
-                }
-        */
-        
-          const data = await predictionmodel.findOne({username:decoded.username});
-          suggested_crop=data.suggested_crop;
-          success_percentage=data.success_percentage;
-        res.render("crop",
-        {
-            nitrogen:nitrogen,
-            phosphorous:phosphorous,
-            potassium:potassium,
-            ph:pH,
-            temperature:temperaturev,
-            humidity:humidityv,
-            electrical_conductivity:electrical_conductivity,
-            suggested_crop:suggested_crop,
-            success_percentage:success_percentage,
-            
+        const user = await loginmodel.findOne({ username: decoded.username }).exec();
+        const username = user.username;
+        const userId = user._id;
+
+        const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
+            N, P, K, ph, humidity, ec, temperature, username, id: userId
+        }, {
+            timeout: 30000
         });
 
-    }else{
+        if (req.cookies.token) {
+            const data = await predictionmodel.findOne({ username: decoded.username });
+            const suggested_crop = data ? data.suggested_crop : null;
+            const success_percentage = data ? data.success_percentage : null;
 
-        res.render("index");
+            res.render("crop", {
+                nitrogen: N,
+                phosphorous: P,
+                potassium: K,
+                ph: ph,
+                temperature: temperature,
+                humidity: humidity,
+                electrical_conductivity: ec,
+                suggested_crop: suggested_crop,
+                success_percentage: success_percentage,
+                message: ""
+            });
+        } else {
+            message = "You need to be logged in to access this page.";
+            res.render("index", { message });
+        }
+    } catch (error) {
+        console.error('Error:', error.message);
+
+        let message;
+        if (error.code === 'ENOTFOUND' || error.code === 'EAI_AGAIN') {
+            message = "There was an issue connecting to the prediction service. Please try again later.";
+        } else {
+            message = "An error occurred. Please try again later.";
+        }
+
+        const { N, P, K, ph, temperature, humidity, ec } = await getLatestTestData();
+        
+        res.render("crop", {
+            nitrogen: N,
+            phosphorous: P,
+            potassium: K,
+            ph: ph,
+            temperature: temperature,
+            humidity: humidity,
+            electrical_conductivity: ec,
+            suggested_crop: " ",
+            success_percentage: " ",
+            message: message
+        });
     }
-   
-    
-})
+});
+app.post('/predictCrop', async (req, res) => {
+    let message = null;
+
+    try {
+        const { N, P, K, ph, temperature, humidity, ec } = await getLatestTestData();
+
+        const decoded = jwt.verify(req.cookies.token, secretKey);
+        const user = await loginmodel.findOne({ username: decoded.username }).exec();
+        const username = user.username;
+        const userId = user._id;
+
+        const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
+            N, P, K, ph, humidity, ec, temperature, username, id: userId
+        }, {
+            timeout: 30000
+        });
+
+        if (req.cookies.token) {
+            const data = await predictionmodel.findOne({ username: decoded.username });
+            const suggested_crop = data ? data.suggested_crop : null;
+            const success_percentage = data ? data.success_percentage : null;
+
+            res.render("selection", {
+                nitrogen: N,
+                phosphorous: P,
+                potassium: K,
+                ph: ph,
+                temperature: temperature,
+                humidity: humidity,
+                electrical_conductivity: ec,
+                suggested_crop: suggested_crop,
+                success_percentage: success_percentage,
+                message: ""
+            });
+        } else {
+            message = "You need to be logged in to access this page.";
+            res.render("index", { message });
+        }
+    } catch (error) {
+        console.error('Error:', error.message);
+
+        let message;
+        if (error.code === 'ENOTFOUND' || error.code === 'EAI_AGAIN') {
+            message = "There was an issue connecting to the prediction service. Please try again later.";
+        } else {
+            message = "An error occurred. Please try again later.";
+        }
+
+        const { N, P, K, ph, temperature, humidity, ec } = await getLatestTestData();
+        
+        res.render("selection", {
+            nitrogen: N,
+            phosphorous: P,
+            potassium: K,
+            ph: ph,
+            temperature: temperature,
+            humidity: humidity,
+            electrical_conductivity: ec,
+            suggested_crop: " ",
+            success_percentage: " ",
+            message: message
+        });
+    }
+});
 app.post('/upload', upload.single('image'), async (req, res) => {
-   
    
     let classname = "", reasons = "", symptoms = "", mitigations = "", message = "";
   console.log(req.file.path);
@@ -351,92 +412,50 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 } finally {
     res.render("crophealth", { classname, reasons, symptoms, mitigations, message });
 }}) 
-
-
+  
+ 
           
 app.get("/crop",async(req,res)=>{
-    const testdata = await testmodel.find().sort({_id:-1}).limit(15).exec();
+   try {
+        const testdata = await testmodel.find().sort({ _id: -1 }).limit(15).exec();
 
-    const nitrogenval=testdata.map(soil=>soil.nitrogen);
-    const N=Number(mode(nitrogenval));
-
-    const phosphorusval=testdata.map(soil=>soil.phosphorous);
-    const P=Number(mode(phosphorusval));
-
-    const potassiumval=testdata.map(soil=>soil.potassium);
-    const K=Number(mode(potassiumval));
-
-    const pHval=testdata.map(soil=>soil.ph);
-    const ph=Number(mode(pHval));
-
-    const temperatureval=testdata.map(soil=>soil.temperature);
-    const temperature=Number(mode(temperatureval));
-
-    const humidityval=testdata.map(soil=>soil.humidity);
-    const humidity=Number(mode(humidityval));
-    
-    const electrical_conductivityVal=testdata.map(soil=>soil.electrical_conductivity);
-    const ec=Number(mode(electrical_conductivityVal));
-    
-    const decoded = jwt.verify(req.cookies.token, secretKey);
-    const user = await loginmodel.findOne({username:decoded.username}).exec();
-    const username = user.username;
-    const userId = user._id;
-      
-    const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-    N: parseFloat(N),
-    P: parseFloat(P),
-    K: parseFloat(K),
-    ph: parseFloat(ph),
-    humidity: parseFloat(humidity),
-    ec: parseFloat(ec),
-    temperature: parseFloat(temperature),
-    username: username,
-    id: userId
-}, {
-    timeout: 30000 
-});
-
-    
- 
-   
-    if(req.cookies.token){ 
+        const nitrogenval = testdata.map(soil => soil.nitrogen);
+        const phosphorusval = testdata.map(soil => soil.phosphorous);
+        const potassiumval = testdata.map(soil => soil.potassium);
+        const pHval = testdata.map(soil => soil.ph);
+        const temperatureval = testdata.map(soil => soil.temperature);
+        const humidityval = testdata.map(soil => soil.humidity);
+        const electrical_conductivityVal = testdata.map(soil => soil.electrical_conductivity);
+        const N = Number(mode(nitrogenval));
+        const P = Number(mode(phosphorusval));
+        const K = Number(mode(potassiumval));
+        const ph = Number(mode(pHval));
+        const temperature = Number(mode(temperatureval));
+        const humidity = Number(mode(humidityval));
+        const ec = Number(mode(electrical_conductivityVal));
         
-             
-        let suggested_crop,success_percentage;
-        const decoded = jwt.verify(req.cookies.token, secretKey);
-        /*
-                const response = await axios.get('http://localhost:8000/predictCrop');
-                const responseData = response.data;
-                for (const data of responseData) {
-                    if (data.username === decoded.username) {
-                    
-                        
-                    }
-                }
-        */
-        
-          const data = await predictionmodel.findOne({username:decoded.username});
-          suggested_crop=data.suggested_crop;
-          success_percentage=data.success_percentage;
-          
-        res.render("crop",
-        {
-            nitrogen:N,
-            phosphorous:P,
-            potassium:K,
-            ph:ph,
-            temperature:temperature,
-            humidity:humidity,
-            electrical_conductivity:ec,
-            suggested_crop:suggested_crop,
-            success_percentage:success_percentage
+
+        if (req.cookies.token) {
             
-        });  
 
-    }else{
-
-        res.render("index");
+            res.render("crop", {
+                nitrogen: N,
+                phosphorous: P,
+                potassium: K,
+                ph: ph,
+                temperature: temperature,
+                humidity: humidity,
+                electrical_conductivity: ec,
+                suggested_crop: "",
+                success_percentage: "",
+                message:" ",
+            });
+        } else {
+            res.render("index");
+        }
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).send('An error occurred. Please try again later.');
     }
    
 })
@@ -681,7 +700,10 @@ app.get("/alert/delete/:id",async(req,res)=>{
 })
 app.get("/selection/:id",async(req,res)=>{
     
-    let id=req.params.id;
+   
+      
+    try {
+        let id=req.params.id;
        
     const soildatas = await savemodel.findById(id);
     const N = soildatas.nitrogen;
@@ -692,63 +714,31 @@ app.get("/selection/:id",async(req,res)=>{
     const humidity = soildatas.humidity;
     const ec = soildatas.electrical_conductivity;
        
-    const decoded = jwt.verify(req.cookies.token, secretKey);
-    const user = await loginmodel.findOne({username:decoded.username}).exec();
-    const username = user.username;
-    const userId = user._id;
-      
-    const pythonResponse = await axios.post('https://telinsoapi.onrender.com/predictCrop', {
-        N: N,
-        P: P,
-        K: K,
-        ph: ph,
-        humidity: humidity,
-        ec: ec,
-        temperature: temperature,
-        username:username,
-        id:userId,
-
    
-    });     
- 
-   
-    if(req.cookies.token){
         
-             
-        let suggested_crop,success_percentage;
-        const decoded = jwt.verify(req.cookies.token, secretKey);
-        /*
-                const response = await axios.get('http://localhost:8000/predictCrop');
-                const responseData = response.data;
-                for (const data of responseData) {
-                    if (data.username === decoded.username) {
-                    
-                        
-                    }
-                }
-        */
-        
-          const data = await predictionmodel.findOne({username:decoded.username});
-          suggested_crop=data.suggested_crop;
-          success_percentage=data.success_percentage;
-       
-        res.render("selection",{
-            nitrogen:N,
-            phosphorous:P,
-            potassium:K,
-            ph:ph,
-            temperature:temperature,
-            humidity:humidity,
-            electrical_conductivity:ec,
-            suggested_crop:suggested_crop,
-            success_percentage:success_percentage,
-        }); 
-        
-    }else{
 
-        res.render("index");
+        if (req.cookies.token) {
+            
+
+            res.render("selection", {
+                nitrogen: N,
+                phosphorous: P,
+                potassium: K,
+                ph: ph,
+                temperature: temperature,
+                humidity: humidity,
+                electrical_conductivity: ec,
+                suggested_crop: "",
+                success_percentage: "",
+                message:" ",
+            });
+        } else {
+            res.render("index");
+        }
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).send('An error occurred. Please try again later.');
     }
-
      
 })
 
@@ -896,17 +886,17 @@ app.post("/login", express.json(), async(req,res)=>{
             
 
             res.cookie('token', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 }); 
-               if (!warmup) {
-                      const url = "https://telinsoapi.onrender.com/predictCrop";
-                      warmup = cron.schedule('*/5 * * * *', async () => {
-                          const response = await fetch(url);
-                          console.log(`${url} - Status: ${response.status}`);
-                      });
-                  }
+        
             res.render("welcome",{firstname:check.firstname});
            
-           
-              
+            if (!warmup) {
+                const url = "https://telinsoapi.onrender.com/predictCrop";
+                warmup = cron.schedule('*/5 * * * *', async () => {
+                    const response = await fetch(url);
+                    console.log(`${url} - Status: ${response.status}`);
+                });
+            }
+                 
               
         } 
         else{ 
