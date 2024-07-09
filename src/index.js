@@ -198,7 +198,7 @@ app.get("/crophealth",(req,res)=>{
     if(req.cookies.token){
 
 
-        res.render("crophealth",{classname:"",reasons:"",symptoms:"",mitigations:""});
+        res.render("crophealth",{classname:"",reasons:"",symptoms:"",mitigations:"",message:""});
 
     }else{
 
@@ -306,40 +306,51 @@ app.post('/cropPredict', async(req,res)=> {
 })
 app.post('/upload', upload.single('image'), async (req, res) => {
    
-    // Ensure the file is uploaded
+   
+    let classname = "", reasons = "", symptoms = "", mitigations = "", message = "";
   console.log(req.file.path);
 
-  const image = fs.readFileSync(req.file.path, {
-    encoding: "base64"
-}); 
-  
-        const api_key = "dVbUXioOhtnfoCsVFylB";
-        const imageUrl = "https://detect.roboflow.com/telinso/1";
-        const data_img = image; // 
+  try {
+    
+    const image = fs.readFileSync(req.file.path, { encoding: 'base64' });
+    const imageData = image;
+    const maxAllowedSize = 5 * 1024 * 1024; 
 
-        const response = await axios.post(imageUrl, data_img, {
-            params: {
-                api_key: api_key
-            },
+    if (imageData.length > maxAllowedSize) {
+        message = "Image size exceeds the maximum allowed limit. Please choose a smaller image.";
+        console.log(message);
+    } else {
+        const response = await axios.post('https://detect.roboflow.com/telinso/1', imageData, {
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Length': imageData.length.toString(),
+                'User-Agent': 'axios/1.7.2'
             },
-            timeout: 40000,
+            params: {
+                api_key: 'dVbUXioOhtnfoCsVFylB'
+            },
             maxContentLength: Infinity,
             maxBodyLength: Infinity
         });
-             
-     const predictions = response.data.predictions;
 
-    const classname = predictions[0].class;
-    console.log(predictions[0].class)
-    const data =await  test2model.findOne({name:classname}).exec();
-    const reasons = data.reasons;
-    const symptoms = data.symptoms;
-    const mitigations= data.mitigations;
-   
-res.render("crophealth",{classname:classname,reasons:reasons,symptoms:symptoms,mitigations:mitigations});
-}) 
+        const predictions = response.data.predictions;
+        classname = predictions[0].class;
+
+        const data = await test2model.findOne({ name: classname }).exec();
+        reasons = data.reasons;
+        symptoms = data.symptoms;
+        mitigations = data.mitigations;
+    }
+} catch (error) {
+    console.error('Error:', error.message);
+    if (error.code === 'ENOTFOUND') {
+        message = "Could not connect to the detection service. Please try again later.";
+    } else {
+        message = "An error occurred. Please try again later.";
+    }
+} finally {
+    res.render("crophealth", { classname, reasons, symptoms, mitigations, message });
+}}) 
 
 
           
