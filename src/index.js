@@ -318,16 +318,14 @@ const response = await axios({
     url: "https://detect.roboflow.com/telinso/1",
     params: {
         api_key: "dVbUXioOhtnfoCsVFylB"
-    }, 
+    },
     data: image,
     headers: {
         "Content-Type": "application/x-www-form-urlencoded"
     },
-      {
-      timeout: 30000
-      }
-
-})  
+    timeout: 30000 
+});
+      
      const predictions = response.data.predictions;
 
     const classname = predictions[0].class;
