@@ -778,7 +778,7 @@ app.get("/alert/delete/:id",async(req,res)=>{
     const soildatas = await savemodel.find().sort({_id:-1}).exec();
     if(req.cookies.token){
 
-        res.render("soilhealth", {soildatas: soildatas});
+        res.redirect("/soilhealth");
         
     }else{
 
@@ -1013,7 +1013,7 @@ app.post("/test2data", async(req,res) =>{
          console.log(savedata);
         
          
-         res.render("welcome");
+         res.redirect("/test2data");
    
    
      
@@ -1042,7 +1042,7 @@ app.post("/savedata", upload.single("image"), async(req,res) =>{
         console.log(savedata);
        
         
-        res.render("welcome");
+        res.redirect("/savedata");
   
   
     
@@ -1057,7 +1057,7 @@ app.post("/farmer", upload.single("image"), async(req,res) =>{
         link:req.body.link,
         image:req.file.filename 
         
-    }
+    } 
     
        
         const farmersdata=await farmermodel.insertMany(farmerdata);
