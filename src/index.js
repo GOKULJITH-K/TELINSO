@@ -323,7 +323,7 @@ const response = await axios({
     headers: {
         "Content-Type": "application/x-www-form-urlencoded"
     },
-    timeout: 30000 
+    timeout: 70000 
 });
       
      const predictions = response.data.predictions;
