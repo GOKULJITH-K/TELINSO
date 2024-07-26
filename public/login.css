@@ -13,6 +13,9 @@
     width: 100%;
     
 }
+.desk{
+  height: 0;
+}
 svg{
   display: none;
 }
@@ -255,12 +258,13 @@ form .btn2:hover{
 @media(max-width:800px){
 
 
-    body{
-      background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-    }
+    
     .header{
    
         height: 60px;
+    }
+    .desk{
+      height: auto;
     }
     .logo{
       margin:15px;
