@@ -198,7 +198,7 @@ nav{
    
 }
 .contact .newlogin{
-   background: linear-gradient(#4c0db1,#482b7c);
+   display: none;
 }
 .contact-col h1{
 

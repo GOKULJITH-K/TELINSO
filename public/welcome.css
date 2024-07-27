@@ -15,8 +15,6 @@
     position: relative;
     width: 100%;
     
-    
-   
 }
 .overview-col img{
     display: none;
@@ -27,8 +25,7 @@
  .date-time hr{
     display: none;
 }
-
-  
+ 
 .logo{
     margin: 35px 80px;
     top:10px;
@@ -48,10 +45,10 @@
     flex-wrap: wrap;
     width: 100%;
     background: white;
-    position: fixed;
-    z-index: 500;
+ 
+  
     
-    
+     
   }
   nav .navbtn{
     margin: 20px;
@@ -300,6 +297,7 @@
     font-size: 25px;
     padding: 25px;
     font-family:system-ui;
+    text-align: justify;
     color: rgb(31, 30, 30);
   
 }
@@ -812,7 +810,7 @@ form .btn2:hover{
       
       }
     .Date-time{
-        background:linear-gradient(rgb(231, 231, 244),rgb(196, 218, 225)) ;
+        background-image: linear-gradient(to right, #cdbbf8, #b9cdff); 
         color: black;
         border-radius: 30px;
         display: flex;
@@ -833,16 +831,17 @@ form .btn2:hover{
         height: 35px;
         margin: 5px 0;
         outline: none;
-        border: 1px solid black;
+        border: 1px solid rgb(2, 93, 72);
         
     }
     .location i{
         display: inline;
         justify-content: center;
         position: relative;
-        background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(206, 239, 243) 42%, rgba(31, 180, 234, 0.41) 93.6% );
-        border-radius: 50px;
+        background: linear-gradient(135deg, rgb(85, 85, 115), rgb(137, 129, 148));
+        border-radius: 50%;
         margin: 2px;
+        color: white;
         padding: 13px;
         font-size: 15px;
     }
@@ -987,24 +986,10 @@ form .btn2:hover{
         color: black;
         font-family: system-ui;
     }
-    .product  .class1{
-        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
+    .product  .class1,.class2,.class3,.class4,.class5,.class6,.class7{
+        background-image: linear-gradient(to right, #cdbbf8, #b9cdff); 
     }
-    .product  .class2{
-        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
-    }
-    .product  .class3{
-        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
-    }
-    .product  .class4{
-        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
-    }
-    .product  .class5{
-        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
-    }
-    .product  .class6{
-        background-image: radial-gradient( circle 975px at 2.6% 48.3%,  rgb(225, 226, 244) 0%, rgb(157, 180, 244) 99.7% );
-    }
+   
     .conclusion{
         width: auto;
         padding: 10;

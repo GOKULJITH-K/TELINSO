@@ -145,7 +145,11 @@ nav .navbtn{
     padding: 25px;
     font-family:system-ui;
     color: rgb(31, 30, 30);
+    text-align: justify;
   
+  }
+  .overview img{
+    width: auto !important;
   }
   .overview-btn{
     
@@ -432,10 +436,10 @@ nav .navbtn{
   .overview-description{
     display: block;
     font-size: 16px;
-      padding: 25px;
-      padding-top: 0px;
-      font-family:system-ui;
-      text-align: left;
+    padding: 25px;
+    padding-top: 0px;
+    font-family:system-ui;
+    text-align: justify;
      
 
   }
@@ -445,7 +449,7 @@ nav .navbtn{
       font-size: 16px;
       padding: 10px 0;
       font-family:system-ui;
-      text-align: left;
+      text-align: justify;
       list-style-type: disc;
       
 

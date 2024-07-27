@@ -20,6 +20,7 @@
     padding: 0px 100px;
     box-sizing: border-box;
     transition: .5s;  
+   
     
   
     
@@ -51,11 +52,13 @@
     font-weight: 300;
     padding:10px;
     font-family: system-ui;
+    text-align: justify;
   
   }
   .footer-col p i{
-    padding: 0px 5px;
-    font-size: 25px;
+    padding: 0px 25px;
+    margin: 15px 5px;
+    font-size: 20px;
    
   }
   .footer hr{
@@ -72,6 +75,7 @@
     padding: 20px 10px;
     box-sizing: border-box;
     transition: .5s;  
+    padding-bottom: 0px;
     
   
     

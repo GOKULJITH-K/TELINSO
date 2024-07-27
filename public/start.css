@@ -13,6 +13,7 @@
     width: 100%;
     
 }
+
 svg{
   display: none;
 }
@@ -175,9 +176,7 @@ nav{
     
    
 }
-.contact .getstarted{
-  margin: 20px;
-}
+
 .contact .getstarted a{
   color: white;
   background-color: #146a91;
@@ -188,7 +187,10 @@ nav{
   font-family: 'Montserrat', sans-serif;
 }
 .contact .newlogin{
-   background: linear-gradient(#4c0db1,#482b7c);
+  display: none;
+}
+.signup-login{
+  display: block;
 }
 .contact-col h1{
 
@@ -244,6 +246,7 @@ form .btn2:hover{
 #entry{
     justify-content: center;
 }
+
 
 @media(max-width:800px){
 
