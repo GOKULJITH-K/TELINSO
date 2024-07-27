@@ -810,7 +810,7 @@ form .btn2:hover{
       
       }
     .Date-time{
-        background-image: linear-gradient(to right, #cdbbf8, #b9cdff); 
+        background-image: linear-gradient(to right, #baccf0, #baccf0); 
         color: black;
         border-radius: 30px;
         display: flex;
@@ -838,7 +838,7 @@ form .btn2:hover{
         display: inline;
         justify-content: center;
         position: relative;
-        background: linear-gradient(135deg, rgb(85, 85, 115), rgb(137, 129, 148));
+        background-image: linear-gradient(to right, #675b8b, #5a6a8b); 
         border-radius: 50%;
         margin: 2px;
         color: white;
@@ -987,7 +987,7 @@ form .btn2:hover{
         font-family: system-ui;
     }
     .product  .class1,.class2,.class3,.class4,.class5,.class6,.class7{
-        background-image: linear-gradient(to right, #cdbbf8, #b9cdff); 
+        background-image: linear-gradient(to right, #f2f1f6, #baccf0); 
     }
    
     .conclusion{
