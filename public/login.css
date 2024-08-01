@@ -196,7 +196,7 @@ nav{
     border-radius: 10px;
     
    
-}
+} 
 .contact .newlogin{
    display: none;
 }
@@ -265,6 +265,9 @@ form .btn2:hover{
     }
     .desk{
       height: auto;
+    }
+    .login{
+      margin-top: 25px;
     }
     .logo{
       margin:15px;
@@ -372,7 +375,7 @@ form .btn2:hover{
        
     }
     .selection{
-      background: #ace0f9 ;
+      background: whitesmoke ;
       display: flex;
       margin: 0 15px;
       border-radius: 10px;
@@ -382,7 +385,7 @@ form .btn2:hover{
     }
     
     .selection a{
-      color: black;
+ 
       font-size: 18px;
       padding: 10px;
       width: 100%;
@@ -390,7 +393,7 @@ form .btn2:hover{
       font-family: 'Montserrat', sans-serif;
     }
     .login-label{
-      text-align: left;
+      text-align: right;
       display: block;
       font-size: 15px;
       padding: 0 5px;
@@ -398,7 +401,13 @@ form .btn2:hover{
       color: #251742;
     }
     .login-pass{
-      margin-top: 10px;
+      margin-top:5px;
+    }
+    .login-pass a{
+      color: #1d1233;
+    }
+    .signup{
+      margin-top: 25px;
     }
     .invalid-credential{
       background: rgb(219, 4, 4);
@@ -614,7 +623,7 @@ form .btn2:hover{
       height: 40px;
       font-size: 15px;
       padding: 20px;
-      margin: 10px;
+      margin: 5px 10px;
       border: 2px solid #482b7c;
       border-radius: 5px;
       
