@@ -400,11 +400,14 @@ form .btn2:hover{
       margin:  0 15px;
       color: #251742;
     }
+    .login-label a{
+      color: #1d1233;
+    }
     .login-pass{
       margin-top:5px;
     }
     .login-pass a{
-      color: #1d1233;
+      color: blue;
       background: none;
     }
     .signup{
