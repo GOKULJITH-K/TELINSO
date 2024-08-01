@@ -852,9 +852,10 @@ nav ul{
         padding: 0px;
         padding-top: 50px;
         height: 800px;
-        background-image: linear-gradient(to right, #f5f5f5da, #f5f5f5dc),url(graphics.png);
+        background-image: linear-gradient(to top, #ffffffda, #ffffffdc),url(graphics.png);
         background-position: center;
         background-size: cover;
+        
          
     }
     .overview-btn{
@@ -873,27 +874,28 @@ nav ul{
         text-align: left;
         margin-left: 25px;
         padding: 0;
+        
     }
     .overview-desk{
         display: none;
     }
     .overview-mobile{
         display: block;
+     
     }
     .overview-col p{
         font-size: 18px;
         padding: 25px;
         font-family:system-ui;
-        text-align: justify;
+       
         
         
       
     }
     .feature{
         width: 100%;
-        margin-top: 20px;
         padding: 20px;
-        margin-top: -480px;
+        margin-top: -400px;
         
         
         
