@@ -1,12 +1,12 @@
 <html>
      <head>
-         <meta charset="UTF-8">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>TELINSO - Login</title>
-         <meta name="description" content="Log in to TELINSO to access comprehensive soil health data and customized recommendations for optimizing crop productivity and soil quality.">
-         <meta name="keywords" content="TELINSO login, soil health data, crop productivity, soil quality, personalized recommendations, secure login">
-         <meta name="author" content="Team TELINSO">
-         <meta name="robots" content="noindex, nofollow">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="title" content="TELINSO - Login">
+        <meta name="description" content="Log in to TELINSO to access comprehensive soil health data and customized recommendations to optimize your crop productivity and soil quality.">
+        <meta name="keywords" content="TELINSO login, soil health data access, crop productivity, soil quality, personalized recommendations, secure login">
+        <meta name="author" content="Team TELINSO">
+        <meta name="robots" content="noindex, nofollow">
          
          <link rel="stylesheet" href="/login.css">
          <script src="/navbar.js" defer></script>
@@ -84,34 +84,32 @@
                     <% } %>
                     </div>
                   <div class="signup-login">
-                    <div class="selection">
-                        <a onClick="signup()"  id="signup">Signup</a>
-                        <a onClick="login()" style="background:#146a91 ; color: white;" id="login">Login</a>
-                    </div>
+                  
                    
                     <div class="login" >
                     <form action="/login" method="POST">
-                        <div class="login-pass desk">
-                            <p style="margin-left: 10px; font-size: 16px;">Already have an account? Log in here.</p>
-
-                        </div>
+                        
                         
                         <div class="login-pass">
-                        <label class="login-label"><i class="fa-solid fa-user"></i> username</label>
-                        <input type="text" name="username" placeholder="Telinso"  required>
+                       
+                        <input type="text" name="username" placeholder="Username"  required>
                         </div>
                         <div class="login-pass">
-                        <label class="login-label"><i class="fa-solid fa-lock"></i> password</label>
-                        <input type="password" name="password" placeholder="*****" required>
+                       
+                        <input type="password" name="password" placeholder="Password" required>
+                        <a class="login-label" >Forgot password?</a>
                         </div>
+                        
                         <button type="submit" class="btn btn2">Login</a></button>
+                       
                     </form> 
+                    <div class="login-pass desk">
+                        <p style="margin-left: 10px; font-size: 16px;color: black;">Don't have an account? <a onClick="signup()"  id="signup">signup</a></p>
+
+                    </div>
                     </div>
                     <div class="signup" style="display: none;">
-                        <div class="login-pass desk">
-                            <p style="margin-left: 10px; font-size: 15px;">Create an account to access Telinso's features.</p>
-
-                        </div>
+                        
                     <form action="/signup" method="POST">
                      
                         <input type="text" name="firstname" placeholder="First Name" required >
@@ -126,6 +124,10 @@
                         
                         <button type="submit" class="btn btn2">Signup</a></button>
                     </form> 
+                    <div class="login-pass desk">
+                        <p style="margin-left: 10px; font-size: 15px;color: black;">Already have an account? <a onClick="login()" style="background:#c7d1d5 ; color: black;" id="login">Login</a></p>
+
+                    </div>
                     </div>
                 </div>
                     
@@ -210,15 +212,15 @@
     loginElements.forEach(function(element) {
         element.style.display = "none";
        
-        document.getElementById("login").style.background="#ace0f9";
-        document.getElementById("login").style.color="black";;
+        document.getElementById("login").style.background="whitesmoke";
+        document.getElementById("login").style.color="black";
        
     });
 
     signupElements.forEach(function(element) {
         element.style.display = "block";
-        document.getElementById("signup").style.background="#146a91  ";
-        document.getElementById("signup").style.color="white";
+        document.getElementById("signup").style.background="#c7d1d5";
+        document.getElementById("signup").style.color="black";
 
         
     
@@ -233,7 +235,7 @@ function login() {
    
     signupElements.forEach(function(element) {
         element.style.display = "none";
-        document.getElementById("signup").style.background="#ace0f9";
+        document.getElementById("signup").style.background="whitesmoke";
         document.getElementById("signup").style.color="black";
         
         
@@ -242,8 +244,8 @@ function login() {
 
      loginElements.forEach(function(element) {
         element.style.display = "block";
-        document.getElementById("login").style.background="#146a91 ";
-        document.getElementById("login").style.color="white";
+        document.getElementById("login").style.background="#c7d1d5 ";
+        document.getElementById("login").style.color="black";
         
     });
 }
