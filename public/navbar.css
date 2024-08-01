@@ -4,9 +4,6 @@ nav{
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
-  position: fixed;
-  background-color: white;
-  z-index: 600;
   
   
 }
@@ -125,7 +122,12 @@ nav ul{
     filter: none;
   }
     
+  nav{
+    position: fixed;
+  background-color: white;
+  z-index: 600;
   
+  }
 nav ul{
   display: block;
   
