@@ -19,7 +19,9 @@
    
 }
 
-
+.overview-mobile{
+    display: none;
+}
 .text-box{
     width:90%;
     color: white;
@@ -151,7 +153,7 @@
 .overview{
     width: auto;
     padding: 0 20;
-   text-align: center;
+   text-align: left;
   
     
 }
@@ -163,7 +165,7 @@
 }
 .overview-col{
     padding: 0px 150px 15px 150px;
-    text-align: center;
+    
     
    
 }
@@ -190,7 +192,8 @@
     font-size: 18px;
     border-radius: 5px;
     color: white;
-    text-align: center;
+    margin-left: 25px;
+    text-align: left !important;
     position: relative;
     cursor: pointer;
     
@@ -339,7 +342,8 @@
 .product .row1{
     margin-top: 0%;
     display: flex;
-    justify-content: space-evenly;
+    flex-basis: 30%;
+    justify-content: space-between;
     
 }
 .product .row2{
@@ -351,7 +355,7 @@
 
 
 .product-col{
-    flex-basis: 44%;
+    flex-basis: 30%;
     color: black;
     margin-bottom: 5%;
     padding: 20px;
@@ -412,7 +416,7 @@
 }
 .conclusion .row-2{
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 100%;
     justify-content: space-around;
 }
 
@@ -651,17 +655,14 @@ form .btn2:hover{
     
     
     .header{
+        background-image: none;
         width: 100%;
+        height: 60px;
+       
     }
     
     .text-box{
-        width:100%;
-        color: white;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        text-align: center;
-        padding-left: 0px;
+        display: none;
        
     
     }
@@ -839,40 +840,51 @@ nav ul{
   
   
     .vision{
-        width: auto;
-        padding: 0px 20px;
-        text-align: center;
+       display: none;
         
     }
-    
+    .conclusion-btn{
+        font-size: 15px;
+    }
     
     .overview{
         width: 100%;
         padding: 0px;
-       text-align: center;
-      
-        
+        padding-top: 50px;
+        height: 800px;
+        background-image: linear-gradient(to right, #f5f5f5da, #f5f5f5dc),url(graphics.png);
+        background-position: center;
+        background-size: cover;
+         
     }
     .overview-btn{
         padding: 10px 20px;
+        font-size: 15px;
     }
     .overview-col{
         padding: 5px;
-        text-align: center;
+        
         
        
     }
     .overview h1{
         
-        font-size: 25px;
-        text-align: center;
-        padding: 18px 0;
-    }
-    
-    .overview-col p{
         font-size: 20px;
+        text-align: left;
+        margin-left: 25px;
+        padding: 0;
+    }
+    .overview-desk{
+        display: none;
+    }
+    .overview-mobile{
+        display: block;
+    }
+    .overview-col p{
+        font-size: 18px;
         padding: 25px;
         font-family:system-ui;
+        text-align: justify;
         
         
       
@@ -881,21 +893,27 @@ nav ul{
         width: 100%;
         margin-top: 20px;
         padding: 20px;
+        margin-top: -480px;
+        
         
         
     }
     .feature-col{
         padding: 20px ;
+        background: white;
     }
-    .feature-col h1{
-        font-size: 23px;
+    .feature-col h3{
+        font-size: 20px;
     }
     .feature-col p{
-        font-size: 20px;
+        font-size: 18px;
         font-family: 'Montserrat', sans-serif;
     }
     .feature-col  i{
         font-size: 30px;
+        position: absolute;
+        right: 40px;
+        padding-top: 20px;
         margin-bottom: 10px;
         
     }
@@ -910,7 +928,7 @@ nav ul{
     
     .about h1{
         
-        font-size: 30px;
+        font-size: 20px;
         text-align: center;
         padding: 15px 0px;
     }
@@ -924,13 +942,10 @@ nav ul{
     }
     .about-col1 img{
         
-       height: 400px;
+       height: 300px;
        width: 100%;
-       margin-left: 17px;
-   
-       
-           
-      
+       border-radius: 10px;
+       mask-image: none;
     }
     .about-col2{
         padding: 5px;
@@ -943,7 +958,7 @@ nav ul{
     
     .about-col2 p{
         padding-top: 0;
-        font-size: 20px;
+        font-size: 18px;
         font-family:system-ui;
         text-align: justify;
         padding: 15px;
@@ -955,7 +970,7 @@ nav ul{
         
        
         padding: 14px 34px;
-        font-size: 18px;
+        font-size: 15px;
         border-radius: 30px;
         margin-left: 15px;
         background: rgb(4, 54, 74);
@@ -995,7 +1010,7 @@ nav ul{
     }
     .product h3{
 
-        font-size: 25px;
+        font-size: 20px;
 
     }
     .product p{
@@ -1009,36 +1024,34 @@ nav ul{
 .conclusion{
     width: auto;
     padding: 10;
-   text-align: center;
+   text-align: left;
 
 }
 
 
 .conclusion-col2{
     
-    width: 350px;
-    
-    
-    
+    width: 100%;
+     
 }
 
 .conclusion-btn{
     
     padding: 10px 20px;
-    margin-left: 0%;
+    margin-left: 10px;
     
 }
 
 .conclusion-col2 h3{
     
-    font-size: 25px;
+    font-size: 20px;
     text-align: left;
     padding-left: 10px;
 
 }
 .row-2 p{
    
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 300;
     padding:20px;
     color: black;
@@ -1065,13 +1078,13 @@ nav ul{
 }
 .conclusion h1{
     
-    font-size: 25px;
+    font-size: 20px;
     text-align: left;
     padding: 18px 10px;
     color: black;
 }
 .conclusion-col p{
-    font-size: 20px;
+    font-size: 18px;
     padding: 10px;
     margin-bottom: 15px;
     font-family:system-ui;
@@ -1139,9 +1152,21 @@ nav ul{
    
     .contact h1{
         
-        font-size: 30px;
+        font-size: 20px;
         text-align: center;
         padding: 15px;
+    }
+    .team h1{
+        font-size: 20px;
+    }
+    .team-col h3{
+        font-size: 20px;
+    }
+    .team-col p{
+        font-size: 18px;
+    }
+    .contact-col p{
+        font-size: 18px;
     }
     .contact form input{
        
@@ -1164,11 +1189,46 @@ nav ul{
     .contact form .btn2{
         padding: 10px;
         margin: 10px;
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 300;
         font-family: system-ui;
         width: 90%;
        
+    }
+    
+    .loader-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; 
+    }
+    
+    .loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    
+    .spinner {
+        border: 8px solid #482b7c;
+        border-top: 8px solid white;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 2s linear infinite;
+        position: absolute;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
     }
     
     

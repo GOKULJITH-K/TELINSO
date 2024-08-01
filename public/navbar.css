@@ -4,6 +4,9 @@ nav{
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
+  position: fixed;
+  background-color: white;
+  z-index: 600;
   
   
 }
@@ -21,16 +24,7 @@ nav{
   height: 30px;
   filter: grayscale(100%) brightness(1000%);
 }
-nav{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  width: 100%;
 
-  
-  
-}
 nav .navbtn{
   margin: 20px;
   top:10;
@@ -128,12 +122,13 @@ nav ul{
    
     width: 150px;
     height: 21.8px;
-    filter: grayscale(100%) brightness(1000%);
+    filter: none;
   }
     
   
 nav ul{
   display: block;
+  
 }
 
 nav .fa-solid{
@@ -141,7 +136,6 @@ nav .fa-solid{
   font-size: 25px;
   margin: 30px;  
   padding-left: 80%; 
-  color: white;
   z-index: 1;
   cursor: pointer;
 }
@@ -181,6 +175,7 @@ text-align: left;
 }
 #sidemenu{
 z-index: 500;
+overflow: scroll;
 }
 nav #sidemenu .fa-solid{
 margin: 3px;

@@ -1185,6 +1185,7 @@ form .btn2:hover{
 }
 #sidemenu{
     z-index: 500;
+    overflow: scroll;
 }
 nav #sidemenu .fa-solid{
     margin: 3px;
