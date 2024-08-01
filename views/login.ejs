@@ -97,9 +97,9 @@
                         <div class="login-pass">
                        
                         <input type="password" name="password" placeholder="Password" required>
-                        <a class="login-label" >Forgot password?</a>
+                       
                         </div>
-                        
+                        <a class="login-label" >Forgot password?</a>
                         <button type="submit" class="btn btn2">Login</a></button>
                        
                     </form> 
@@ -212,15 +212,15 @@
     loginElements.forEach(function(element) {
         element.style.display = "none";
        
-        document.getElementById("login").style.background="whitesmoke";
-        document.getElementById("login").style.color="black";
+        document.getElementById("login").style.background="none";
+        document.getElementById("login").style.color="blue";
        
     });
 
     signupElements.forEach(function(element) {
         element.style.display = "block";
-        document.getElementById("signup").style.background="#c7d1d5";
-        document.getElementById("signup").style.color="black";
+        document.getElementById("signup").style.background="none";
+        document.getElementById("signup").style.color="blue";
 
         
     
@@ -235,8 +235,8 @@ function login() {
    
     signupElements.forEach(function(element) {
         element.style.display = "none";
-        document.getElementById("signup").style.background="whitesmoke";
-        document.getElementById("signup").style.color="black";
+        document.getElementById("signup").style.background="none";
+        document.getElementById("signup").style.color="blue";
         
         
 
@@ -244,8 +244,8 @@ function login() {
 
      loginElements.forEach(function(element) {
         element.style.display = "block";
-        document.getElementById("login").style.background="#c7d1d5 ";
-        document.getElementById("login").style.color="black";
+        document.getElementById("login").style.background="none ";
+        document.getElementById("login").style.color="blue";
         
     });
 }
