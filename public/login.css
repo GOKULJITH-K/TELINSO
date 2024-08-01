@@ -405,6 +405,7 @@ form .btn2:hover{
     }
     .login-pass a{
       color: #1d1233;
+      background: none;
     }
     .signup{
       margin-top: 25px;
