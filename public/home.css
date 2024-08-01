@@ -864,6 +864,9 @@ nav ul{
     }
     .overview-col{
         padding: 5px;
+        background: rgba(255, 255, 255, 0.582);
+        border-radius: 20px;
+        height: 300px;
         
         
        
@@ -874,6 +877,7 @@ nav ul{
         text-align: left;
         margin-left: 25px;
         padding: 0;
+        display: none;
         
     }
     .overview-desk{
