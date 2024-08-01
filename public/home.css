@@ -910,6 +910,7 @@ nav ul{
     .feature-col p{
         font-size: 18px;
         font-family: 'Montserrat', sans-serif;
+        width: 80%;
     }
     .feature-col  i{
         font-size: 30px;
