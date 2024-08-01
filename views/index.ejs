@@ -3,11 +3,15 @@
      <head>
          <meta charset="UTF-8">
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>TELINSO - Technology Leveraged Innovation for Soil Health</title>
+         <meta name="title" content="TELINSO - Technology Leveraged Innovation for Soil Health">
          <meta name="description" content="TELINSO is an IoT-based solution providing comprehensive soil health data and customized recommendations to optimize crop productivity and soil quality.">
          <meta name="keywords" content="TELINSO, soil health, IoT, agriculture, soil analysis, crop productivity, sustainable farming">
          <meta name="author" content="Team TELINSO">
          <meta name="robots" content="index, follow">
+         <meta name="language" content="English">
+         <meta name="title" content="TELINSO - Login">
+         <meta name="description" content="Log in to TELINSO to access comprehensive soil health data and customized recommendations to optimize your crop productivity and soil quality.">
+         <meta name="robots" content="noindex, follow">
          
          <link rel="stylesheet" href="/home.css">
          <link rel="stylesheet" href="/navbar.css">
@@ -26,6 +30,12 @@
         <link rel="manifest" href="/site.webmanifest">
         </head>
      <body>
+        <div id="loader-container" class="loader-container">
+            <div class="loader">
+                <div class="spinner"></div>
+            </div>
+        </div>
+        
      <section class="header">
             <div class="container">
             <nav >
@@ -91,15 +101,20 @@
          <section class="overview">
            <div class="row">
                 <div class="overview-col">
-                    <h1>OVERVIEW</h1>
-                     <P>
+                    <h1>Overview</h1>
+                     <P class="overview-desk">
 
                         Soil health and crop productivity are crucial factors in agriculture, playing a pivotal role in maintaining a sustainable environment. The primary cause of soil degradation is the excessive use of fertilizers. Therefore, it is essential to conduct soil testing before initiating agriculture. Soil testing holds significance for various reasons: optimizing crop production, improving the nutritional balance of the growing media, and saving money and energy by applying only the necessary amount of fertilizer. Our solution is designed to assist farmers comprehensively, including monitoring soil conditions and nutrients. Data collected from the monitoring system will be stored on a cloud server for analysis. The primary objective is to keep track of nutrient levels in the soil.
                          Having knowledge of their soil before commencing farming will aid farmers in precise cultivation planning 
                     </P>
+                    <p class="overview-mobile">
+                        TELINSO is an IoT-based solution providing comprehensive soil health data and customized recommendations to optimize crop productivity and soil quality.
+                    </p>
+                    <a href="login" class="overview-btn"  >Explore now</a>
                         </div>
+                        
              </div>
-            <a href="login" class="overview-btn"  >Explore now</a>
+            
         </section>
         <section class="feature">
             <div class="row">
@@ -147,28 +162,46 @@
             <div class="row1">
               <div class="product-col" >
                    <i class="fa-solid fa-magnifying-glass-chart"></i>
-                    <h3>Soil Analysis</h3>
-                  <p>Our website offers a comprehensive soil sample analysis service. Discover the health of your soil, nutrient levels, and recommendations to optimize plant growth. Unlock the potential of your land with data-driven insights for thriving gardens and bountiful harvests</p>
-             </div>
+                    <h3>Soil Analytics</h3>
+                  <p>
+                    Embark on your soil analysis journey with Telinso's innovative analytics. Record soil samples with analyses, track changes, and monitor trends. Make informed decisions 
+                    for optimal soil health, ensuring a comprehensive archive and enhancing farming experiences for a thriving future.    
+                </p>
+                </div>
             <div class="product-col"  >
                     <i class="fa-solid fa-chart-line"></i>
-                                <h3>Visualization</h3>
-                                <p>Explore your soil sample analysis results with our interactive data visualization feature. Gain insights through informative charts, graphs, and maps that make it easy to understand and harness the full potential of your land for gardening or farming.</p>
+                                <h3>Farmer Assist</h3>
+                                <p>
+                                    Embark on your farming journey with Telinso's farmer assist feature. Access information on farming practices, record soil details with pictures, track changes, 
+                                    and monitor trends. This tool provides a comprehensive archive, simplifying practices for a thriving agricultural future. 
+                                </p>
             </div>
+            <div class="product-col"  >
+                <i class="fa-solid fa-cloud-bolt"></i>
+                <h3>Weather Forecast</h3>
+                <p>
+                    Embark on your soil health journey with Telinso's weather forecast feature. Record soil details with pictures and integrate real-time weather data. Track changes,
+                     monitor trends, and make informed decisions to simplify soil health monitoring and enhance farming experiences.
+                </p>
+             </div>
             </div>
            <div class="row2">
            <div class="product-col"  >
                 <i class="fa-solid fa-cloud-bolt"></i>
-                <h3>Weather Forecast</h3>
-                <p>Stay Informed with Accurate Weather Forecasts: Our website provides real-time weather updates, forecasts, and conditions for your location and beyond. Plan your day with confidence, whether it's checking for sunshine,
-                   rain, or any other weather conditions, all at your fingertips</p>
+                <h3>Crop Selection</h3>
+                <p>
+                    Embark on your farming journey with Telinso’s innovative crop selection. 
+                    Record soil details with pictures to inform crop choices. Track changes, monitor trends, and make informed decisions for successful cultivation with a comprehensive archive for enhanced productivity.
+
+                </p>
              </div>
              <div class="product-col"  >
                 <i class="fa-solid fa-handshake-angle"></i>
-                <h3>Farmer Assist</h3>
-                <p>Go-to resource for everything related to soil.We understand that healthy soil is the bedrock of 
-                  successful farming, and our mission is to equip farmers 
-                  with the knowledge they need to nurture their land and grow bountiful crops.</p>
+                <h3>Crop Health</h3>
+                <p>
+                    Embark on your journey to crop health excellence with Telinso's Crop Health Insights. Access expert advice and actionable strategies for disease, pest, and weed management, 
+                    ensuring your crops thrive and reach their full potential. 
+                </p>
              </div>
              </div>
     </section>
@@ -216,28 +249,28 @@
             <h1> Meet our team</h1>
             <div class="row">
                 <div class="team-col" >
-                    <IMG src="/gok.jpg" alt="Gokuljith K">
+                    <IMG src="/gok.jpg">
                     <h3>GOKULJITH K</h3>
                     <p>ECE UNDERGRAD</p>
                 </div>
                 <div class="team-col"  >
-                    <IMG src="/shadha(1).jpg" alt="">
+                    <IMG src="/shadha(1).jpg">
                                 <h3>FATHIMA SHADHA </h3>
                                 <p>ECE UNDERGRAD</p>
                 </div>
                 <div class="team-col"  >
-                    <IMG src="/jeff.jpg" alt="">
+                    <IMG src="/jeff.jpg">
                     <h3>JEFF JERRY</h3>
                     <p>ECE UNDERGRAD</p>
                     
                 </div>
             <div class="team-col"  >
-                <IMG src="/hari.jpg" alt="">
+                <IMG src="/hari.jpg">
                 <h3>HARIKRISHNAN NS</h3>
                 <p>ECE UNDERGRAD</p>
                 </div>
              <div class="team-col"  >
-                    <IMG src="/thejus.jpg" alt="">
+                    <IMG src="/thejus.jpg">
                     <h3>THEJUS M</h3>
                     <p>CSE UNDERGRAD</p>
                     </div>
@@ -319,6 +352,17 @@
                     conclusionElement.style.display = 'none';
                 }
                 }
+                
+                document.addEventListener("DOMContentLoaded", function() {
+ 
+                setTimeout(function() {
+                    
+                    document.getElementById('loader-container').style.display = 'none';
+                    
+
+                    document.getElementById('content').style.display = 'block';
+                }, 3000); 
+                });
               </script>
          </body>
 </html>
