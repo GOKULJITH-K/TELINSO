@@ -782,6 +782,7 @@ form .btn2:hover{
         margin: 10px;
         border-radius: 10px;
        position: relative;
+       z-index: 2;
        
         
         
@@ -806,6 +807,8 @@ form .btn2:hover{
         height: 270px;
         margin-top: -60px;
         width: 100%;
+        filter: grayscale(50%);
+        z-index: 0;
 
       
       }
